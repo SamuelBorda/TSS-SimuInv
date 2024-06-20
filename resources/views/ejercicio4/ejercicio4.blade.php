@@ -15,7 +15,7 @@
                     </span></h3>
                 </div>
                 <div class="botonayuda">
-                    <a href="#" class="btn btn-gradient-outline">¿Necesitas ayuda?</a>
+                    <a href="{{ route('ejercicio4.ayuda') }}" class="btn btn-gradient-outline">¿Necesitas ayuda?</a>
                 </div>             
             </div>
             <div class="enunciadoEjercicio marginIzqDer">
@@ -34,10 +34,10 @@
             </div>
             <div class="botonesEjercicio1 marginIzqDer">
                 <div class="botonverhistorial">
-                    <a href="#" class="btn btn-gradient-outline">Ver historial</a>
+                    <a href="{{ route('ejercicio4.historial') }}" class="btn btn-gradienthistorial">Ver historial</a>
                 </div>
                 <div class="botonSimular">
-                    <a href="#" class="btn btn-gradient-outline">Simular</a>
+                    <a href="{{ route('ejercicio4.simular') }}" class="btn btn-gradientsimular">Simular</a>
                 </div>
             </div>
         </div>

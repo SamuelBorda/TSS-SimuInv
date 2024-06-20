@@ -10,4 +10,16 @@ class Ejercicio4Controller extends Controller
 
         return view('ejercicio4.ejercicio4');
     }
+
+    public function ayuda(){
+        return view('ejercicio4.ayuda');
+    }
+
+    public function historial(){
+        return view('ejercicio4.historial');
+    }
+
+    public function simular(){
+        return view('ejercicio4.simular');
+    }
 }
