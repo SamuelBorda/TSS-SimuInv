@@ -5,7 +5,9 @@
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
 
-
+<br>
+<br>
+<br>
 
 
 
