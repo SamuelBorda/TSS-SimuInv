@@ -5,13 +5,17 @@
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
 
-<br>
-<br>
-<br>
-
-
-
-
+        <br>
+        <br>
+        <br>
+        <div class="container-fluid py-4  bg-gray-400 text-white">
+            <div class="panelTitulo">
+                <h3 class="bg-gradient-titleejercicio">
+                    CASO 1: COMPARACIÓN DE POLITICAS DE INVENTARIO
+                </h3>
+            </div>
+        </div>
+        
     </main>
 
 
@@ -31,3 +35,4 @@
         </script>
     @endpush
 </x-layout>
+
