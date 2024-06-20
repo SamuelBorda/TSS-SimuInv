@@ -8,11 +8,10 @@
         <br>
         <br>
         <br>
-        <br>
         <div class="container-fluid py-4 bg-gray-400"> <!-- solo para el espacio --> <br>   </div>  
 
         <div class="container-fluid py-4 bg-dark-400 text-white">
-            <h1 class="text-start ps-5">
+            <h3 class="text-start ps-5">
                 <span class="bg-gradient-simu px-4 py-2">
                     CASO 2 - MANTENIMIENTO DE EQUIPOS
                 </span>
@@ -23,7 +22,7 @@
                     </span>
                 </button>
 
-            </h1>
+            </h3>
         </div>  
 
         <div class="container-fluid py-4 bg-gray-400 text-white d-flex " style="min-height: 500px;">
