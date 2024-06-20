@@ -16,10 +16,10 @@
                 </div>
                 <div class="botonayuda">
                     <a href="#" class="btn btn-gradient-outline">¿Necesitas ayuda?</a>
-                </div>
-                <div class="enunciadoEjercicio marginIzqDer">
-                    <!-- AQUI SE PONE EL CONTENIDO -->
                 </div>             
+            </div>
+            <div class="enunciadoEjercicio marginIzqDer">
+                <!-- AQUI SE PONE EL CONTENIDO -->
             </div>
         </div>
 
