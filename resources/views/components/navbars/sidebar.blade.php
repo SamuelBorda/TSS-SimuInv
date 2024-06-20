@@ -11,7 +11,6 @@
 
     </div>
     <br>
-    <br>
     <hr class="horizontal light mt-0 mb-2">
 
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 d-flex  h-100" id="sidenav-collapse-main">
