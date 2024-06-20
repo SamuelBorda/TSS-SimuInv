@@ -66,6 +66,46 @@ font-size: 1.3rem; /* 36px en rem */
     -webkit-mask-composite: xor;
     mask-composite: exclude;
 }
+
+.btn-gradientsimular{
+    border: none;
+    position: relative;
+    z-index: 1;
+    background:#212121;
+}
+.btn-gradientsimular:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 1.8px;
+    border-radius: 28px;
+    background: linear-gradient(96deg, #f6ca45, #ee7983);
+}
+.btn-gradienthistorial{
+    border: none;
+    border-radius: 28px;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(96deg, #ffffff, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: none; /* Asegúrate de que no se transforme el texto */
+}
+.btn-gradienthistorial:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 1.8px;
+    border-radius: 27px;
+    background: linear-gradient(96deg, #ffffff, #ffffff);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
 @media (max-width:700px){
 
     .panelTitulo {
