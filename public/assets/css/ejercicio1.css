@@ -22,7 +22,28 @@ font-size: 1.5rem; /* 36px en rem */
     color: transparent;
 
 }
-.gradiente-ayuda{
-    background: linear-gradient(96deg,#f6ca45,#ee7983);
+.btn-gradient-outline {
+    border: none;
+    border-radius: 28px;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(96deg, #f6ca45, #ee7983);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+.btn-gradient-outline:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 1.8px;
+    border-radius: 27px;
+    background: linear-gradient(96deg, #f6ca45, #ee7983);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
 /*ESTILOS DEL ARNOLD*/
