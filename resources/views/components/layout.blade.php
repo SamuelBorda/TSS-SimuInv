@@ -11,8 +11,6 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/logo-icon.png">
-    <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/logo-icon.png">
     <title >
         SIMUINV
     </title>
