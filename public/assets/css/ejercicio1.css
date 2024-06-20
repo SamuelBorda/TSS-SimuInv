@@ -149,3 +149,12 @@ font-size: 1.3rem; /* 36px en rem */
     padding-left: 75px;
     padding-top: 40px;
 }
+
+.formlabelblanco{
+    color: white;
+}
+
+.formAjustado{
+    padding-left: 75px;
+    padding-top: 40px;
+}

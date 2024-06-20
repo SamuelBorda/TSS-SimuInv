@@ -18,8 +18,15 @@
                     <a href="{{ route('ejercicio4.ayuda') }}" class="btn btn-gradient-outline">¿Necesitas ayuda?</a>
                 </div>    
             </div>
-            <div>
-                <p>SIMULAR 4</p>
+            <div class="formAjustado">
+                <form>
+                    <label class="formlabelblanco"><Strong>Numero de simulaciones</Strong></label>
+                    <input type="text">
+                    <label class="formlabelblanco"><Strong>TREMA (%)</Strong></label>
+                    <input type="text">
+                    <label class="formlabelblanco"><Strong>Aceptacion de proyecto (%)</Strong></label>
+                    <input type="text">
+                </form>
             </div>
         </div>
         
