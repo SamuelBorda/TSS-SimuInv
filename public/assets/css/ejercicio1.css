@@ -1,3 +1,5 @@
+/* Importar Bootstrap */
+@import url('bootstrap.min.css');
 .panelTitulo {
     background-color:#212121;
     padding: 1rem;
@@ -106,6 +108,28 @@ font-size: 1.3rem; /* 36px en rem */
     -webkit-mask-composite: xor;
     mask-composite: exclude;
 }
+.botonIniciar{
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-gradientIniciar{
+    border: none;
+    position: relative;
+    z-index: 1;
+    background:#212121;
+}
+.btn-gradientIniciar:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 1.8px;
+    border-radius: 28px;
+    background: linear-gradient(96deg, #B222CA, #CD76DB, #6EBADB);
+}
+.formularioEjercicio1 .form-label {
+    color: white; /* Color de los labels en blanco */
+}
 @media (max-width:700px){
 
     .panelTitulo {
@@ -134,6 +158,10 @@ font-size: 1.3rem; /* 36px en rem */
         margin-bottom: 0;
     }
     .botonverhistorial a, .botonSimular a {
+        width: 100%; /* Asegura que los enlaces ocupen todo el ancho del contenedor padre */
+        text-align: center; /* Centra el texto dentro del botón */
+    }
+    .botonIniciar a{
         width: 100%; /* Asegura que los enlaces ocupen todo el ancho del contenedor padre */
         text-align: center; /* Centra el texto dentro del botón */
     }
