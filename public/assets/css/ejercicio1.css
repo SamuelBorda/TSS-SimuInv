@@ -143,3 +143,9 @@ font-size: 1.3rem; /* 36px en rem */
 .centrado{
     text-align: center;
 }
+
+.tituloazul {
+    color: #2298CA;
+    padding-left: 75px;
+    padding-top: 40px;
+}
