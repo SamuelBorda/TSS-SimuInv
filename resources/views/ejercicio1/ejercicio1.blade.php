@@ -8,11 +8,16 @@
         <br>
         <br>
         <br>
-        <div class="container-fluid py-4  bg-gray-400 text-white">
+        <div class="py-4  bg-gray-400 text-white">
             <div class="panelTitulo">
-                <h3 class="bg-gradient-titleejercicio">
-                    CASO 1: COMPARACIÓN DE POLITICAS DE INVENTARIO
-                </h3>
+                <div class="tituloEjercicio">
+                    <h3><span class="bg-gradient-titleejercicio">
+                        CASO 1: COMPARACIÓN DE POLITICAS DE INVENTARIO
+                    </span></h3>
+                </div>
+                <div class="botonayuda">
+                    <a href="#" class="btn btn-outline-primary">¿Necesitas ayuda?</a>
+                </div>
             </div>
         </div>
         
