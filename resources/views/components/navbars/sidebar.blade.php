@@ -23,7 +23,7 @@
 
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'Usuarios' ? 'active bg-gradient-primary' : '' }} "
-                   >
+                href="{{ route('dashboard') }}">
                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10 fs-3">home</i>
                     </div>
@@ -32,7 +32,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == ' activar' ? ' active bg-gradient-primary' : '' }} "
-                   >
+                href="{{ route('ejercicio1') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">upload_file</i>
                     </div>
@@ -42,7 +42,7 @@
 
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'Grupos' ? ' active bg-gradient-primary' : '' }} "
-                  >
+                href="{{ route('ejercicio2') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">upload_file</i>
                     </div>
@@ -54,7 +54,7 @@
 
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'ImportarDatos' ? ' active bg-gradient-primary' : '' }} "
-                  >
+                  href="{{ route('ejercicio3') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">upload_file</i>
                     </div>
@@ -63,7 +63,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == '' ? ' active bg-gradient-primary' : '' }}  "
-                  >
+                href="{{ route('ejercicio4') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">upload_file</i>
                     </div>
@@ -73,7 +73,7 @@
 
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == '' ? ' active bg-gradient-primary' : '' }}  "
-                  >
+                href="{{ route('ejercicio5') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">upload_file</i>
                     </div>
