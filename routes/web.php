@@ -47,6 +47,10 @@ Route::get('/ejercicio1/simular', [Ejercicio1Controller::class, 'simular'])->nam
 Route::get('/ejercicio1/ayuda', [Ejercicio1Controller::class, 'ayuda'])->name('ejercicio1.ayuda');
 
 
+//RUTA PARA LAS VISTAS DE ACCIONES EJERCICIO2
+Route::get('/ejercicio2/historial', [Ejercicio1Controller::class, 'historial'])->name('ejercicio2.historial');
+Route::get('/ejercicio2/simular', [Ejercicio1Controller::class, 'simular'])->name('ejercicio2.simular');
+Route::get('/ejercicio2/ayuda', [Ejercicio1Controller::class, 'ayuda'])->name('ejercicio2.ayuda');
 
 
 
