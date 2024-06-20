@@ -51,8 +51,9 @@
                    (Simule la operación del equipo  durante 20.000 horas).
                 </p>
                     <div class="button-group">
-                    <button type="button" class="gradient-button2">Simular</button>
                     <button type="button" class="gradient-button3">Ver historial</button>
+                    <button type="button" class="gradient-button2">Simular</button>
+                     
                     </div>
             </div>
             
