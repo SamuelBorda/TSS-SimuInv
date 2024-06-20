@@ -1,0 +1,24 @@
+.panelTitulo {
+    background-color:#212121;
+    padding: 1rem;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+.bg-gradient-titleejercicio{
+    background: linear-gradient(45deg,
+    #FFC700 12%,   /* Color en 12% */
+    #FF983B 35%,   /* Color en 35% */
+    #FF726B 57%,   /* Color en 57% */
+    #FF4B9A 64%,   /* Color en 64% */
+    #FF29C5 73%,   /* Color en 73% */
+    #FF79D1 79%,   /* Color en 79% */
+    #C100E7 100%   /* Color en 100% */
+);
+font-size: 1rem; /* 36px en rem */
+      font-weight: bold;
+    background-clip: text;
+    color: transparent;
+
+}
+/*ESTILOS DEL ARNOLD*/
