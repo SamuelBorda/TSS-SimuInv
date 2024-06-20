@@ -6,7 +6,25 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+}
+.enunciadoEjercicio{
+    padding: 3rem;
+    
+}
+.marginIzqDer{
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+.botonesEjercicio1{
+    display: flex;
+    justify-content: flex-end;
+}
+.botonverhistorial, .botonSimular{
+    margin-right: 1.5rem; /* Espacio entre los botones */
+}
+
+.botonSimular {
+    margin-right: 0; /* Elimina el margen derecho del último botón */
 }
 .bg-gradient-titleejercicio{
     background: linear-gradient(45deg,
@@ -33,6 +51,7 @@ font-size: 1.3rem; /* 36px en rem */
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-transform: none; /* Asegúrate de que no se transforme el texto */
 }
 .btn-gradient-outline:before {
     content: "";
@@ -50,6 +69,13 @@ font-size: 1.3rem; /* 36px en rem */
 @media (max-width:700px){
 
     .panelTitulo {
+        padding: 1rem;
+    }
+    .enunciadoEjercicio{
+        padding: 1rem;
+        padding-top: 3rem;
+    }
+    .marginIzqDer{
         padding: 1rem;
     }
 }

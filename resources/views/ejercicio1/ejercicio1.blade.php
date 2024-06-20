@@ -19,6 +19,27 @@
                     <a href="#" class="btn btn-gradient-outline">¿Necesitas ayuda?</a>
                 </div>             
             </div>
+            <div class="enunciadoEjercicio marginIzqDer">
+                <p>
+                    La demanda diaria de un cierto articulo está regida por una distribución binomial con parámetros N = 6     θ = 1/2. El tiempo de entrega en días es una variable aleatoria Poisson con λ = 3. El costo de mantener una unidad en inventario es de $1 por día. El costo del faltante es de $10 por unidad, y el costo de ordenar es de $50 por orden. Se desea comparar dos políticas para llevar el inventario:
+                </p>
+                <p>
+                    <strong>1:</strong> Ordenar cada 8 dias hasta tener 30 articulos en inventario.
+                    <br>
+                    <strong>2:</strong> Ordenar hasta 30 artículos cuando  el nivel del inventario sea menor o igual a 10.
+                </p>
+                <p>
+                    Si se asume que las unidades faltantes en un ciclo son  surtidas por la nueva orden que arriba en el próximo ciclo, ¿Cuál de las dos políticas descritas es  más económica?
+                </p>
+            </div>
+            <div class="botonesEjercicio1 marginIzqDer">
+                <div class="botonverhistorial">
+                    <a href="#" class="btn btn-gradient-outline">Ver historial</a>
+                </div>
+                <div class="botonSimular">
+                    <a href="#" class="btn btn-gradient-outline">Simular</a>
+                </div>
+            </div>
         </div>
         
     </main>
