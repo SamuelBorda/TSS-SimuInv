@@ -8,22 +8,21 @@
         <br>
         <br>
         <br>
-        <br>
         <div class="container-fluid py-4 bg-gray-400"> <!-- solo para el espacio --> <br>   </div>  
 
         <div class="container-fluid py-4 bg-dark-400 text-white">
-            <h1 class="text-start ps-5">
+            <h3 class="text-start ps-5">
                 <span class="bg-gradient-simu px-4 py-2">
                     CASO 2 - MANTENIMIENTO DE EQUIPOS
                 </span>
-                <button type="button" class="gradient-button ms-10">
+                <button type="button" class="gradient-button ms-10" onclick="window.location.href='{{ route('ejercicio2.ayuda') }}'">
                     <span class="d-none d-md-inline">¿Necesitas ayuda?</span>
                     <span class="d-inline d-md-none">
                         <i class="fas fa-question-circle"></i>
                     </span>
                 </button>
 
-            </h1>
+            </h3>
         </div>  
 
         <div class="container-fluid py-4 bg-gray-400 text-white d-flex " style="min-height: 500px;">
@@ -51,8 +50,8 @@
                    (Simule la operación del equipo  durante 20.000 horas).
                 </p>
                     <div class="button-group">
-                    <button type="button" class="gradient-button3">Ver historial</button>
-                    <button type="button" class="gradient-button2">Simular</button>
+                    <button type="button" class="gradient-button3" onclick="window.location.href='{{ route('ejercicio2.historial') }}'">Ver historial</button>
+                    <button type="button" class="gradient-button2" onclick="window.location.href='{{ route('ejercicio2.simular') }}'">Simular</button>
                      
                     </div>
             </div>
