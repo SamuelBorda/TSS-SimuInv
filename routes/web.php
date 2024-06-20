@@ -18,6 +18,9 @@ use App\Http\Livewire\Tables;
 use App\Http\Livewire\VirtualReality;
 use GuzzleHttp\Middleware;
 use App\Http\Controllers\DashboardController;
+
+use App\Http\Controllers\{Ejercicio1Controller,Ejercicio2Controller,Ejercicio3Controller,Ejercicio4Controller,Ejercicio5Controller };
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,11 +31,20 @@ use App\Http\Controllers\DashboardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
-Route::get('/', function(){
-    return redirect('sign-in');
-});
+
+
+Route::get('/ejercicio1', [Ejercicio1Controller::class, 'index'])->name('ejercicio1');
+Route::get('/ejercicio2', [Ejercicio2Controller::class, 'index'])->name('ejercicio2');
+Route::get('/ejercicio3', [Ejercicio3Controller::class, 'index'])->name('ejercicio3');
+Route::get('/ejercicio4', [Ejercicio4Controller::class, 'index'])->name('ejercicio4');
+Route::get('/ejercicio5', [Ejercicio5Controller::class, 'index'])->name('ejercicio5');
+
+
+
+
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('forgot-password', ForgotPassword::class)->middleware('guest')->name('password.forgot');
 Route::get('reset-password/{id}', ResetPassword::class)->middleware('signed')->name('reset-password');
