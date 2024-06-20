@@ -4,11 +4,24 @@
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
-
-
-
-
-
+        <br>
+        <br>
+        <br>
+        <div class="py-4  bg-gray-400 text-white">
+            <div class="panelTitulo">
+                <div class="tituloEjercicio">
+                    <h3><span class="bg-gradient-titleejercicio">
+                        CASO 5 - OPTIMIZACIÓN DE INVENTARIO Y REORDEN
+                    </span></h3>
+                </div>
+                <div class="botonayuda">
+                    <a href="#" class="btn btn-gradient-outline">¿Necesitas ayuda?</a>
+                </div>
+                <div class="enunciadoEjercicio marginIzqDer">
+                    <!-- AQUI SE PONE EL CONTENIDO -->
+                </div>             
+            </div>
+        </div>
 
     </main>
 
