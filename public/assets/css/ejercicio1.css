@@ -119,6 +119,25 @@ font-size: 1.3rem; /* 36px en rem */
         padding: 1rem;
     }
 }
+@media (max-width:500px){
+    .botonesEjercicio1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .botonverhistorial, .botonSimular {
+        margin: 0;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    .botonSimular {
+        margin-bottom: 0;
+    }
+    .botonverhistorial a, .botonSimular a {
+        width: 100%; /* Asegura que los enlaces ocupen todo el ancho del contenedor padre */
+        text-align: center; /* Centra el texto dentro del botón */
+    }
+}
 
 /*ESTILOS DEL ARNOLD*/
 .centrado{
