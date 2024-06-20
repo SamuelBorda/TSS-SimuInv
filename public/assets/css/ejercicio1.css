@@ -1,6 +1,8 @@
 .panelTitulo {
     background-color:#212121;
     padding: 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -16,7 +18,7 @@
     #FF79D1 79%,   /* Color en 79% */
     #C100E7 100%   /* Color en 100% */
 );
-font-size: 1.5rem; /* 36px en rem */
+font-size: 1.3rem; /* 36px en rem */
       font-weight: bold;
     background-clip: text;
     color: transparent;
@@ -44,6 +46,12 @@ font-size: 1.5rem; /* 36px en rem */
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
+}
+@media (max-width:700px){
+
+    .panelTitulo {
+        padding: 1rem;
+    }
 }
 
 /*ESTILOS DEL ARNOLD*/
