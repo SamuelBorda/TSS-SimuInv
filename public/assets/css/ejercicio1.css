@@ -1,10 +1,30 @@
 .panelTitulo {
     background-color:#212121;
     padding: 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+}
+.enunciadoEjercicio{
+    padding: 3rem;
+    
+}
+.marginIzqDer{
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+.botonesEjercicio1{
+    display: flex;
+    justify-content: flex-end;
+}
+.botonverhistorial, .botonSimular{
+    margin-right: 1.5rem; /* Espacio entre los botones */
+}
+
+.botonSimular {
+    margin-right: 0; /* Elimina el margen derecho del último botón */
 }
 .bg-gradient-titleejercicio{
     background: linear-gradient(45deg,
@@ -16,13 +36,48 @@
     #FF79D1 79%,   /* Color en 79% */
     #C100E7 100%   /* Color en 100% */
 );
-font-size: 1.5rem; /* 36px en rem */
+font-size: 1.3rem; /* 36px en rem */
       font-weight: bold;
     background-clip: text;
     color: transparent;
 
 }
-.gradiente-ayuda{
-    background: linear-gradient(96deg,#f6ca45,#ee7983);
+.btn-gradient-outline {
+    border: none;
+    border-radius: 28px;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(96deg, #f6ca45, #ee7983);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: none; /* Asegúrate de que no se transforme el texto */
 }
+.btn-gradient-outline:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 1.8px;
+    border-radius: 27px;
+    background: linear-gradient(96deg, #f6ca45, #ee7983);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+@media (max-width:700px){
+
+    .panelTitulo {
+        padding: 1rem;
+    }
+    .enunciadoEjercicio{
+        padding: 1rem;
+        padding-top: 3rem;
+    }
+    .marginIzqDer{
+        padding: 1rem;
+    }
+}
+
 /*ESTILOS DEL ARNOLD*/
