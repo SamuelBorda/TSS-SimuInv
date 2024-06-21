@@ -106,6 +106,22 @@
                 </table>
             </div>
 
+            <div >
+                <h2 class="text-simu2">GRAFICOS RESULTADOS</h2>
+                    <div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="grafico-politica1"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="grafico-politica2"></div>
+                        </div>
+                    </div>
+                    </div>
+
+            </div>
+
         </div>
     </main>
 
@@ -114,6 +130,8 @@
 
 
  <!-- Initialize Flatpickr -->
+
+ <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
  <script >
   const dem1 = [5, 6, 7, 8, 9, 10, 11];
     const prob1 = [0.05, 0.05, 0.10, 0.15, 0.25, 0.25, 0.15];
@@ -136,6 +154,8 @@ let demandasRestantes = [];
 
             // Realizar la simulación y construir dinámicamente la tabla
             simularYConstruirTabla(cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal);
+
+
         });
 
 
@@ -144,9 +164,10 @@ let demandasRestantes = [];
 // Función para simular y construir la tabla
 function simularYConstruirTabla(cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal) {
     let inventario = cantidadCompraInicial;
+    let inventario2 = cantidadCompraInicial;
     let ingresosTotales = 0;
     let resultados = [];
-
+    let resultados2 = [];
     // Simulación de 30 días
     for (let dia = 1; dia <= 30; dia++) {
         let demanda;
@@ -207,9 +228,80 @@ function simularYConstruirTabla(cantidadCompraInicial, costoCompraInicial, costo
 
     }
 
+    //Politica 2
+
+    for (let dia = 1; dia <= 30; dia++) {
+            let  ventas, ingresos, compraAdicional, devolucion;
+
+            ventas = Math.min(inventario2, demandasRestantes[dia-1]);
+            ingresos = ventas * costoVentaPublico;
+            ingresosTotales += ingresos;
+            inventario2 -= ventas;
+
+            if (dia === 10) {
+                const demandaRestante = calcularDemandaRestante(demandasRestantes,cantidadCompraInicial);
+            console.log("demandasRestantes");
+            console.log(demandasRestantes);
+            console.log(demandaRestante);
+
+                if (inventario2 < demandaRestante) {
+                compraAdicional = demandaRestante - inventario2;
+                inventario2 += compraAdicional;
+            }
+
+
+            }
+
+
+        // Realizar compra adicional o devolución en el día 10
+        if (dia === 30) {
+            const demandaRestante = calcularDemandaRestante2(demandasRestantes,cantidadCompraInicial);
+            console.log("demandasRestantes");
+            console.log(demandasRestantes);
+            console.log(demandaRestante);
+
+
+
+                devolucion = demandaRestante;
+                ingresosTotales -= devolucion * costoDevolucionFinal;
+                inventario2 = demandaRestante -devolucion; // Ajustar inventario al demandaRestante
+
+
+
+        }
+        resultados2.push({
+            dia: dia,
+            demanda: demandasRestantes[dia-1],
+            ventas: ventas,
+            inventario: inventario2,
+            compraAdicional: compraAdicional,
+            ingresos: ingresos,
+            devolucion: devolucion
+        });
+
+    }
+
+        let totalInventario1 = cantidadCompraInicial * costoCompraInicial;
+        let totalIngresos1 = resultados.reduce((total, resultado) => total + (resultado.ingresos || 0), 0);
+        let totalDevolucion1 = resultados.reduce((total, resultado) => total + (resultado.devolucion || 0), 0) * costoDevolucionInicial;
+        let costoTotal1 = totalInventario1 - totalDevolucion1;
+        let gananciaTotal1 = totalIngresos1 - costoTotal1;
+
+        let totalInventario2 = cantidadCompraInicial * costoCompraInicial;
+        let totalIngresos2 = resultados2.reduce((total, resultado) => total + (resultado.ingresos || 0), 0);
+        let totalDevolucion2 = resultados2.reduce((total, resultado) => total + (resultado.devolucion || 0), 0) * costoDevolucionFinal;
+        let costoTotal2 = totalInventario2 - totalDevolucion2;
+        let gananciaTotal2 = totalIngresos2 - costoTotal2;
+
+
+
     // Construir la tabla HTML final con los resultados completos
     construirTabla(resultados,cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal);
+    construirTabla2(resultados2,cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal);
     console.log(resultados);
+    console.log(resultados2);
+     // Dibujar los gráficos
+     dibujarGraficos(costoTotal1, totalIngresos1, gananciaTotal1, costoTotal2, totalIngresos2, gananciaTotal2);
 }
 
 // Función para simular la demanda según los datos y probabilidades proporcionadas
@@ -236,6 +328,15 @@ function calcularDemandaRestante(demandasRestantes) {
     }
 
     return demandaRestante;
+}
+function calcularDemandaRestante2(demandasRestant,cantidadCompraInicial) {
+    let demandaRestante = 0;
+
+    for (let i = 0; i < demandasRestant.length; i++) {
+        demandaRestante += demandasRestant[i];
+    }
+
+    return cantidadCompraInicial-demandaRestante ;
 }
 
 // Función para construir la tabla HTML con los resultados de la simulación
@@ -275,6 +376,104 @@ function construirTabla(resultados, cantidadCompraInicial, costoCompraInicial, c
         <td><strong>${totalDevolucion}</strong></td>
     `;
     cuerpoTabla.appendChild(filaTotales);
+}
+
+
+// Función para construir la tabla HTML con los resultados de la simulación
+function construirTabla2(resultados, cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal) {
+    let cuerpoTabla = document.getElementById('cuerpoTabla2');
+    cuerpoTabla.innerHTML = '';
+
+    resultados.forEach(resultado => {
+        let fila = document.createElement('tr');
+        fila.innerHTML = `
+            <td>${resultado.dia}</td>
+            <td>${resultado.demanda}</td>
+            <td>${resultado.ventas || ''}</td>
+            <td>${resultado.inventario || ''}</td>
+            <td>${resultado.compraAdicional || ''}</td>
+            <td>${resultado.ingresos.toFixed(2) || ''}</td>
+            <td>${resultado.devolucion || ''}</td>
+        `;
+        cuerpoTabla.appendChild(fila);
+    });
+
+    // Calcular totales
+    let totalDemanda = resultados.reduce((total, resultado) => total + (resultado.demanda || 0), 0);
+    let totalInventario = cantidadCompraInicial * costoCompraInicial;
+    let totalIngresos = resultados.reduce((total, resultado) => total + (resultado.ingresos || 0), 0);
+    let totalCompraAdicional = resultados.reduce((total, resultado) => total + (resultado.compraAdicional || 0), 0) * costoCompraAdicional;
+    let totalDevolucion = resultados.reduce((total, resultado) => total + (resultado.devolucion || 0), 0) * costoDevolucionFinal;
+
+    // Agregar fila de totales
+    let filaTotales = document.createElement('tr');
+    filaTotales.innerHTML = `
+        <td colspan="2"><strong>Total</strong></td>
+        <td><strong>${totalDemanda}</strong></td>
+        <td><strong>${totalInventario}</strong></td>
+        <td><strong>${totalCompraAdicional}</strong></td>
+        <td><strong>${totalIngresos.toFixed(2)}</strong></td>
+        <td><strong>${totalDevolucion}</strong></td>
+    `;
+    cuerpoTabla.appendChild(filaTotales);
+}
+
+function dibujarGraficos(costoTotal1, totalIngresos1, gananciaTotal1, costoTotal2, totalIngresos2, gananciaTotal2) {
+    // Datos para el primer conjunto de barras (Política 1)
+    const labels1 = ['Costo Total', 'Ingreso Total', 'Ganancia Total'];
+    const data1 = [costoTotal1, totalIngresos1, gananciaTotal1];
+
+    // Datos para el segundo conjunto de barras (Política 2)
+    const labels2 = ['Costo Total', 'Ingreso Total', 'Ganancia Total'];
+    const data2 = [costoTotal2, totalIngresos2, gananciaTotal2];
+
+    // Configuración de los trazos para el primer gráfico (Política 1)
+    const trace1 = {
+        x: labels1,
+        y: data1,
+        name: 'Política 1',
+        type: 'bar',
+        marker: {
+            color: ['#1b20f9', '#ff0000', '#ffff00'] // Azul, Naranja, Verde
+        }
+    };
+
+    // Configuración del layout del primer gráfico
+    const layout1 = {
+        title: 'Política 1',
+        xaxis: {
+            title: 'Concepto'
+        },
+        yaxis: {
+            title: 'Valor'
+        }
+    };
+
+    // Configuración de los trazos para el segundo gráfico (Política 2)
+    const trace2 = {
+        x: labels2,
+        y: data2,
+        name: 'Política 2',
+        type: 'bar',
+        marker: {
+            color: ['#1b20f9', '#ff0000', '#ffff00'] // Azul, Naranja, Amarillo
+        }
+    };
+
+    // Configuración del layout del segundo gráfico
+    const layout2 = {
+        title: 'Política 2',
+        xaxis: {
+            title: 'Concepto'
+        },
+        yaxis: {
+            title: 'Valor'
+        }
+    };
+
+    // Renderizar los gráficos utilizando Plotly
+    Plotly.newPlot('grafico-politica1', [trace1], layout1);
+    Plotly.newPlot('grafico-politica2', [trace2], layout2);
 }
     </script>
 
