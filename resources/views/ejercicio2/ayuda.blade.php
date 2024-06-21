@@ -24,10 +24,35 @@
 
             </h3>
         </div> 
+        <div class="container-fluid py-4 bg-gray-400 "> 
+            <h3 class="texto-simu2 ">¿COMO FUNCIONA LA APLICACION?</h3>
+            <p class="p"> 
+                    La aplicacion permite ingresar los siguientes datos:
+                    <br><br>
+                    <strong>TIEMPO HORAS DE SIMULACION</strong><br>
+                    Se ingresa el tiempo en horas del funcionamiento del equipo que se desea simular.
+                    <br><br>
+                    <strong>COSTO POR COMPONENTE</strong><br>
+                    Se ingresa el costo de compra del nuevo componente.
+                        <br><br>
+                    <strong>COSTO POR HORA DESCONEXION</strong><br>
+                    Se ingresa el costo por hora cada que se desconecta el equipo.
+            </p>
+        </div>
         
         </main>
  @push('css')
         <style>
+            
+            .p{
+                 
+                margin-left: 10%;
+                color: white;
+            }
+            .texto-simu2{
+                margin-left: 10%;
+                color:#00F0FF;
+            }
              .gradient-button {
                 background: transparent; 
                 color: #EE7983;  
