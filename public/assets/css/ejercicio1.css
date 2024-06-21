@@ -136,6 +136,18 @@ font-size: 1.3rem; /* 36px en rem */
     color: #2298CA !important;
     font-size: 1.3rem;
 }
+
+/* Mostrar solo en pantallas pequeñas */
+.small-screen {
+    display: none;
+}
+
+/* Mostrar solo en pantallas grandes */
+.large-screen {
+    display: inline;
+}
+
+
 /*ESTILOS PARA LA TABLA RESPONSIVA*/
 .tablaHistorialEjercicio1{
     padding-left: 3rem;
@@ -214,8 +226,16 @@ font-size: 1.3rem; /* 36px en rem */
         padding-left: 1rem;
         padding-right: 1rem;
     }
-}
+    /* Mostrar el signo de interrogación en pantallas pequeñas */
+    .small-screen {
+        display: inline;
+    }
 
+    /* Ocultar el texto en pantallas pequeñas */
+    .large-screen {
+        display: none;
+    }
+}
 
 /*ESTILOS DEL ARNOLD*/
 .centrado{
