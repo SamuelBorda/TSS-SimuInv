@@ -8,7 +8,7 @@
         <br>
         <br>
         <br>
-        <div class="container-fluid py-4 bg-gray-400"> <!-- solo para el espacio --> <br>   </div>  
+        <div class="container-fluid py-4 bg-gray-400"> <!-- solo para el espacio -->    </div>  
 
         <div class="container-fluid py-4 bg-dark-400 text-white">
             <h3 class="text-start ps-5">

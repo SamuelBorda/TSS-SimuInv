@@ -9,9 +9,42 @@
         <br>
         <br>
         <div class="py-4  bg-gray-400 text-white">
-            <div>
-                <p>esto es un prueba para ver si me esta mostrando el contenido de ayuda ejercicio 1</p>
-            </div>
+            <div class="panelTitulo">
+                    <div class="tituloEjercicio">
+                        <h3><span class="bg-gradient-titleejercicio">
+                            CASO 1 - COMPARACIÓN DE POLITICAS DE INVENTARIO
+                        </span></h3>
+                    </div>             
+                </div>
+                <div class="enunciadoEjercicio marginIzqDer">
+                    <h3 class="text-Ayuda">¿Como funciona la aplicación?</h3>
+                    <p>
+                        La aplicacion permite ingresar los siguientes datos:
+                    </p>
+                    <p>
+                        <strong>NÚMERO DE DÍAS</strong> 
+                        <br>
+                        Se ingresa la cantidad de dias que se quiere simular
+                    </p>
+                    <p>
+                        <strong>INVENTARIO INICIAL</strong> 
+                        <br>
+                        Se ingresa la cantidad de inventario con la que desea empezar la simulacion
+                        <br>
+                        <strong>OJO: </strong> No se permite ingresar una cantidad de inventario inicial mayor a 30
+                    </p>
+                    <p>
+                        <strong>COSTO DE MANTENIMIENTO</strong> 
+                        <br>
+                        Se ingresa el costo faltante por unidad, hace referencia a no tener suficientes unidades disponibles para satisfacer la demanda.
+                    </p>
+                    <p>
+                        <strong>COSTO DE ORDENAR</strong> 
+                        <br>
+                        Se  ingresa el costo por realizar una orden de inventario.
+                    </p>
+                </div>
+                
         </div>
         
         </main>
