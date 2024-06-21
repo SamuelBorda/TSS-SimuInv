@@ -40,7 +40,9 @@
                 </div>
             </div>
             <br>
-            <button type="button" class="gradient-button" onclick="startSimulation()">Iniciar</button>
+           <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-gradientIniciar" id="btnIniciar" onclick="startSimulation()">Iniciar</button>
+            </div>
         </div>
 
         <div class="container-fluid py-4 bg-gray-400 text-white">
@@ -62,11 +64,22 @@
             transition: background 0.3s ease, color 0.3s ease;
             margin-right: 25px;
         }
+        
         .col-md-4{
             color:white;
         }
         .form-control{
             border: 1px solid white;
+            background-color: white; 
+        }
+        .form-control-lg {
+            font-size: 1.25rem;
+            padding: .5rem 1rem;
+            border-radius: .3rem;
+        }
+        
+        .text-white {
+            color: #fff;
         }
         .gradient-button:hover {
             background: linear-gradient(to right, #FF4500, #FFD700);
@@ -84,6 +97,13 @@
                 padding: 8px 16px;
             }
         }
+        .btn-gradientIniciar {
+             padding: 7px 60px;
+             cursor: pointer;
+            font-size: 17px;
+             
+        }
+        
     </style>
     @endpush
 
