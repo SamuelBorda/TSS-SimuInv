@@ -17,7 +17,7 @@
             </div>
 
             <div>
-                <h4 class="tituloazul">¿COMO FUNCIONA LA APLICACION?</h4>
+                <h4 class="tituloazul">¿Como funciona la aplicación?</h4>
             </div>
 
             <div class="marginIzqDer">
