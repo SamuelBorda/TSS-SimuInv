@@ -130,6 +130,13 @@ font-size: 1.3rem; /* 36px en rem */
 .formularioEjercicio1 .form-label {
     color: white; /* Color de los labels en blanco */
 }
+.formularioEjercicio1 label {
+    color: white; /* Color de texto blanco */
+}
+.text-Ayuda {
+    color: #2298CA !important;
+    font-size: 1.3rem;
+}
 @media (max-width:700px){
 
     .panelTitulo {
@@ -161,9 +168,12 @@ font-size: 1.3rem; /* 36px en rem */
         width: 100%; /* Asegura que los enlaces ocupen todo el ancho del contenedor padre */
         text-align: center; /* Centra el texto dentro del botón */
     }
-    .botonIniciar a{
-        width: 100%; /* Asegura que los enlaces ocupen todo el ancho del contenedor padre */
-        text-align: center; /* Centra el texto dentro del botón */
+    .botonIniciar {
+        text-align: center; /* Centrar el contenido del contenedor */
+    }
+    
+    .btn {
+        width: 100%; /* Botón ocupa todo el ancho del contenedor */
     }
 }
 
@@ -176,13 +186,5 @@ font-size: 1.3rem; /* 36px en rem */
     color: #2298CA;
     padding-left: 75px;
     padding-top: 40px;
-}
-
-.formlabelblanco{
-    color: white;
-}
-
-.formAjustado{
-    padding-left: 75px;
-    padding-top: 40px;
+    font-size: 1.3rem;
 }
