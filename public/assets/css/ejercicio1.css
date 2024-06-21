@@ -1,5 +1,4 @@
 /* Importar Bootstrap */
-@import url('bootstrap.min.css');
 .panelTitulo {
     background-color:#212121;
     padding: 1rem;
@@ -137,6 +136,42 @@ font-size: 1.3rem; /* 36px en rem */
     color: #2298CA !important;
     font-size: 1.3rem;
 }
+/*ESTILOS PARA LA TABLA RESPONSIVA*/
+.tablaHistorialEjercicio1{
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+	
+	table.tablaresponsiva,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablaresponsiva th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablaresponsiva td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablaresponsiva tr:last-child td, .rwd_auto tr:last-child td{border:0}
+			
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)  
+{
+	
+	table.tablaresponsiva, .tablaresponsiva thead, .tablaresponsiva tbody, .tablaresponsiva th, .tablaresponsiva td, .tablaresponsiva tr { display: block; }
+		
+	.tablaresponsiva thead tr { position: absolute;top: -9999px;left: -9999px; }
+		
+	.tablaresponsiva tr { border: 1px solid #ccc; }
+		
+	.tablaresponsiva td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+		
+	.tablaresponsiva td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+		
+	.tablaresponsiva td:nth-of-type(1):before { content: "Número días"; }
+	.tablaresponsiva td:nth-of-type(2):before { content: "Inventario"; }
+	.tablaresponsiva td:nth-of-type(3):before { content: "Costo mantenimiento"; }
+	.tablaresponsiva td:nth-of-type(4):before { content: "Costo ordenar"; }
+	.tablaresponsiva td:nth-of-type(5):before { content: "Costo faltante"; }
+    .tablaresponsiva td:nth-of-type(6):before { content: "Costo politica 1"; }
+    .tablaresponsiva td:nth-of-type(7):before { content: "Costo politica 2"; }
+    .tablaresponsiva td:nth-of-type(8):before { content: "Mejor opción"; }
+		
+	.descarto {display:none;}
+	.fontsize {font-size:10px}
+}
 @media (max-width:700px){
 
     .panelTitulo {
@@ -175,7 +210,12 @@ font-size: 1.3rem; /* 36px en rem */
     .btn {
         width: 100%; /* Botón ocupa todo el ancho del contenedor */
     }
+    .tablaHistorialEjercicio1{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
+
 
 /*ESTILOS DEL ARNOLD*/
 .centrado{
