@@ -21,7 +21,6 @@
                         <i class="fas fa-question-circle"></i>
                     </span>
                 </button>
-
             </h3>
         </div>  
 
@@ -52,7 +51,7 @@
                     <div class="button-group">
                     <button type="button" class="gradient-button3" onclick="window.location.href='{{ route('ejercicio2.historial') }}'">Ver historial</button>
                     <button type="button" class="gradient-button2" onclick="window.location.href='{{ route('ejercicio2.simular') }}'">Simular</button>
-                     
+        
                     </div>
             </div>
             
