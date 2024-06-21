@@ -15,13 +15,6 @@
                 <span class="bg-gradient-simu px-4 py-2">
                     CASO 2 - MANTENIMIENTO DE EQUIPOS
                 </span>
-                <button type="button" class="gradient-button ms-10" onclick="window.location.href='{{ route('ejercicio2.ayuda') }}'">
-                    <span class="d-none d-md-inline">¿Necesitas ayuda?</span>
-                    <span class="d-inline d-md-none">
-                        <i class="fas fa-question-circle"></i>
-                    </span>
-                </button>
-
             </h3>
         </div> 
         <div class="container-fluid py-4 bg-gray-400 "> 
