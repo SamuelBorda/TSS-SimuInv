@@ -53,6 +53,94 @@
                     </div>               
                 </form>
             </div>
+            <div class="marginIzqDer resolucionEjercicio1 text-white">
+                <p>
+                    <strong>Politica 1: </strong> Ordenar cada 8 dias hasta tener 30 articulos en inventario 
+                </p>
+                <div class="tablaPolitica1" style="width:100%; overflow:auto;">
+                    <table class="table table-bordered text-white">
+                        <thead>
+                            <tr>
+                                <th>Demanda</th>
+                                <th>Vendido</th>
+                                <th>Inventario</th>
+                                <th>Pedido</th>
+                                <th>Cantidad pedido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>10</td>
+                                <td>105</td>
+                                <td>SI</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>10</td>
+                                <td>105</td>
+                                <td>NO</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>10</td>
+                                <td>105</td>
+                                <td>SI</td>
+                                <td>15</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>
+                    <strong>Politica 2: </strong> Ordenar hasta tener 30 articulos cuando el nivel de inventario sea menor o igual a 10
+                </p>
+                <div class="tablaPolitica2" style="width:100%; overflow:auto;">
+                    <table class="table table-bordered text-white">
+                        <thead>
+                            <tr>
+                                <th>Demanda</th>
+                                <th>Vendido</th>
+                                <th>Inventario</th>
+                                <th>Pedido</th>
+                                <th>Cantidad pedido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="grafico" style="margin-top:20px;">
+                    <h3 class="text-Ayuda">GRAFICO DE RESULTADOS</h3>
+                </div>
+                <div class="resultados">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="text-Ayuda">COSTOS POLITICA 1</h3>
+                            <p>Costo total de mantenimiento : $</p>
+                            <p>Costo total de ordenar: $</p>
+                            <p>Costo total de faltante: $</p>
+                            <p>COSTO TOTAL: $</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="text-Ayuda">COSTOS POLITICA 2</h3>
+                            <p>Costo total de mantenimiento : $</p>
+                            <p>Costo total de ordenar: $</p>
+                            <p>Costo total de faltante: $</p>
+                            <p>COSTO TOTAL: $</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h3 class="text-Ayuda">CONCLUSIÓN</h3>
+                        <p>
+                            La Politica 2 es mas económica y eficiente debido a su capacidad para reducir costos de mantenimiento, 
+                            faltantes y mejorar la flexibilidad en la gestión del inventario. 
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
         
         </main>
