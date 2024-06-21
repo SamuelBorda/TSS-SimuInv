@@ -11,34 +11,31 @@
             <div class="panelTitulo">
                 <div class="tituloEjercicio">
                     <h3><span class="bg-gradient-titleejercicio">
-                        CASO 5 - OPTIMIZACIÓN DE INVENTARIO Y REORDEN
+                        CASO 4 - EVALUACION DE UN PROYECTO DE INVERSION
                     </span></h3>
                 </div>
                 <div class="botonayuda">
-                    <a href="#" class="btn btn-gradient-outline">¿Necesitas ayuda?</a>
-                </div>             
+                    <a href="{{ route('ejercicio4.ayuda') }}" class="btn btn-gradient-outline">¿Necesitas ayuda?</a>
+                </div>    
             </div>
-            <div class="enunciadoEjercicio marginIzqDer">
-                <!-- AQUI SE PONE EL CONTENIDO -->
+            <div>
+                <p>SIMULAR 4</p>
             </div>
         </div>
-
+        
     </main>
 
-
-
-
-    @push('js')
-
-
-
-
-     <!-- Initialize Flatpickr -->
-     <script type="module">
+@push('js')
 
 
 
 
-        </script>
-    @endpush
+ <!-- Initialize Flatpickr -->
+ <script type="module">
+
+
+
+
+    </script>
+@endpush
 </x-layout>

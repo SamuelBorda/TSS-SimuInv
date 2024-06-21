@@ -1,4 +1,4 @@
-<x-layout bodyClass="g-sidenav-show  bg-gray-400">
+<x-layout bodyClass="g-sidenav-show bg-gray-400">
     <x-navbars.sidebar activePage='dashboard'></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100   bg-gray-450"  style="margin-left: 15.625rem;">
         <!-- Navbar -->
@@ -7,21 +7,21 @@
         <br>
         <br>
         <br>
-        <div class="py-4  bg-gray-400 text-white">
+        <div class="py-4 bg-gray-400 text-white">
             <div class="panelTitulo">
                 <div class="tituloEjercicio">
                     <h3><span class="bg-gradient-titleejercicio">
-                        CASO 5 - OPTIMIZACIÓN DE INVENTARIO Y REORDEN
+                        CASO 4 - EVALUACION DE UN PROYECTO DE INVERSION
                     </span></h3>
-                </div>
-                <div class="botonayuda">
-                    <a href="#" class="btn btn-gradient-outline">¿Necesitas ayuda?</a>
-                </div>             
+                </div>       
             </div>
-            <div class="enunciadoEjercicio marginIzqDer">
-                <!-- AQUI SE PONE EL CONTENIDO -->
+            <div>
+                <p>HISTORIAL 4</p>
             </div>
         </div>
+
+
+
 
     </main>
 

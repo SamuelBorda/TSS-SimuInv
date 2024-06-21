@@ -1,0 +1,190 @@
+/* Importar Bootstrap */
+@import url('bootstrap.min.css');
+.panelTitulo {
+    background-color:#212121;
+    padding: 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.enunciadoEjercicio{
+    padding: 3rem;
+    
+}
+.marginIzqDer{
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+.botonesEjercicio1{
+    display: flex;
+    justify-content: flex-end;
+}
+.botonverhistorial, .botonSimular{
+    margin-right: 1.5rem; /* Espacio entre los botones */
+}
+
+.botonSimular {
+    margin-right: 0; /* Elimina el margen derecho del último botón */
+}
+.bg-gradient-titleejercicio{
+    background: linear-gradient(45deg,
+    #FFC700 12%,   /* Color en 12% */
+    #FF983B 35%,   /* Color en 35% */
+    #FF726B 57%,   /* Color en 57% */
+    #FF4B9A 64%,   /* Color en 64% */
+    #FF29C5 73%,   /* Color en 73% */
+    #FF79D1 79%,   /* Color en 79% */
+    #C100E7 100%   /* Color en 100% */
+);
+font-size: 1.3rem; /* 36px en rem */
+      font-weight: bold;
+    background-clip: text;
+    color: transparent;
+
+}
+.btn-gradient-outline {
+    border: none;
+    border-radius: 28px;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(96deg, #f6ca45, #ee7983);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: none; /* Asegúrate de que no se transforme el texto */
+}
+.btn-gradient-outline:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 1.8px;
+    border-radius: 27px;
+    background: linear-gradient(96deg, #f6ca45, #ee7983);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.btn-gradientsimular{
+    border: none;
+    position: relative;
+    z-index: 1;
+    background:#212121;
+}
+.btn-gradientsimular:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 1.8px;
+    border-radius: 28px;
+    background: linear-gradient(96deg, #f6ca45, #ee7983);
+}
+.btn-gradienthistorial{
+    border: none;
+    border-radius: 28px;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(96deg, #ffffff, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: none; /* Asegúrate de que no se transforme el texto */
+}
+.btn-gradienthistorial:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 1.8px;
+    border-radius: 27px;
+    background: linear-gradient(96deg, #ffffff, #ffffff);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+.botonIniciar{
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-gradientIniciar{
+    border: none;
+    position: relative;
+    z-index: 1;
+    background:#212121;
+}
+.btn-gradientIniciar:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 1.8px;
+    border-radius: 28px;
+    background: linear-gradient(96deg, #B222CA, #CD76DB, #6EBADB);
+}
+.formularioEjercicio1 .form-label {
+    color: white; /* Color de los labels en blanco */
+}
+.formularioEjercicio1 label {
+    color: white; /* Color de texto blanco */
+}
+.text-Ayuda {
+    color: #2298CA !important;
+    font-size: 1.3rem;
+}
+@media (max-width:700px){
+
+    .panelTitulo {
+        padding: 1rem;
+    }
+    .enunciadoEjercicio{
+        padding: 1rem;
+        padding-top: 3rem;
+    }
+    .marginIzqDer{
+        padding: 1rem;
+    }
+}
+@media (max-width:500px){
+    .botonesEjercicio1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .botonverhistorial, .botonSimular {
+        margin: 0;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    .botonSimular {
+        margin-bottom: 0;
+    }
+    .botonverhistorial a, .botonSimular a {
+        width: 100%; /* Asegura que los enlaces ocupen todo el ancho del contenedor padre */
+        text-align: center; /* Centra el texto dentro del botón */
+    }
+    .botonIniciar {
+        text-align: center; /* Centrar el contenido del contenedor */
+    }
+    
+    .btn {
+        width: 100%; /* Botón ocupa todo el ancho del contenedor */
+    }
+}
+
+/*ESTILOS DEL ARNOLD*/
+.centrado{
+    text-align: center;
+}
+
+.tituloazul {
+    color: #2298CA;
+    padding-left: 75px;
+    padding-top: 40px;
+    font-size: 1.3rem;
+}

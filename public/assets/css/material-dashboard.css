@@ -556,6 +556,7 @@ progress {
   padding-right: var(--bs-gutter-x, 1.5rem);
   padding-left: var(--bs-gutter-x, 1.5rem);
   margin-right: auto;
+  padding: 0 15px;
   margin-left: auto; }
 
 @media (min-width: 576px) {
@@ -4760,6 +4761,10 @@ textarea.form-control-lg {
       border-radius: 0; }
     .modal-fullscreen-md-down .modal-body {
       overflow-y: auto; }
+      .gradient-button {
+        font-size: 14px; /* Smaller font size for smaller screens */
+        padding: 8px 16px; /* Adjust padding for smaller screens */
+    }
     .modal-fullscreen-md-down .modal-footer {
       border-radius: 0; } }
 
