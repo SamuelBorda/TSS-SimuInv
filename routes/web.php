@@ -53,9 +53,9 @@ Route::get('/ejercicio4/simular', [Ejercicio4Controller::class, 'simular'])->nam
 Route::get('/ejercicio4/ayuda', [Ejercicio4Controller::class, 'ayuda'])->name('ejercicio4.ayuda');
 
 //RUTA PARA LAS VISTAS DE ACCIONES EJERCICIO2
-Route::get('/ejercicio2/historial', [Ejercicio1Controller::class, 'historial'])->name('ejercicio2.historial');
-Route::get('/ejercicio2/simular', [Ejercicio1Controller::class, 'simular'])->name('ejercicio2.simular');
-Route::get('/ejercicio2/ayuda', [Ejercicio1Controller::class, 'ayuda'])->name('ejercicio2.ayuda');
+Route::get('/ejercicio2/historial', [Ejercicio2Controller::class, 'historial'])->name('ejercicio2.historial');
+Route::get('/ejercicio2/simular', [Ejercicio2Controller::class, 'simular'])->name('ejercicio2.simular');
+Route::get('/ejercicio2/ayuda', [Ejercicio2Controller::class, 'ayuda'])->name('ejercicio2.ayuda');
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
