@@ -21,7 +21,6 @@
                         <i class="fas fa-question-circle"></i>
                     </span>
                 </button>
-
             </h3>
         </div>
 
