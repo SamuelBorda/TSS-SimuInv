@@ -2486,7 +2486,6 @@ textarea.form-control-lg {
   display: inline-block;
   font-weight: 700;
   line-height: 1.667;
-  color: #7b809a;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -12607,7 +12606,7 @@ textarea.form-control-lg {
 .btn {
   margin-bottom: 1rem;
   letter-spacing: 0;
-
+ /* text-transform: uppercase;**/
   background-size: 150%;
   background-position-x: 25%;
   position: relative;
