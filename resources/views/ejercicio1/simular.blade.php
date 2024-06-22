@@ -195,6 +195,21 @@
         }
         // Construir la tabla HTML con los resultados
         construirTabla(resultados);
+
+        // Calculamos los costos totales
+        let costoTotalMantenimiento = resultados.reduce((total, resultado) => total + (resultado.inventario || 0), 0) + resultados[0].ventas * costoMantenimiento;
+        let costoTotalOrdenar =  resultados.reduce((total, resultado) => resultado.pedido === "SI" ? total + costoOrdenar : total, 0);
+        let totalVendido = resultados.reduce((total, resultado) => total + resultado.ventas, 0);
+        let totalInventario = resultados.reduce((total, resultado) => total + resultado.inventario, 0) + resultados[0].ventas;
+        let totalFaltante = totalVendido > totalInventario ? totalVendido - totalInventario: 0;
+        let costoTotalFaltante = totalFaltante * costoFaltante;
+        let costoTotal = costoTotalMantenimiento + costoTotalOrdenar + costoTotalFaltante;
+
+        // Asignamos los valores a los elementos en el HTML
+        document.getElementById('costoMantenimiento1').textContent = `$${costoTotalMantenimiento.toFixed(2)}`;
+        document.getElementById('costoOrdenar1').textContent = `$${costoTotalOrdenar.toFixed(2)}`;
+        document.getElementById('costoFaltante1').textContent = `$${costoTotalFaltante.toFixed(2)}`;
+        document.getElementById('costoTotal1').textContent = `$${costoTotal.toFixed(2)}`;
     }
 
     function calcularTiempoEntrega() {
@@ -318,7 +333,26 @@
             `;
             cuerpoTabla.appendChild(fila);
         });
+        //cuenta cuantos pedidos hay
+        let totalPedido = resultados.reduce((total, resultado) => {
+            if (resultado.pedido === "SI") {
+                return total + 1;
+            } else {
+                return total;
+            }
+        }, 0);
+
+        // Agregar fila de totales
+        let filaTotales = document.createElement('tr');
+        filaTotales.innerHTML = `
+            <td colspan="4"><strong>Total pedidos</strong></td>
+            <td><strong>${totalPedido}</strong></td>
+            <td><strong></strong></td>
+            <td><strong></strong></td>
+        `;
+        cuerpoTabla.appendChild(filaTotales);
     }
+
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar1').addEventListener('click', function() {
         const numeroDias = parseFloat(document.getElementById('numdias').value);
@@ -326,7 +360,7 @@
         const costoMantenimiento = parseFloat(document.getElementById('costoMantenimiento').value);
         const costoFaltante = parseFloat(document.getElementById('costoFaltante').value);
         const costoOrdenar = parseFloat(document.getElementById('costoOdernar').value);
-        // Llamar a la función para simular y construir las tablas
+        // Llamar a la función para simular y construir las tablas para la POLITICA 1
         simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
     });
 </script>
