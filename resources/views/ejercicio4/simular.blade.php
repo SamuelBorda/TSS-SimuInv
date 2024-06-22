@@ -75,13 +75,12 @@
                 <div class="resultadosejercicio4">
                     <h4 class="text-Ayuda">RESULTADOS:</h4>
                     <p id="promedioTIR">Promedio TIR:</p>
-                    <p>El proyecto es:</p>
-                    <div id="conclusionAceptada4">
+                    <div id="conclusionAceptada4" style="display: none;">
                         <h4 class="text-Ayuda">CONCLUSION:</h4>
                         <p>El proyecto es ACEPTADO por que cumple con las espectativas deseadas por la empresa ya que 
                             supera la probabilidad de aceptacion establecida del (90%)</p>
                     </div>
-                    <div id="conclusionRechazada4">
+                    <div id="conclusionRechazada4" style="display: none;">
                         <h4 class="text-Ayuda">CONCLUSION:</h4>
                         <p>El proyecto es RECHAZADO por que no cumple con las espectativas deseadas por la empresa ya que
                             no supera la probabilidad de aceptacion establecida del (90%)</p>
@@ -135,6 +134,8 @@
         let promedioTIR = calcularPromedioTIR(resultados);
         //MOSTRAR PROMEDIO TIR
         mostrarPromedioTIR(promedioTIR);
+        // Determinar si el proyecto es ACEPTADO o RECHAZADO
+        determinarAceptacion(promedioTIR, trema);
         // Construir la tabla HTML con los resultados
         construirTabla(resultados);
     }
@@ -153,12 +154,12 @@
 
     //MOSTRAR PROMEDIO TIR
     function mostrarPromedioTIR(promedioTIR) {
-    let divPromedioTIR = document.getElementById('promedioTIR');
-    if (divPromedioTIR) {
+        let divPromedioTIR = document.getElementById('promedioTIR');
+        if (divPromedioTIR) {
         let promedioTIRRedondeado = promedioTIR.toFixed(2);
         divPromedioTIR.textContent = `Promedio TIR: ${promedioTIRRedondeado}%`;
+        }
     }
-}
 
     //CALCULO DE LA TIR PARA LA TABLA DE RESULTADOS
     function calcularTIR(flujos) {
@@ -296,6 +297,19 @@
         let promedioTIR = sumaTIR / resultados.length;
         return promedioTIR;
     }
+
+    function determinarAceptacion(promedioTIR, trema) {
+        let conclusionAceptada = document.getElementById('conclusionAceptada4');
+        let conclusionRechazada = document.getElementById('conclusionRechazada4');
+
+        if (promedioTIR > trema) {
+        conclusionAceptada.style.display = 'block'; // Mostrar div de ACEPTADO
+        conclusionRechazada.style.display = 'none'; // Ocultar div de RECHAZADO
+        } else {
+        conclusionAceptada.style.display = 'none'; // Ocultar div de ACEPTADO
+        conclusionRechazada.style.display = 'block'; // Mostrar div de RECHAZADO
+    }
+    }   
 
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar4').addEventListener('click', function() {
