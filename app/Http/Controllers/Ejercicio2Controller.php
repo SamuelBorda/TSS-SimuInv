@@ -18,7 +18,9 @@ class Ejercicio2Controller extends Controller
         $filePath = storage_path('app/public/simulacion-historial.json');
 
         //Verificar si el archivo existe
-        if (File::exists($filePath)) {
+        if (!File::exists($filePath)) {
+            File::put($filePath, json_encode([]));
+        }
             //Leer el contenido del archivo JSON
             $content = File::get($filePath);
 
@@ -27,10 +29,6 @@ class Ejercicio2Controller extends Controller
 
             //Retornar la vista 'historial' con los datos de simulaciones
             return view('ejercicio2.historial', ['simulations' => $simulations]);
-        } else {
-            //Si el archivo no existe retornar una vista 'historial' con datos vacíos
-            return view('ejercicio2.historial', ['simulations' => []]);
-        }
     }
     public function simular(){
 
