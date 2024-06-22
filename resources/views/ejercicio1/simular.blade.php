@@ -71,6 +71,7 @@
                                 <th>Vendido</th>
                                 <th>Inventario</th>
                                 <th>Pedido</th>
+                                <th>Tiempo entrega</th>
                                 <th>Cantidad pedido</th>
                             </tr>
                         </thead>
@@ -92,6 +93,7 @@
                                 <th>Vendido</th>
                                 <th>Inventario</th>
                                 <th>Pedido</th>
+                                <th>Tiempo entrega</th>
                                 <th>Cantidad pedido</th>
                             </tr>
                         </thead>
@@ -144,10 +146,12 @@
         const lambda = 3;
         let distribucionBin = []; // Aquí se almacenarán los valores de la distribución de probabilidad binomial
         let distribucionAcumBin = []; // Aquí se almacenarán los valores acumulados de la distribución binomial
+        let distribucionPoisson = [];
     // Función simular con los parámetros correctos y llenado de resultados
     function simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar) {
         let resultados = [];
         calcularDistribucionBinomial();
+        poissonAcumulado();
 
         // Generar resultados para cada día
         for (let dia = 1; dia <= numeroDias; dia++) {
@@ -156,7 +160,8 @@
             let demanda = calcularDemanda();
             let ventas = calcularVentas(demanda);
             let inventario = inventarioInicial - ventas;
-            let pedido = Math.max(0, 30 - inventario); // Ejemplo de compra adicional para mantener 30 artículos
+            let pedido = sePide(dia);
+            let tiempoEntrega = calcularTiempoEntrega(pedido);
             let cantidadPedido = Math.max(0, 10 - inventario); // Ejemplo de compra adicional para mantener 30 artículos
 
             resultados.push({
@@ -165,6 +170,7 @@
                 ventas: ventas,
                 inventario: inventario,
                 pedido: pedido,
+                tiempoEntrega: tiempoEntrega,
                 cantidadPedido: cantidadPedido
             });
         }
@@ -188,13 +194,69 @@
             }
         }
     }
+    function calcularTiempoEntrega(pedido){
+        let entrega = 0;
+        if(pedido === "SI"){
+            let esMenor = true;
+            let cont = 0;
+            let randomValue = Math.random();
+            while(esMenor){
+                if(randomValue < distribucionPoisson[cont]){
+                    entrega= cont;
+                    esMenor = false;
+                }else{
+                    cont++;
+                }
+            }
+        }else{
+            entrega = " ";
+        }
+        return entrega;
+    }
+    
+    function poissonAcumulado(){
+        let k = 11;
+        for (let i = 0; i <= k; i++) {
+            distribucionPoisson.push(poissonProbabiliadAcumulada(lambda, i));
+        }   
+    }
+
+    // Función para calcular el factorial de un número
+    function factorial(n) {
+        if (n === 0 || n === 1) {
+            return 1;
+        }
+        let result = 1;
+        for (let i = n; i > 1; i--) {
+            result *= i;
+        }
+        return result;
+    }
+
+    // Función para calcular la probabilidad de Poisson
+    function poissonProbabilidad(lambda, k) {
+        return Math.pow(lambda, k) * Math.exp(-lambda) / factorial(k);
+    }
+
+    // Función para calcular la probabilidad acumulada de Poisson
+    function poissonProbabiliadAcumulada(lambda, k) {
+        let probabilidadAcumulada = 0;
+        for (let i = 0; i <= k; i++) {
+            probabilidadAcumulada += poissonProbabilidad(lambda, i);
+        }
+        return probabilidadAcumulada;
+    }
+
+    function sePide(dia) {
+        return dia % 8 === 0 ? "SI" : "NO";
+    }
 
     function calcularVentas(demanda){
         let ventas = 0;
         let esMenor = true;
         let cont = 0;
         while(esMenor){
-            if(demanda <= distribucionAcumBin[cont]){
+            if(demanda < distribucionAcumBin[cont]){
                 ventas = cont;
                 esMenor = false;
             }else{
@@ -245,6 +307,7 @@
                 <td>${resultado.ventas}</td>
                 <td>${resultado.inventario}</td>
                 <td>${resultado.pedido}</td>
+                <td>${resultado.tiempoEntrega}</td>
                 <td>${resultado.cantidadPedido}</td>
             `;
             cuerpoTabla.appendChild(fila);
