@@ -72,6 +72,11 @@
                 <div class="grafico4" style="margin-top:20px;">
                     <h4 class="text-Ayuda">GRAFICO DE RESULTADOS</h4>
                 </div>
+                <div class="grafica col-md-6 mx-auto" id="graficaContainer">
+                    <div id="graficoTIR" style="width:100%;height:400px;"></div> <!-- Contenedor para el gráfico de TIR -->
+                </div>  
+                
+
                 <div class="resultadosejercicio4">
                     <h4 class="text-Ayuda">RESULTADOS:</h4>
                     <p id="promedioTIR">Promedio TIR:</p>
@@ -85,6 +90,7 @@
                         <p>El proyecto es RECHAZADO por que no cumple con las espectativas deseadas por la empresa ya que
                             no supera la probabilidad de aceptacion establecida del % establecido</p>
                     </div>
+                   
                 </div>
             </div> 
         </div>
@@ -102,11 +108,13 @@
     //DISTRIBUCION FLUJO DEL PERIODO
     const mediaFlujoPeriodo = 30000;
     const desvFlujoPeriodo = 3000;
+    //almacena valires de TIR
+    let tirValores = [];
 
     // Función para simular con los parámetros correctos y llenado de resultados
     function simular(numeroSimulaciones,trema,aceptacionProyecto) {
         let resultados = [];
-
+        tirValores = []; // Reiniciar los valores de TIR para cada simulación
         // Generar resultados para cada simulacion
         for (let simulacion= 1; simulacion <= numeroSimulaciones; simulacion++) {
             
@@ -132,6 +140,7 @@
                 tir: tir
             });
             //arregloInventarioIni.push(inversionInicial);
+            tirValores.push(tir); // Almacenar el valor de TIR
         }
         //CALCULAR PROMEDIO TIR
         let promedioTIR = calcularPromedioTIR(resultados);
@@ -141,6 +150,30 @@
         determinarAceptacion(promedioTIR, trema);
         // Construir la tabla HTML con los resultados
         construirTabla(resultados);
+        graficarTIR(tirValores); // Llamar a la función para graficar los valores de TIR
+    }
+
+    //CALCULO DE GRAFICOOO---------------------------------------------------------------------------------------------------------
+    function graficarTIR(tirValores) {
+        let data = [{
+        x: Array.from({length: tirValores.length}, (_, i) => i + 1),
+        y: tirValores,
+        type: 'scatter',
+        mode: 'lines+markers',
+        name: 'TIR'
+        }];
+
+        let layout = {
+        title: 'Gráfico de TIR por Simulación',
+        xaxis: {
+            title: 'Simulación'
+        },
+        yaxis: {
+            title: 'TIR (%)'
+        }
+        };
+
+        Plotly.newPlot('graficoTIR', data, layout);
     }
     //CALCULOS DE TABLAA---------------------------------------------------------------------------------------------------
     function calcularInvIni() {
@@ -312,7 +345,7 @@
         conclusionAceptada.style.display = 'none'; // Ocultar div de ACEPTADO
         conclusionRechazada.style.display = 'block'; // Mostrar div de RECHAZADO
     }
-    }   
+    }  
 
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar4').addEventListener('click', function() {
