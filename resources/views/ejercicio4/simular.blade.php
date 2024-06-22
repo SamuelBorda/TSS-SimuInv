@@ -74,7 +74,7 @@
                 </div>
                 <div class="resultadosejercicio4">
                     <h4 class="text-Ayuda">RESULTADOS:</h4>
-                    <p>Promedio TIR:</p>
+                    <p id="promedioTIR">Promedio TIR:</p>
                     <p>El proyecto es:</p>
                     <div id="conclusionAceptada4">
                         <h4 class="text-Ayuda">CONCLUSION:</h4>
@@ -129,11 +129,12 @@
                 fnanio5:fnanio5,
                 tir: tir
             });
-            //CALCULAR PROMEDIO TIR
-            let promedioTIR = calcularPromedioTIR(resultados);
             //arregloInventarioIni.push(inversionInicial);
         }
-
+        //CALCULAR PROMEDIO TIR
+        let promedioTIR = calcularPromedioTIR(resultados);
+        //MOSTRAR PROMEDIO TIR
+        mostrarPromedioTIR(promedioTIR);
         // Construir la tabla HTML con los resultados
         construirTabla(resultados);
     }
@@ -149,6 +150,15 @@
         let res = mediaFlujoPeriodo + (desvFlujoPeriodo * normInv(aleatorio, 0, 1));
         return res;
     }
+
+    //MOSTRAR PROMEDIO TIR
+    function mostrarPromedioTIR(promedioTIR) {
+    let divPromedioTIR = document.getElementById('promedioTIR');
+    if (divPromedioTIR) {
+        let promedioTIRRedondeado = promedioTIR.toFixed(2);
+        divPromedioTIR.textContent = `Promedio TIR: ${promedioTIRRedondeado}%`;
+    }
+}
 
     //CALCULO DE LA TIR PARA LA TABLA DE RESULTADOS
     function calcularTIR(flujos) {
@@ -273,6 +283,19 @@
             return mean + std * retVal;
         }
         //HASTA AQUI CALCULOS DE TABLA ----------------------------------------------------------------------------------------
+
+    function calcularPromedioTIR(resultados) {
+        if (resultados.length === 0) {
+            return 0;
+        }
+
+        let sumaTIR = resultados.reduce((acumulador, resultado) => {
+            return acumulador + resultado.tir;
+        }, 0);
+
+        let promedioTIR = sumaTIR / resultados.length;
+        return promedioTIR;
+    }
 
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar4').addEventListener('click', function() {
