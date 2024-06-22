@@ -104,12 +104,15 @@
                 </div>
 
                 <!-- CODIGO PARA MOSTRAR EL GRAFICO -->
-                <div class="grafico" style="margin-top:20px;">
+                <div class="tituloGrafica" style="margin-top:20px;">
                     <h3 class="text-Ayuda">GRAFICO DE RESULTADOS</h3>
                 </div>
+                <div class="grafica col-md-4 mx-auto">
+                    <div id="graficoBarras" class="grafico" style="margin-top:20px; margin-bottom: 20px; height: 400px;"></div>
+                </div>   
 
                 <!-- CODIGO PARA MOSTRAR LOS RESULTADOS -->
-                <div class="resultados">
+                <div class="resultados" style="margin-top:2rem;">
                     <div class="row">
                         <div class="col-md-6">
                             <h3 class="text-Ayuda">COSTOS POLÍTICA 1</h3>
@@ -140,6 +143,9 @@
         </main>
 
 @push('js')
+<!-- Initialize Flatpickr -->
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script>
     const n = 6;
     const theta = 0.5;
@@ -479,6 +485,30 @@
             document.getElementById('mejorPolitica').textContent = `${mejor} `;
         }
     }
+
+    // Código JavaScript para mostrar el gráfico de barras
+    function compararYPintarGrafico() {
+            // Datos para el gráfico de barras
+            let datos = {
+                x: ['Política Uno', 'Política Dos'],
+                y: [politicaUno, politicaDos],
+                type: 'bar'
+            };
+            // Configuración del layout del gráfico
+            let layout = {
+                title: 'Comparación de Políticas',
+                xaxis: {
+                    title: 'Políticas'
+                },
+                yaxis: {
+                    title: 'Resultados'
+                },
+                // Ajuste de tamaño del gráfico
+                height: 400 // Altura en píxeles
+            };
+            // Crear el gráfico con Plotly
+            Plotly.newPlot('graficoBarras', [datos], layout);
+    }
     
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar1').addEventListener('click', function() {
@@ -498,6 +528,7 @@
         //SIMULAR POLITICA 2
         simular2(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
         comparar();
+        compararYPintarGrafico();
 
     });
 </script>
