@@ -140,29 +140,48 @@
         </main>
 
 @push('js')
-    <script>
-        const n = 6;
-        const theta = 0.5;
-        const lambda = 3;
-        let distribucionBin = []; // Aquí se almacenarán los valores de la distribución de probabilidad binomial
-        let distribucionAcumBin = []; // Aquí se almacenarán los valores acumulados de la distribución binomial
-        let distribucionPoisson = [];
+<script>
+    const n = 6;
+    const theta = 0.5;
+    const lambda = 3;
+    let distribucionBin = []; // Aquí se almacenarán los valores de la distribución de probabilidad binomial
+    let distribucionAcumBin = []; // Aquí se almacenarán los valores acumulados de la distribución binomial
+    let distribucionPoisson = []; //Aqui se almacenarán los valores del tiempo de entrega con distribucion poisson
+
     // Función simular con los parámetros correctos y llenado de resultados
     function simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar) {
         let resultados = [];
+        let inventario = inventarioInicial;
+        let entregasPendientes = [];
+
         calcularDistribucionBinomial();
         poissonAcumulado();
 
         // Generar resultados para cada día
         for (let dia = 1; dia <= numeroDias; dia++) {
-            
+            // Procesar entregas pendientes
+            entregasPendientes = entregasPendientes.map(entrega => {
+                entrega.diasRestantes--;
+                return entrega;
+            }).filter(entrega => {
+                if (entrega.diasRestantes <= 0) {
+                    inventario += entrega.cantidad;
+                    return false;
+                }
+                return true;
+            });
 
             let demanda = calcularDemanda();
             let ventas = calcularVentas(demanda);
-            let inventario = inventarioInicial - ventas;
+            inventario -= ventas;
+
             let pedido = sePide(dia);
-            let tiempoEntrega = calcularTiempoEntrega(pedido);
-            let cantidadPedido = Math.max(0, 10 - inventario); // Ejemplo de compra adicional para mantener 30 artículos
+            let tiempoEntrega = pedido === "SI" ? calcularTiempoEntrega() : " ";
+            let cantidadPedido = pedido === "SI" ? 30 - inventario : 0;
+
+            if (pedido === "SI") {
+                entregasPendientes.push({cantidad: cantidadPedido, diasRestantes: tiempoEntrega});
+            }
 
             resultados.push({
                 dia: dia,
@@ -174,53 +193,29 @@
                 cantidadPedido: cantidadPedido
             });
         }
-
         // Construir la tabla HTML con los resultados
         construirTabla(resultados);
     }
 
-    function calcularDistribucionBinomial(){
-        // Calcular los valores para k desde 0 hasta n
-        for (let k = 0; k <= n; k++) {
-            const probabilidad = probabilidadBinomial(n, k, theta);
-            distribucionBin.push(probabilidad);
-
-            // Calcular acumulado hasta el valor actual de k
-            if (k === 0) {
-                distribucionAcumBin.push(probabilidad);
+    function calcularTiempoEntrega() {
+        let esMenor = true;
+        let cont = 0;
+        let randomValue = Math.random();
+        while (esMenor) {
+            if (randomValue < distribucionPoisson[cont]) {
+                return cont;
             } else {
-                let acumuladoAnterior = distribucionAcumBin[k - 1];
-                distribucionAcumBin.push(acumuladoAnterior + probabilidad);
+                cont++;
             }
         }
     }
-    function calcularTiempoEntrega(pedido){
-        let entrega = 0;
-        if(pedido === "SI"){
-            let esMenor = true;
-            let cont = 0;
-            let randomValue = Math.random();
-            while(esMenor){
-                if(randomValue < distribucionPoisson[cont]){
-                    entrega= cont;
-                    esMenor = false;
-                }else{
-                    cont++;
-                }
-            }
-        }else{
-            entrega = " ";
-        }
-        return entrega;
-    }
-    
-    function poissonAcumulado(){
+
+    function poissonAcumulado() {
         let k = 11;
         for (let i = 0; i <= k; i++) {
             distribucionPoisson.push(poissonProbabiliadAcumulada(lambda, i));
-        }   
+        }
     }
-
     // Función para calcular el factorial de un número
     function factorial(n) {
         if (n === 0 || n === 1) {
@@ -232,12 +227,10 @@
         }
         return result;
     }
-
     // Función para calcular la probabilidad de Poisson
     function poissonProbabilidad(lambda, k) {
         return Math.pow(lambda, k) * Math.exp(-lambda) / factorial(k);
     }
-
     // Función para calcular la probabilidad acumulada de Poisson
     function poissonProbabiliadAcumulada(lambda, k) {
         let probabilidadAcumulada = 0;
@@ -251,27 +244,41 @@
         return dia % 8 === 0 ? "SI" : "NO";
     }
 
-    function calcularVentas(demanda){
+    function calcularVentas(demanda) {
         let ventas = 0;
         let esMenor = true;
         let cont = 0;
-        while(esMenor){
-            if(demanda < distribucionAcumBin[cont]){
+        while (esMenor) {
+            if (demanda < distribucionAcumBin[cont]) {
                 ventas = cont;
                 esMenor = false;
-            }else{
+            } else {
                 cont++;
             }
         }
         return ventas;
     }
-    function calcularDemanda(){
+
+    function calcularDistribucionBinomial() {
+        // Calcular los valores para k desde 0 hasta n
+        for (let k = 0; k <= n; k++) {
+            const probabilidad = probabilidadBinomial(n, k, theta);
+            distribucionBin.push(probabilidad);
+            // Calcular acumulado hasta el valor actual de k
+            if (k === 0) {
+                distribucionAcumBin.push(probabilidad);
+            } else {
+                let acumuladoAnterior = distribucionAcumBin[k - 1];
+                distribucionAcumBin.push(acumuladoAnterior + probabilidad);
+            }
+        }
+    }
+
+    function calcularDemanda() {
         // Generar un número aleatorio entre 0 y n para representar la cantidad demandada
         let cantidadDemanda = Math.floor(Math.random() * (n + 1));
-    
         // Calcular la probabilidad binomial para este valor de cantidadDemanda
         let probabilidad = probabilidadBinomial(n, cantidadDemanda, theta);
-
         return probabilidad;
     }
     // Función para calcular la probabilidad usando la distribución binomial
@@ -293,7 +300,6 @@
         }
         return numerator / denominator;
     }
-
     // Función para construir la tabla HTML con los resultados de la simulación
     function construirTabla(resultados) {
         let cuerpoTabla = document.getElementById('cuerpoTabla');
@@ -313,20 +319,17 @@
             cuerpoTabla.appendChild(fila);
         });
     }
-
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar1').addEventListener('click', function() {
-        // Capturar los valores del formulario
         const numeroDias = parseFloat(document.getElementById('numdias').value);
         const inventarioInicial = parseFloat(document.getElementById('inventarioIni').value);
         const costoMantenimiento = parseFloat(document.getElementById('costoMantenimiento').value);
         const costoFaltante = parseFloat(document.getElementById('costoFaltante').value);
         const costoOrdenar = parseFloat(document.getElementById('costoOdernar').value);
-
         // Llamar a la función para simular y construir las tablas
         simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
     });
+</script>
 
-    </script>
 @endpush
 </x-layout>
