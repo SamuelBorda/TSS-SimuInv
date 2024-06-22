@@ -58,7 +58,7 @@
                                 <th>Flujo neto <br>año 3</th>
                                 <th>Flujo neto <br>año 4</th>
                                 <th>Flujo neto <br>año 5</th>
-                                <th>TIR</th>
+                                <th>TIR (%)</th>
                             </tr>
                         </thead>
                         <tbody id="cuerpoTabla">
@@ -91,6 +91,9 @@
     </main>
 
 @push('js')
+<!-- Initialize Flatpickr -->
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script>
     //let arregloInventarioIni = [];
     //DISTRIBUCION INVERSION INICIAL
