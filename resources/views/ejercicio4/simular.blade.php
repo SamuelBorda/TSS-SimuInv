@@ -78,12 +78,12 @@
                     <div id="conclusionAceptada4" style="display: none;">
                         <h4 class="text-Ayuda">CONCLUSION:</h4>
                         <p>El proyecto es ACEPTADO por que cumple con las espectativas deseadas por la empresa ya que 
-                            supera la probabilidad de aceptacion establecida del (90%)</p>
+                            supera la probabilidad de aceptacion establecida del % establecido</p>
                     </div>
                     <div id="conclusionRechazada4" style="display: none;">
                         <h4 class="text-Ayuda">CONCLUSION:</h4>
                         <p>El proyecto es RECHAZADO por que no cumple con las espectativas deseadas por la empresa ya que
-                            no supera la probabilidad de aceptacion establecida del (90%)</p>
+                            no supera la probabilidad de aceptacion establecida del % establecido</p>
                     </div>
                 </div>
             </div> 
