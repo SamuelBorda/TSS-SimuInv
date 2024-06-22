@@ -17,27 +17,29 @@
                 </span>
             </h3>
         </div>
-
-        <div class="container-fluid py-4 bg-gray-400 text-white">
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="simulationTime" class="text-white">Tiempo horas de simulación</label>
-                    <input type="text" id="simulationTime" placeholder="Ingrese el tiempo en horas" class="form-control form-control-lg text-black">
+        <form id="simulationForm" method="POST">
+            @csrf
+            <div class="container-fluid py-4 bg-gray-400 text-white">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="simulationTime" class="text-white">Tiempo horas de simulación</label>
+                        <input type="number" id="simulationTime" name="simulationTime" placeholder="Ingrese el tiempo en horas" class="form-control form-control-lg text-black" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="componentCost" class="text-white">Costo por componente</label>
+                        <input type="number" id="componentCost" name="componentCost" placeholder="Ingrese el costo por componente" class="form-control form-control-lg text-black" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="disconnectionCost" class="text-white">Costo por hora desconexión</label>
+                        <input type="number" id="disconnectionCost" name="disconnectionCost" placeholder="Ingrese el costo por hora de desconexión" class="form-control form-control-lg text-black" required>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <label for="componentCost" class="text-white">Costo por componente</label>
-                    <input type="text" id="componentCost" placeholder="Ingrese el costo por componente" class="form-control form-control-lg text-black">
-                </div>
-                <div class="col-md-4">
-                    <label for="disconnectionCost" class="text-white">Costo por hora desconexión</label>
-                    <input type="text" id="disconnectionCost" placeholder="Ingrese el costo por hora de desconexión" class="form-control form-control-lg text-black">
+                <br>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-gradientIniciar" id="btnIniciar">Iniciar</button>
                 </div>
             </div>
-            <br>
-            <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-gradientIniciar" id="btnIniciar">Iniciar</button>
-            </div>
-        </div>
+        </form>
 
         <div class="container-fluid py-4 bg-gray-400 text-white">
             <p><strong>POLÍTICA 1 :</strong> Reemplazar los componentes solamente cuando se descomponen</p>
@@ -149,52 +151,39 @@
             return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
         }
 
-        function simulatePolicy(simulationTime, componentCost, disconnectionCost, policy) {
-            let costoTotal = 0;
-            let numReemplazos = 0;
-            let componentLives = [];
-            let tiempoTotalSimu = 0;
+        function startSimulation() {
+            const simulationTime = parseInt(document.getElementById('simulationTime').value);
+            const componentCost = parseInt(document.getElementById('componentCost').value);
+            const disconnectionCost = parseInt(document.getElementById('disconnectionCost').value);
 
-            if (policy === 1) {
-                for (let i = 0; i < 4; i++) {
-                    componentLives.push(600 + 100 * normalRandom());
-                }
-                while (simulationTime > 0) {
-                    let minLife = Math.min(...componentLives);
-                    if (minLife > simulationTime) {
-                        tiempoTotalSimu += simulationTime;
-                        break;
-                    }
-
-                    simulationTime -= minLife;
-                    tiempoTotalSimu += minLife;
-                    costoTotal += componentCost + disconnectionCost;
-                    numReemplazos++;
-                    let index = componentLives.indexOf(minLife);
-                    componentLives[index] = 600 + 100 * normalRandom();
-                }
-            } else {
-                while (simulationTime > 0) {
-                    let minLife = 600 + 100 * normalRandom();
-                    if (minLife > simulationTime) {
-                        tiempoTotalSimu += simulationTime;
-                        break;
-                    }
-
-                    simulationTime -= minLife;
-                    tiempoTotalSimu += minLife;
-                    costoTotal += 4 * componentCost + 2 * disconnectionCost;
-                    numReemplazos++;
-                }
+            if (isNaN(simulationTime) || isNaN(componentCost) || isNaN(disconnectionCost)) {
+                alert('Por favor, ingrese valores numéricos válidos y mayores que cero.');
+                return;
             }
 
-            return { costoTotal, numReemplazos, tiempoTotalSimu };
+            fetch('{{ route('ejercicio2.guardarSimulacion') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({
+                    simulationTime,
+                    componentCost,
+                    disconnectionCost
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                drawBarChart(data.policy1Data, data.policy2Data);
+                displayResults(data.policy1Data, data.policy2Data);
+            })
+            .catch(error => console.error('Error:', error));
         }
 
         function drawBarChart(policy1Data, policy2Data) {
             const ctx = document.getElementById('cajaGrafico').getContext('2d');
 
-            // Destruir el gráfico anterior si existe
             if (cajaGrafico) {
                 cajaGrafico.destroy();
             }
@@ -222,18 +211,18 @@
                         y: {
                             beginAtZero: true,
                             grid: {
-                                color: '#3A5C6B' // Color de la cuadrícula del eje Y
+                                color: '#3A5C6B' //Color de la cuadrícula del eje Y
                             },
                             ticks: {
-                                color: '#FFFFFF' // Color de los números del eje Y
+                                color: '#FFFFFF' //Color de los números del eje Y
                             }
                         },
                         x: {
                             grid: {
-                                color: '#3A5C6B' // Color de la cuadrícula del eje X
+                                color: '#3A5C6B' //Color de la cuadrícula del eje X
                             },
                             ticks: {
-                                color: '#FFFFFF' // Color de los números del eje X
+                                color: '#FFFFFF' //Color de los números del eje X
                             }
                         }
                     },
@@ -283,33 +272,6 @@
                     ${conclusionMessage}
                 </div>
             `;
-        }
-
-        function startSimulation() {
-            const simulationTime = parseInt(document.getElementById('simulationTime').value);
-            const componentCost = parseInt(document.getElementById('componentCost').value);
-            const disconnectionCost = parseInt(document.getElementById('disconnectionCost').value);
-
-            // Depurar: Valores de entrada
-            console.log(`Tiempo de simulacion: ${simulationTime}`);
-            console.log(`Costo por componente: ${componentCost}`);
-            console.log(`Costo de desconexión: ${disconnectionCost}`);
-
-            // Verificar si las entradas son válidas
-            if (isNaN(simulationTime) || isNaN(componentCost) || isNaN(disconnectionCost)) {
-                alert('Por favor, ingrese valores numéricos válidos.');
-                return;
-            }
-
-            const policy1Data = simulatePolicy(simulationTime, componentCost, disconnectionCost, 1);
-            const policy2Data = simulatePolicy(simulationTime, componentCost, disconnectionCost, 2);
-
-            // Depuración: imprimir resultados de simulación
-            console.log('Datos generados politica 1:', policy1Data);
-            console.log('Datos generados politica 2:', policy2Data);
-
-            drawBarChart(policy1Data, policy2Data);
-            displayResults(policy1Data, policy2Data);
         }
     </script>
     @endpush
