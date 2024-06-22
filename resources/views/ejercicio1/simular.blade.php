@@ -226,7 +226,7 @@
     }
 
     function poissonAcumulado() {
-        let k = 11;
+        let k = 8;
         for (let i = 0; i <= k; i++) {
             distribucionPoisson.push(poissonProbabiliadAcumulada(lambda, i));
         }
@@ -315,7 +315,7 @@
         }
         return numerator / denominator;
     }
-    // Función para construir la tabla HTML con los resultados de la simulación
+    // Función para construir la tabla HTML con los resultados de la simulación POLITICA 1
     function construirTabla(resultados) {
         let cuerpoTabla = document.getElementById('cuerpoTabla');
         cuerpoTabla.innerHTML = '';
@@ -353,6 +353,118 @@
         cuerpoTabla.appendChild(filaTotales);
     }
 
+    // Función para construir la tabla HTML con los resultados de la simulación POLITICA 2
+    function construirTabla2(resultados) {
+        let cuerpoTabla = document.getElementById('cuerpoTabla2');
+        cuerpoTabla.innerHTML = '';
+
+        resultados.forEach(resultado => {
+            let fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>${resultado.dia}</td>
+                <td>${resultado.demanda}</td>
+                <td>${resultado.ventas}</td>
+                <td>${resultado.inventario}</td>
+                <td>${resultado.pedido}</td>
+                <td>${resultado.tiempoEntrega}</td>
+                <td>${resultado.cantidadPedido}</td>
+            `;
+            cuerpoTabla.appendChild(fila);
+        });
+        //cuenta cuantos pedidos hay
+        let totalPedido = resultados.reduce((total, resultado) => {
+            if (resultado.pedido === "SI") {
+                return total + 1;
+            } else {
+                return total;
+            }
+        }, 0);
+
+        // Agregar fila de totales
+        let filaTotales = document.createElement('tr');
+        filaTotales.innerHTML = `
+            <td colspan="4"><strong>Total pedidos</strong></td>
+            <td><strong>${totalPedido}</strong></td>
+            <td><strong></strong></td>
+            <td><strong></strong></td>
+        `;
+        cuerpoTabla.appendChild(filaTotales);
+    }
+
+    function sePide2(inventario, entregasPendientes) {
+        let pide = "NO";
+        if(inventario <= 10 && entregasPendientes.length === 0) {
+            pide = "SI";
+        } else {
+            pide = "NO";
+        }
+        return pide;
+    }
+
+    // FUNCION PARA SIMULAR LOS VALORES DE LA POLITICA 2
+    function simular2(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar) {
+        let resultados = [];
+        let inventario = inventarioInicial;
+        let entregasPendientes = [];
+
+        calcularDistribucionBinomial();
+        poissonAcumulado();
+
+        // Generar resultados para cada día
+        for (let dia = 1; dia <= numeroDias; dia++) {
+            // Procesar entregas pendientes
+            entregasPendientes = entregasPendientes.map(entrega => {
+                entrega.diasRestantes--;
+                return entrega;
+            }).filter(entrega => {
+                if (entrega.diasRestantes <= 0) {
+                    inventario += entrega.cantidad;
+                    return false;
+                }
+                return true;
+            });
+
+            let demanda = calcularDemanda();
+            let ventas = calcularVentas(demanda);
+            inventario -= ventas;
+
+            let pedido = sePide2(inventario, entregasPendientes);
+            let tiempoEntrega = pedido === "SI" ? calcularTiempoEntrega() : " ";
+            let cantidadPedido = pedido === "SI" ? 20 - inventario : 0;
+
+            if (pedido === "SI") {
+                entregasPendientes.push({cantidad: cantidadPedido, diasRestantes: tiempoEntrega});
+            }
+
+            resultados.push({
+                dia: dia,
+                demanda: demanda,
+                ventas: ventas,
+                inventario: inventario,
+                pedido: pedido,
+                tiempoEntrega: tiempoEntrega,
+                cantidadPedido: cantidadPedido
+            });
+        }
+        // Construir la tabla HTML con los resultados
+        construirTabla2(resultados);
+        // Calculamos los costos totales
+        let costoTotalMantenimiento = resultados.reduce((total, resultado) => total + (resultado.inventario || 0), 0) + resultados[0].ventas * costoMantenimiento;
+        let costoTotalOrdenar =  resultados.reduce((total, resultado) => resultado.pedido === "SI" ? total + costoOrdenar : total, 0);
+        let totalVendido = resultados.reduce((total, resultado) => total + resultado.ventas, 0);
+        let totalInventario = resultados.reduce((total, resultado) => total + resultado.inventario, 0) + resultados[0].ventas;
+        let totalFaltante = totalVendido > totalInventario ? totalVendido - totalInventario: 0;
+        let costoTotalFaltante = totalFaltante * costoFaltante;
+        let costoTotal = costoTotalMantenimiento + costoTotalOrdenar + costoTotalFaltante;
+
+        // Asignamos los valores a los elementos en el HTML
+        document.getElementById('costoMantenimiento2').textContent = `$${costoTotalMantenimiento.toFixed(2)}`;
+        document.getElementById('costoOrdenar2').textContent = `$${costoTotalOrdenar.toFixed(2)}`;
+        document.getElementById('costoFaltante2').textContent = `$${costoTotalFaltante.toFixed(2)}`;
+        document.getElementById('costoTotal2').textContent = `$${costoTotal.toFixed(2)}`;
+    }
+
+    
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar1').addEventListener('click', function() {
         const numeroDias = parseFloat(document.getElementById('numdias').value);
@@ -362,6 +474,9 @@
         const costoOrdenar = parseFloat(document.getElementById('costoOdernar').value);
         // Llamar a la función para simular y construir las tablas para la POLITICA 1
         simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
+        //SIMULAR POLITICA 2
+        simular2(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
+
     });
 </script>
 
