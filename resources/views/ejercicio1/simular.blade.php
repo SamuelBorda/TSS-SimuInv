@@ -129,7 +129,7 @@
                     <div class="row">
                         <h3 class="text-Ayuda">CONCLUSIÓN</h3>
                         <p id="conclusion">
-                            La Politica 2 es mas económica y eficiente debido a su capacidad para reducir costos de mantenimiento, 
+                            La Politica <span id="mejorPolitica"></span>es mas económica y eficiente debido a su capacidad para reducir costos de mantenimiento, 
                             faltantes y mejorar la flexibilidad en la gestión del inventario. 
                         </p>
                     </div>
@@ -147,7 +147,8 @@
     let distribucionBin = []; // Aquí se almacenarán los valores de la distribución de probabilidad binomial
     let distribucionAcumBin = []; // Aquí se almacenarán los valores acumulados de la distribución binomial
     let distribucionPoisson = []; //Aqui se almacenarán los valores del tiempo de entrega con distribucion poisson
-
+    let politicaUno = 0;
+    let politicaDos = 0;
     // Función simular con los parámetros correctos y llenado de resultados
     function simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar) {
         let resultados = [];
@@ -204,6 +205,8 @@
         let totalFaltante = totalVendido > totalInventario ? totalVendido - totalInventario: 0;
         let costoTotalFaltante = totalFaltante * costoFaltante;
         let costoTotal = costoTotalMantenimiento + costoTotalOrdenar + costoTotalFaltante;
+
+        politicaUno = costoTotal;
 
         // Asignamos los valores a los elementos en el HTML
         document.getElementById('costoMantenimiento1').textContent = `$${costoTotalMantenimiento.toFixed(2)}`;
@@ -457,6 +460,8 @@
         let costoTotalFaltante = totalFaltante * costoFaltante;
         let costoTotal = costoTotalMantenimiento + costoTotalOrdenar + costoTotalFaltante;
 
+        politicaDos = costoTotal;
+
         // Asignamos los valores a los elementos en el HTML
         document.getElementById('costoMantenimiento2').textContent = `$${costoTotalMantenimiento.toFixed(2)}`;
         document.getElementById('costoOrdenar2').textContent = `$${costoTotalOrdenar.toFixed(2)}`;
@@ -464,6 +469,16 @@
         document.getElementById('costoTotal2').textContent = `$${costoTotal.toFixed(2)}`;
     }
 
+    function comparar(){
+        let mejor = 0;
+        if(politicaUno>politicaDos){
+            mejor = 2;
+            document.getElementById('mejorPolitica').textContent = `${mejor} `;
+        }else{
+            mejor = 1;
+            document.getElementById('mejorPolitica').textContent = `${mejor} `;
+        }
+    }
     
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar1').addEventListener('click', function() {
@@ -476,6 +491,7 @@
         simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
         //SIMULAR POLITICA 2
         simular2(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
+        comparar();
 
     });
 </script>
