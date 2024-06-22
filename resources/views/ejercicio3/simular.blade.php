@@ -23,7 +23,7 @@
                         <span class="small-screen"style="font-size:1rem;">?</span>
                         <span class="large-screen">¿Necesitas ayuda?</span>
                     </a>
-                </div> 
+                </div>
             </div>
             <div class="enunciadoEjercicio marginIzqDer">
                 <div class="formularioEjercicio1">
@@ -63,51 +63,100 @@
                                 placeholder="Ingrese costo de devolucion final">
                         </div>
                     </div>
-                    <div class="botonIniciar">
-                        <button type="button" class="btn btn-gradientIniciar" id="btnIniciar">Iniciar</button>
+                    <div class="row justify-content-end ">
+                    <div class="botonGrafico col-md-6 text-end" style="display:none;">
+                        <button type="button" class="btn  btn-gradientIniciar fw-bold" id="tablasbtn">Mostrar Tablas</button>
                     </div>
+                    <div class="botonIniciar col-md-6 text-end">
+                        <button type="button" class="btn btn-gradientIniciar fw-bold" id="btnIniciar">Iniciar</button>
+                    </div>
+
+
+                    </div>
+
                 </div>
             </div>
-            <div class="tablaSimulacion mt-5">
-                <h2 class="text-white">POLITICA 1</h2>
-                <table class="table table-bordered mt-3  text-white" id="tablaResultados">
-                    <thead>
-                        <tr>
-                            <th>Día</th>
-                            <th>Demanda</th>
-                            <th>Ventas</th>
-                            <th>Inventario</th>
-                            <th>Compra adicional</th>
-                            <th>Ingresos</th>
-                            <th>Devolución</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cuerpoTabla">
-                        <!-- Aquí se generará dinámicamente el contenido de la tabla -->
-                    </tbody>
-                </table>
-            </div>
 
+            <div class="container">
+    <div class="tablaSimulacion mt-5" style="display:none;">
+        <h2 class="text-white text-center">POLITICA 1</h2>
+        <table class="table table-bordered mt-3 text-white mx-auto" id="tablaResultados">
+            <thead>
+                <tr>
+                    <th>Día</th>
+                    <th>Demanda</th>
+                    <th>Ventas</th>
+                    <th>Inventario</th>
+                    <th>Compra adicional</th>
+                    <th>Ingresos</th>
+                    <th>Devolución</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTabla">
+                <!-- Aquí se generará dinámicamente el contenido de la tabla -->
+            </tbody>
+        </table>
+    </div>
 
-            <div class="tablaSimulacion2 mt-5">
-                <h2 class="text-white">POLITICA 2</h2>
-                <table class="table table-bordered mt-3  text-white" id="tablaResultados2">
-                    <thead>
-                        <tr>
-                            <th>Día</th>
-                            <th>Demanda</th>
-                            <th>Ventas</th>
-                            <th>Inventario</th>
-                            <th>Compra adicional</th>
-                            <th>Ingresos</th>
-                            <th>Devolución</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cuerpoTabla2">
-                        <!-- Aquí se generará dinámicamente el contenido de la tabla -->
-                    </tbody>
-                </table>
-            </div>
+    <div class="tablaSimulacion2 mt-5" style="display:none;">
+        <h2 class="text-white text-center">POLITICA 2</h2>
+        <table class="table table-bordered mt-3 text-white mx-auto" id="tablaResultados2">
+            <thead>
+                <tr>
+                    <th>Día</th>
+                    <th>Demanda</th>
+                    <th>Ventas</th>
+                    <th>Inventario</th>
+                    <th>Compra adicional</th>
+                    <th>Ingresos</th>
+                    <th>Devolución</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTabla2">
+                <!-- Aquí se generará dinámicamente el contenido de la tabla -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="graficossimu container py-4 text-white text-center">
+    <h2 class="text-simu2">GRAFICOS RESULTADOS</h2>
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div id="grafico-politica1"></div>
+        </div>
+        <div class="col-md-6 mx-auto">
+            <div id="grafico-politica2"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h2 class="text-simu2">POLÍTICA 1</h2>
+            <p>Costo de compra inicial: <span id="costo-inicial1"></span></p>
+            <p>Costo de compra adicional: <span id="costo-adicional1"></span></p>
+            <p>Costo devolución: <span id="costo-devolucion1"></span></p>
+            <p>Costo total: <span id="costo-total1"></span></p>
+            <p>Ingreso total: <span id="ingreso-total1"></span></p>
+            <p>GANANCIA TOTAL: <span id="ganancia-total1"></span></p>
+        </div>
+        <div class="col-md-6 mx-auto">
+            <h2 class="text-simu2">POLÍTICA 2</h2>
+            <p>Costo de compra inicial: <span id="costo-inicial2"></span></p>
+            <p>Costo de compra adicional: <span id="costo-adicional2"></span></p>
+            <p>Costo devolución: <span id="costo-devolucion2"></span></p>
+            <p>Costo total: <span id="costo-total2"></span></p>
+            <p>Ingreso total: <span id="ingreso-total2"></span></p>
+            <p>GANANCIA TOTAL: <span id="ganancia-total2"></span></p>
+        </div>
+    </div>
+
+    <div>
+        <h2 class="text-simu2"> CONCLUSION: </h2>
+        <p class="conclusion-text"></p>
+    </div>
+</div>
 
         </div>
     </main>
@@ -117,6 +166,8 @@
 
 
  <!-- Initialize Flatpickr -->
+
+ <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
  <script >
   const dem1 = [5, 6, 7, 8, 9, 10, 11];
     const prob1 = [0.05, 0.05, 0.10, 0.15, 0.25, 0.25, 0.15];
@@ -137,9 +188,37 @@ let demandasRestantes = [];
             const costoDevolucionInicial = parseFloat(document.getElementById('costoOrdenarInicial').value);
             const costoDevolucionFinal = parseFloat(document.getElementById('costoOrdenarFinal').value);
 
+            document.querySelector('.botonGrafico').style.display = 'block';
+
+            document.querySelector('.graficossimu').style.display = 'block';
             // Realizar la simulación y construir dinámicamente la tabla
             simularYConstruirTabla(cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal);
+
+
         });
+
+        var tablasestate=0;
+        document.getElementById('tablasbtn').addEventListener('click', function () {
+
+            if(tablasestate==0){
+                document.querySelector('.tablaSimulacion').style.display = 'block';
+                this.textContent = 'Ocultar Tablas';
+
+            document.querySelector('.tablaSimulacion2').style.display = 'block';
+                    tablasestate=1;
+
+            }else{
+                document.querySelector('.tablaSimulacion').style.display = 'none';
+                this.textContent = 'Mostrar Tablas';
+
+            document.querySelector('.tablaSimulacion2').style.display = 'none';
+                tablasestate=0;
+            }
+            console.log(tablasestate);
+
+        });
+
+
 
 
 
@@ -147,9 +226,11 @@ let demandasRestantes = [];
 // Función para simular y construir la tabla
 function simularYConstruirTabla(cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal) {
     let inventario = cantidadCompraInicial;
+    let inventario2 = cantidadCompraInicial;
     let ingresosTotales = 0;
     let resultados = [];
-
+    let resultados2 = [];
+    let sicompra = false;
     // Simulación de 30 días
     for (let dia = 1; dia <= 30; dia++) {
         let demanda;
@@ -210,9 +291,84 @@ function simularYConstruirTabla(cantidadCompraInicial, costoCompraInicial, costo
 
     }
 
+    //Politica 2
+
+    for (let dia = 1; dia <= 30; dia++) {
+            let  ventas, ingresos, compraAdicional, devolucion;
+
+
+            ventas = Math.min(inventario2, demandasRestantes[dia-1]);
+            ingresos = ventas * costoVentaPublico;
+            ingresosTotales += ingresos;
+            inventario2 -= ventas;
+
+            if (dia === 10) {
+                const demandaRestante = calcularDemandaRestante(demandasRestantes,cantidadCompraInicial);
+            console.log("demandasRestantes");
+            console.log(demandasRestantes);
+            console.log(demandaRestante);
+
+                if (inventario2 < demandaRestante) {
+                compraAdicional = demandaRestante - inventario2;
+                inventario2 += compraAdicional;
+                sicompra=true;
+            }
+
+
+            }
+
+
+        // Realizar compra adicional o devolución en el día 10
+        if (dia === 30 && sicompra==false) {
+            const demandaRestante = calcularDemandaRestante2(demandasRestantes,cantidadCompraInicial);
+            console.log("demandasRestantes");
+            console.log(demandasRestantes);
+            console.log(demandaRestante);
+
+
+
+                devolucion = demandaRestante;
+                ingresosTotales -= devolucion * costoDevolucionFinal;
+                inventario2 = demandaRestante -devolucion; // Ajustar inventario al demandaRestante
+
+
+
+        }
+        resultados2.push({
+            dia: dia,
+            demanda: demandasRestantes[dia-1],
+            ventas: ventas,
+            inventario: inventario2,
+            compraAdicional: compraAdicional,
+            ingresos: ingresos,
+            devolucion: devolucion
+        });
+
+    }
+
+        let totalInventario1 = cantidadCompraInicial * costoCompraInicial;
+        let totalAdicional1 = costoCompraAdicional * resultados.reduce((total, resultado) => total + (resultado.compraAdicional || 0), 0);
+        let totalIngresos1 = resultados.reduce((total, resultado) => total + (resultado.ingresos || 0), 0);
+        let totalDevolucion1 = resultados.reduce((total, resultado) => total + (resultado.devolucion || 0), 0) * costoDevolucionInicial;
+        let costoTotal1 = totalInventario1 - totalDevolucion1 +totalAdicional1;
+        let gananciaTotal1 = totalIngresos1 - costoTotal1;
+
+        let totalInventario2 = cantidadCompraInicial * costoCompraInicial;
+        let totalAdicional2 = costoCompraAdicional * resultados.reduce((total, resultado2) => total + (resultado2.compraAdicional || 0), 0);
+        let totalIngresos2 = resultados2.reduce((total, resultado) => total + (resultado.ingresos || 0), 0);
+        let totalDevolucion2 = resultados2.reduce((total, resultado) => total + (resultado.devolucion || 0), 0) * costoDevolucionFinal;
+        let costoTotal2 = totalInventario2 - totalDevolucion2 +totalAdicional2;
+        let gananciaTotal2 = totalIngresos2 - costoTotal2;
+
+
+
     // Construir la tabla HTML final con los resultados completos
     construirTabla(resultados,cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal);
+    construirTabla2(resultados2,cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal);
     console.log(resultados);
+    console.log(resultados2);
+     // Dibujar los gráficos
+     dibujarGraficos(costoTotal1, totalIngresos1,totalAdicional1, gananciaTotal1,totalDevolucion1,totalInventario1, costoTotal2, totalIngresos2, gananciaTotal2 ,totalDevolucion2,totalInventario2,totalAdicional2 );
 }
 
 // Función para simular la demanda según los datos y probabilidades proporcionadas
@@ -239,6 +395,15 @@ function calcularDemandaRestante(demandasRestantes) {
     }
 
     return demandaRestante;
+}
+function calcularDemandaRestante2(demandasRestant,cantidadCompraInicial) {
+    let demandaRestante = 0;
+
+    for (let i = 0; i < demandasRestant.length; i++) {
+        demandaRestante += demandasRestant[i];
+    }
+
+    return cantidadCompraInicial-demandaRestante ;
 }
 
 // Función para construir la tabla HTML con los resultados de la simulación
@@ -279,6 +444,126 @@ function construirTabla(resultados, cantidadCompraInicial, costoCompraInicial, c
     `;
     cuerpoTabla.appendChild(filaTotales);
 }
+
+
+// Función para construir la tabla HTML con los resultados de la simulación
+function construirTabla2(resultados, cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal) {
+    let cuerpoTabla = document.getElementById('cuerpoTabla2');
+    cuerpoTabla.innerHTML = '';
+
+    resultados.forEach(resultado => {
+        let fila = document.createElement('tr');
+        fila.innerHTML = `
+            <td>${resultado.dia}</td>
+            <td>${resultado.demanda}</td>
+            <td>${resultado.ventas || ''}</td>
+            <td>${resultado.inventario || ''}</td>
+            <td>${resultado.compraAdicional || ''}</td>
+            <td>${resultado.ingresos.toFixed(2) || ''}</td>
+            <td>${resultado.devolucion || ''}</td>
+        `;
+        cuerpoTabla.appendChild(fila);
+    });
+
+    // Calcular totales
+    let totalDemanda = resultados.reduce((total, resultado) => total + (resultado.demanda || 0), 0);
+    let totalInventario = cantidadCompraInicial * costoCompraInicial;
+    let totalIngresos = resultados.reduce((total, resultado) => total + (resultado.ingresos || 0), 0);
+    let totalCompraAdicional = resultados.reduce((total, resultado) => total + (resultado.compraAdicional || 0), 0) * costoCompraAdicional;
+    let totalDevolucion = resultados.reduce((total, resultado) => total + (resultado.devolucion || 0), 0) * costoDevolucionFinal;
+
+    // Agregar fila de totales
+    let filaTotales = document.createElement('tr');
+    filaTotales.innerHTML = `
+        <td colspan="2"><strong>Total</strong></td>
+        <td><strong>${totalDemanda}</strong></td>
+        <td><strong>${totalInventario}</strong></td>
+        <td><strong>${totalCompraAdicional}</strong></td>
+        <td><strong>${totalIngresos.toFixed(2)}</strong></td>
+        <td><strong>${totalDevolucion}</strong></td>
+    `;
+    cuerpoTabla.appendChild(filaTotales);
+}
+
+function dibujarGraficos(costoTotal1, totalIngresos1,totalAdicional1, gananciaTotal1,totalDevolucion1,totalInventario1, costoTotal2, totalIngresos2, gananciaTotal2 ,totalDevolucion2,totalInventario2,totalAdicional2) {
+    // Datos para el primer conjunto de barras (Política 1)
+    const labels1 = ['Costo Total', 'Ingreso Total', 'Ganancia Total'];
+    const data1 = [costoTotal1, totalIngresos1, gananciaTotal1];
+
+    // Datos para el segundo conjunto de barras (Política 2)
+    const labels2 = ['Costo Total', 'Ingreso Total', 'Ganancia Total'];
+    const data2 = [costoTotal2, totalIngresos2, gananciaTotal2];
+
+    // Configuración de los trazos para el primer gráfico (Política 1)
+    const trace1 = {
+        x: labels1,
+        y: data1,
+        name: 'Política 1',
+        type: 'bar',
+        marker: {
+            color: ['#1b20f9', '#ff0000', '#ffff00'] // Azul, Naranja, Verde
+        }
+    };
+
+    // Configuración del layout del primer gráfico
+    const layout1 = {
+        title: 'Política 1',
+        xaxis: {
+            title: 'Concepto'
+        },
+        yaxis: {
+            title: 'Valor'
+        }
+    };
+
+    // Configuración de los trazos para el segundo gráfico (Política 2)
+    const trace2 = {
+        x: labels2,
+        y: data2,
+        name: 'Política 2',
+        type: 'bar',
+        marker: {
+            color: ['#1b20f9', '#ff0000', '#ffff00'] // Azul, Naranja, Amarillo
+        }
+    };
+
+    // Configuración del layout del segundo gráfico
+    const layout2 = {
+        title: 'Política 2',
+        xaxis: {
+            title: 'Concepto'
+        },
+        yaxis: {
+            title: 'Valor'
+        }
+    };
+
+    // Renderizar los gráficos utilizando Plotly
+    Plotly.newPlot('grafico-politica1', [trace1], layout1);
+    Plotly.newPlot('grafico-politica2', [trace2], layout2);
+
+    document.getElementById('costo-inicial1').textContent = costoTotal1.toFixed(2);
+        document.getElementById('costo-adicional1').textContent = totalAdicional1.toFixed(2);
+        document.getElementById('costo-devolucion1').textContent = totalDevolucion1.toFixed(2);
+        document.getElementById('costo-total1').textContent = costoTotal1.toFixed(2);
+        document.getElementById('ingreso-total1').textContent = totalIngresos1.toFixed(2);
+        document.getElementById('ganancia-total1').textContent = gananciaTotal1.toFixed(2);
+
+        document.getElementById('costo-inicial2').textContent = costoTotal2.toFixed(2);
+        document.getElementById('costo-adicional2').textContent = totalAdicional2.toFixed(2);
+        document.getElementById('costo-devolucion2').textContent = totalDevolucion2.toFixed(2);
+        document.getElementById('costo-total2').textContent = costoTotal2.toFixed(2);
+        document.getElementById('ingreso-total2').textContent = totalIngresos2.toFixed(2);
+        document.getElementById('ganancia-total2').textContent = gananciaTotal2.toFixed(2);
+
+
+        const conclusion = document.querySelector('.conclusion-text');
+        if (gananciaTotal1 > gananciaTotal2) {
+            conclusion.textContent = "La Política 1 es la más eficiente debido a que maximiza las ganancias durante el mes, aprovechando las oportunidades de compra y devolución más favorables.";
+        } else {
+            conclusion.textContent = "La Política 2 es la más eficiente debido a que maximiza las ganancias durante el mes, aprovechando las oportunidades de compra y devolución más favorables.";
+        }
+    }
     </script>
 
 @endpush
