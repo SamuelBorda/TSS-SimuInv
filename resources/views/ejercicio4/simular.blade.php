@@ -61,7 +61,7 @@
                                 <th>TIR</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="cuerpoTabla4">
                             <tr>
                                 <td>1</td>
                                 <td>10</td>
@@ -118,9 +118,10 @@
  <!-- Initialize Flatpickr -->
  <script type="module">
 
+    function(){
+        
+    }
 
-
-
-    </script>
+ </script>
 @endpush
 </x-layout>
