@@ -24,46 +24,49 @@
                 </div>             
             </div>
             <div class="enunciadoEjercicio marginIzqDer">
-                <form class="formularioEjercicio1">
+                <div class="formularioEjercicio1">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tituloNumDias">Número de días</label>
-                            <input type="text" class="form-control" id="numdias" placeholder="Ingrese número de días">
+                            <input type="number" class="form-control" id="numdias" placeholder="Ingrese número de días">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tituloInvIni">Inventario inicial</label>
-                            <input type="text" class="form-control" id="inventarioIni" placeholder="Ingrese inventario inicial">
+                            <input type="number" class="form-control" id="inventarioIni" placeholder="Ingrese inventario inicial">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tituloCostoMante">Costo de mantenimiento</label>
-                            <input type="text" class="form-control" id="costoMantenimiento" placeholder="Ingrese costo de mantenimiento">
+                            <input type="number" class="form-control" id="costoMantenimiento" placeholder="Ingrese costo de mantenimiento">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tituloCostoFalta">Costo de faltante</label>
-                            <input type="text" class="form-control" id="costoFaltante" placeholder="Ingrese costo de faltante">
+                            <input type="number" class="form-control" id="costoFaltante" placeholder="Ingrese costo de faltante">
                         </div>
                         </div>
                      <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tituloCostoOrdenar">Costo de ordenar</label>
-                            <input type="text" class="form-control" id="costoOdernar" placeholder="Ingrese costo de ordenar">
+                            <input type="number" class="form-control" id="costoOdernar" placeholder="Ingrese costo de ordenar">
                         </div>
                     </div>
                     <div class="botonIniciar">
-                        <button type="submit" class="btn btn-gradientIniciar">Iniciar</button>
-                    </div>               
-                </form>
+                        <button type="button" class="btn btn-gradientIniciar" id="btnIniciar1">Iniciar</button>
+                    </div> 
+                </div>             
             </div>
             <div class="marginIzqDer resolucionEjercicio1 text-white">
+                <!-- POLITICA 1 -->
                 <p>
                     <strong>Politica 1: </strong> Ordenar cada 8 dias hasta tener 30 articulos en inventario 
                 </p>
+                <!-- esto seria como la tabla simulacion -->
                 <div class="tablaPolitica1" style="width:100%; overflow:auto;">
-                    <table class="table table-bordered text-white">
+                    <table class="table table-bordered text-white" id="tablaResultados">
                         <thead>
                             <tr>
+                                <th>Día</th>
                                 <th>Demanda</th>
                                 <th>Vendido</th>
                                 <th>Inventario</th>
@@ -71,38 +74,20 @@
                                 <th>Cantidad pedido</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>10</td>
-                                <td>105</td>
-                                <td>SI</td>
-                                <td>15</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>10</td>
-                                <td>105</td>
-                                <td>NO</td>
-                                <td>15</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>10</td>
-                                <td>105</td>
-                                <td>SI</td>
-                                <td>15</td>
-                            </tr>
+                        <tbody id="cuerpoTabla">
+                            <!-- Aquí se generará dinámicamente el contenido de la tabla -->
                         </tbody>
                     </table>
                 </div>
+                <!-- POLITICA 2 -->
                 <p>
                     <strong>Politica 2: </strong> Ordenar hasta tener 30 articulos cuando el nivel de inventario sea menor o igual a 10
                 </p>
                 <div class="tablaPolitica2" style="width:100%; overflow:auto;">
-                    <table class="table table-bordered text-white">
+                    <table class="table table-bordered text-white" id="tablaResultados2">
                         <thead>
                             <tr>
+                                <th>Día</th>
                                 <th>Demanda</th>
                                 <th>Vendido</th>
                                 <th>Inventario</th>
@@ -110,34 +95,38 @@
                                 <th>Cantidad pedido</th>
                             </tr>
                         </thead>
-                        <tbody>
-
+                        <tbody id="cuerpoTabla2">
+                            <!-- Aquí se generará dinámicamente el contenido de la tabla -->
                         </tbody>
                     </table>
                 </div>
+
+                <!-- CODIGO PARA MOSTRAR EL GRAFICO -->
                 <div class="grafico" style="margin-top:20px;">
                     <h3 class="text-Ayuda">GRAFICO DE RESULTADOS</h3>
                 </div>
+
+                <!-- CODIGO PARA MOSTRAR LOS RESULTADOS -->
                 <div class="resultados">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3 class="text-Ayuda">COSTOS POLITICA 1</h3>
-                            <p>Costo total de mantenimiento : $</p>
-                            <p>Costo total de ordenar: $</p>
-                            <p>Costo total de faltante: $</p>
-                            <p>COSTO TOTAL: $</p>
+                            <h3 class="text-Ayuda">COSTOS POLÍTICA 1</h3>
+                            <p>Costo total de mantenimiento : <span id="costoMantenimiento1">$</span></p>
+                            <p>Costo total de ordenar: <span id="costoOrdenar1">$</span></p>
+                            <p>Costo total de faltante: <span id="costoFaltante1">$</span></p>
+                            <p>COSTO TOTAL: <span id="costoTotal1">$</span></p>
                         </div>
                         <div class="col-md-6">
-                            <h3 class="text-Ayuda">COSTOS POLITICA 2</h3>
-                            <p>Costo total de mantenimiento : $</p>
-                            <p>Costo total de ordenar: $</p>
-                            <p>Costo total de faltante: $</p>
-                            <p>COSTO TOTAL: $</p>
+                            <h3 class="text-Ayuda">COSTOS POLÍTICA 2</h3>
+                            <p>Costo total de mantenimiento : <span id="costoMantenimiento2">$</span></p>
+                            <p>Costo total de ordenar: <span id="costoOrdenar2">$</span></p>
+                            <p>Costo total de faltante: <span id="costoFaltante2">$</span></p>
+                            <p>COSTO TOTAL: <span id="costoTotal2">$</span></p>
                         </div>
                     </div>
                     <div class="row">
                         <h3 class="text-Ayuda">CONCLUSIÓN</h3>
-                        <p>
+                        <p id="conclusion">
                             La Politica 2 es mas económica y eficiente debido a su capacidad para reducir costos de mantenimiento, 
                             faltantes y mejorar la flexibilidad en la gestión del inventario. 
                         </p>
@@ -149,14 +138,131 @@
         </main>
 
 @push('js')
+    <script>
+        const n = 6;
+        const theta = 0.5;
+        const lambda = 3;
+        let distribucionBin = []; // Aquí se almacenarán los valores de la distribución de probabilidad binomial
+        let distribucionAcumBin = []; // Aquí se almacenarán los valores acumulados de la distribución binomial
+    // Función simular con los parámetros correctos y llenado de resultados
+    function simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar) {
+        let resultados = [];
+        calcularDistribucionBinomial();
 
+        // Generar resultados para cada día
+        for (let dia = 1; dia <= numeroDias; dia++) {
+            
 
+            let demanda = calcularDemanda();
+            let ventas = calcularVentas(demanda);
+            let inventario = inventarioInicial - ventas;
+            let pedido = Math.max(0, 30 - inventario); // Ejemplo de compra adicional para mantener 30 artículos
+            let cantidadPedido = Math.max(0, 10 - inventario); // Ejemplo de compra adicional para mantener 30 artículos
 
- <!-- Initialize Flatpickr -->
- <script type="module">
+            resultados.push({
+                dia: dia,
+                demanda: demanda,
+                ventas: ventas,
+                inventario: inventario,
+                pedido: pedido,
+                cantidadPedido: cantidadPedido
+            });
+        }
 
+        // Construir la tabla HTML con los resultados
+        construirTabla(resultados);
+    }
 
+    function calcularDistribucionBinomial(){
+        // Calcular los valores para k desde 0 hasta n
+        for (let k = 0; k <= n; k++) {
+            const probabilidad = probabilidadBinomial(n, k, theta);
+            distribucionBin.push(probabilidad);
 
+            // Calcular acumulado hasta el valor actual de k
+            if (k === 0) {
+                distribucionAcumBin.push(probabilidad);
+            } else {
+                let acumuladoAnterior = distribucionAcumBin[k - 1];
+                distribucionAcumBin.push(acumuladoAnterior + probabilidad);
+            }
+        }
+    }
+
+    function calcularVentas(demanda){
+        let ventas = 0;
+        let esMenor = true;
+        let cont = 0;
+        while(esMenor){
+            if(demanda <= distribucionAcumBin[cont]){
+                ventas = cont;
+                esMenor = false;
+            }else{
+                cont++;
+            }
+        }
+        return ventas;
+    }
+    function calcularDemanda(){
+        // Generar un número aleatorio entre 0 y n para representar la cantidad demandada
+        let cantidadDemanda = Math.floor(Math.random() * (n + 1));
+    
+        // Calcular la probabilidad binomial para este valor de cantidadDemanda
+        let probabilidad = probabilidadBinomial(n, cantidadDemanda, theta);
+
+        return probabilidad;
+    }
+    // Función para calcular la probabilidad usando la distribución binomial
+    function probabilidadBinomial(n, k, theta) {
+        const coefBinomial = binomialCoefficient(n, k);
+        const probabilidad = coefBinomial * Math.pow(theta, k) * Math.pow(1 - theta, n - k);
+        return probabilidad;
+    }
+    // Función para calcular el coeficiente binomial (n sobre k)
+    function binomialCoefficient(n, k) {
+        if (k === 0 || k === n) {
+            return 1;
+        }
+        let numerator = 1;
+        let denominator = 1;
+        for (let i = 1; i <= k; i++) {
+            numerator *= (n - i + 1);
+            denominator *= i;
+        }
+        return numerator / denominator;
+    }
+
+    // Función para construir la tabla HTML con los resultados de la simulación
+    function construirTabla(resultados) {
+        let cuerpoTabla = document.getElementById('cuerpoTabla');
+        cuerpoTabla.innerHTML = '';
+
+        resultados.forEach(resultado => {
+            let fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>${resultado.dia}</td>
+                <td>${resultado.demanda}</td>
+                <td>${resultado.ventas}</td>
+                <td>${resultado.inventario}</td>
+                <td>${resultado.pedido}</td>
+                <td>${resultado.cantidadPedido}</td>
+            `;
+            cuerpoTabla.appendChild(fila);
+        });
+    }
+
+    // Evento al hacer clic en el botón Iniciar
+    document.getElementById('btnIniciar1').addEventListener('click', function() {
+        // Capturar los valores del formulario
+        const numeroDias = parseFloat(document.getElementById('numdias').value);
+        const inventarioInicial = parseFloat(document.getElementById('inventarioIni').value);
+        const costoMantenimiento = parseFloat(document.getElementById('costoMantenimiento').value);
+        const costoFaltante = parseFloat(document.getElementById('costoFaltante').value);
+        const costoOrdenar = parseFloat(document.getElementById('costoOdernar').value);
+
+        // Llamar a la función para simular y construir las tablas
+        simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
+    });
 
     </script>
 @endpush
