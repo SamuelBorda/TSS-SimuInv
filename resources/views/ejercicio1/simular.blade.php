@@ -71,6 +71,7 @@
                                 <th>Vendido</th>
                                 <th>Inventario</th>
                                 <th>Pedido</th>
+                                <th>Tiempo entrega</th>
                                 <th>Cantidad pedido</th>
                             </tr>
                         </thead>
@@ -92,6 +93,7 @@
                                 <th>Vendido</th>
                                 <th>Inventario</th>
                                 <th>Pedido</th>
+                                <th>Tiempo entrega</th>
                                 <th>Cantidad pedido</th>
                             </tr>
                         </thead>
@@ -138,26 +140,48 @@
         </main>
 
 @push('js')
-    <script>
-        const n = 6;
-        const theta = 0.5;
-        const lambda = 3;
-        let distribucionBin = []; // Aquí se almacenarán los valores de la distribución de probabilidad binomial
-        let distribucionAcumBin = []; // Aquí se almacenarán los valores acumulados de la distribución binomial
+<script>
+    const n = 6;
+    const theta = 0.5;
+    const lambda = 3;
+    let distribucionBin = []; // Aquí se almacenarán los valores de la distribución de probabilidad binomial
+    let distribucionAcumBin = []; // Aquí se almacenarán los valores acumulados de la distribución binomial
+    let distribucionPoisson = []; //Aqui se almacenarán los valores del tiempo de entrega con distribucion poisson
+
     // Función simular con los parámetros correctos y llenado de resultados
     function simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar) {
         let resultados = [];
+        let inventario = inventarioInicial;
+        let entregasPendientes = [];
+
         calcularDistribucionBinomial();
+        poissonAcumulado();
 
         // Generar resultados para cada día
         for (let dia = 1; dia <= numeroDias; dia++) {
-            
+            // Procesar entregas pendientes
+            entregasPendientes = entregasPendientes.map(entrega => {
+                entrega.diasRestantes--;
+                return entrega;
+            }).filter(entrega => {
+                if (entrega.diasRestantes <= 0) {
+                    inventario += entrega.cantidad;
+                    return false;
+                }
+                return true;
+            });
 
             let demanda = calcularDemanda();
             let ventas = calcularVentas(demanda);
-            let inventario = inventarioInicial - ventas;
-            let pedido = Math.max(0, 30 - inventario); // Ejemplo de compra adicional para mantener 30 artículos
-            let cantidadPedido = Math.max(0, 10 - inventario); // Ejemplo de compra adicional para mantener 30 artículos
+            inventario -= ventas;
+
+            let pedido = sePide(dia);
+            let tiempoEntrega = pedido === "SI" ? calcularTiempoEntrega() : " ";
+            let cantidadPedido = pedido === "SI" ? 30 - inventario : 0;
+
+            if (pedido === "SI") {
+                entregasPendientes.push({cantidad: cantidadPedido, diasRestantes: tiempoEntrega});
+            }
 
             resultados.push({
                 dia: dia,
@@ -165,20 +189,96 @@
                 ventas: ventas,
                 inventario: inventario,
                 pedido: pedido,
+                tiempoEntrega: tiempoEntrega,
                 cantidadPedido: cantidadPedido
             });
         }
-
         // Construir la tabla HTML con los resultados
         construirTabla(resultados);
+
+        // Calculamos los costos totales
+        let costoTotalMantenimiento = resultados.reduce((total, resultado) => total + (resultado.inventario || 0), 0) + resultados[0].ventas * costoMantenimiento;
+        let costoTotalOrdenar =  resultados.reduce((total, resultado) => resultado.pedido === "SI" ? total + costoOrdenar : total, 0);
+        let totalVendido = resultados.reduce((total, resultado) => total + resultado.ventas, 0);
+        let totalInventario = resultados.reduce((total, resultado) => total + resultado.inventario, 0) + resultados[0].ventas;
+        let totalFaltante = totalVendido > totalInventario ? totalVendido - totalInventario: 0;
+        let costoTotalFaltante = totalFaltante * costoFaltante;
+        let costoTotal = costoTotalMantenimiento + costoTotalOrdenar + costoTotalFaltante;
+
+        // Asignamos los valores a los elementos en el HTML
+        document.getElementById('costoMantenimiento1').textContent = `$${costoTotalMantenimiento.toFixed(2)}`;
+        document.getElementById('costoOrdenar1').textContent = `$${costoTotalOrdenar.toFixed(2)}`;
+        document.getElementById('costoFaltante1').textContent = `$${costoTotalFaltante.toFixed(2)}`;
+        document.getElementById('costoTotal1').textContent = `$${costoTotal.toFixed(2)}`;
     }
 
-    function calcularDistribucionBinomial(){
+    function calcularTiempoEntrega() {
+        let esMenor = true;
+        let cont = 0;
+        let randomValue = Math.random();
+        while (esMenor) {
+            if (randomValue < distribucionPoisson[cont]) {
+                return cont;
+            } else {
+                cont++;
+            }
+        }
+    }
+
+    function poissonAcumulado() {
+        let k = 11;
+        for (let i = 0; i <= k; i++) {
+            distribucionPoisson.push(poissonProbabiliadAcumulada(lambda, i));
+        }
+    }
+    // Función para calcular el factorial de un número
+    function factorial(n) {
+        if (n === 0 || n === 1) {
+            return 1;
+        }
+        let result = 1;
+        for (let i = n; i > 1; i--) {
+            result *= i;
+        }
+        return result;
+    }
+    // Función para calcular la probabilidad de Poisson
+    function poissonProbabilidad(lambda, k) {
+        return Math.pow(lambda, k) * Math.exp(-lambda) / factorial(k);
+    }
+    // Función para calcular la probabilidad acumulada de Poisson
+    function poissonProbabiliadAcumulada(lambda, k) {
+        let probabilidadAcumulada = 0;
+        for (let i = 0; i <= k; i++) {
+            probabilidadAcumulada += poissonProbabilidad(lambda, i);
+        }
+        return probabilidadAcumulada;
+    }
+
+    function sePide(dia) {
+        return dia % 8 === 0 ? "SI" : "NO";
+    }
+
+    function calcularVentas(demanda) {
+        let ventas = 0;
+        let esMenor = true;
+        let cont = 0;
+        while (esMenor) {
+            if (demanda < distribucionAcumBin[cont]) {
+                ventas = cont;
+                esMenor = false;
+            } else {
+                cont++;
+            }
+        }
+        return ventas;
+    }
+
+    function calcularDistribucionBinomial() {
         // Calcular los valores para k desde 0 hasta n
         for (let k = 0; k <= n; k++) {
             const probabilidad = probabilidadBinomial(n, k, theta);
             distribucionBin.push(probabilidad);
-
             // Calcular acumulado hasta el valor actual de k
             if (k === 0) {
                 distribucionAcumBin.push(probabilidad);
@@ -189,27 +289,11 @@
         }
     }
 
-    function calcularVentas(demanda){
-        let ventas = 0;
-        let esMenor = true;
-        let cont = 0;
-        while(esMenor){
-            if(demanda <= distribucionAcumBin[cont]){
-                ventas = cont;
-                esMenor = false;
-            }else{
-                cont++;
-            }
-        }
-        return ventas;
-    }
-    function calcularDemanda(){
+    function calcularDemanda() {
         // Generar un número aleatorio entre 0 y n para representar la cantidad demandada
         let cantidadDemanda = Math.floor(Math.random() * (n + 1));
-    
         // Calcular la probabilidad binomial para este valor de cantidadDemanda
         let probabilidad = probabilidadBinomial(n, cantidadDemanda, theta);
-
         return probabilidad;
     }
     // Función para calcular la probabilidad usando la distribución binomial
@@ -231,7 +315,6 @@
         }
         return numerator / denominator;
     }
-
     // Función para construir la tabla HTML con los resultados de la simulación
     function construirTabla(resultados) {
         let cuerpoTabla = document.getElementById('cuerpoTabla');
@@ -245,25 +328,42 @@
                 <td>${resultado.ventas}</td>
                 <td>${resultado.inventario}</td>
                 <td>${resultado.pedido}</td>
+                <td>${resultado.tiempoEntrega}</td>
                 <td>${resultado.cantidadPedido}</td>
             `;
             cuerpoTabla.appendChild(fila);
         });
+        //cuenta cuantos pedidos hay
+        let totalPedido = resultados.reduce((total, resultado) => {
+            if (resultado.pedido === "SI") {
+                return total + 1;
+            } else {
+                return total;
+            }
+        }, 0);
+
+        // Agregar fila de totales
+        let filaTotales = document.createElement('tr');
+        filaTotales.innerHTML = `
+            <td colspan="4"><strong>Total pedidos</strong></td>
+            <td><strong>${totalPedido}</strong></td>
+            <td><strong></strong></td>
+            <td><strong></strong></td>
+        `;
+        cuerpoTabla.appendChild(filaTotales);
     }
 
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar1').addEventListener('click', function() {
-        // Capturar los valores del formulario
         const numeroDias = parseFloat(document.getElementById('numdias').value);
         const inventarioInicial = parseFloat(document.getElementById('inventarioIni').value);
         const costoMantenimiento = parseFloat(document.getElementById('costoMantenimiento').value);
         const costoFaltante = parseFloat(document.getElementById('costoFaltante').value);
         const costoOrdenar = parseFloat(document.getElementById('costoOdernar').value);
-
-        // Llamar a la función para simular y construir las tablas
+        // Llamar a la función para simular y construir las tablas para la POLITICA 1
         simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
     });
+</script>
 
-    </script>
 @endpush
 </x-layout>
