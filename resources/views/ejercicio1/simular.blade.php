@@ -142,15 +142,19 @@
         const n = 6;
         const theta = 0.5;
         const lambda = 3;
-        let ventas = 0;
+        let distribucionBin = []; // Aquí se almacenarán los valores de la distribución de probabilidad binomial
+        let distribucionAcumBin = []; // Aquí se almacenarán los valores acumulados de la distribución binomial
     // Función simular con los parámetros correctos y llenado de resultados
     function simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar) {
         let resultados = [];
+        calcularDistribucionBinomial();
 
         // Generar resultados para cada día
         for (let dia = 1; dia <= numeroDias; dia++) {
-            // Aquí deberías calcular la demanda, ventas, inventario y compraAdicional según tu lógica
+            
+
             let demanda = calcularDemanda();
+            let ventas = calcularVentas(demanda);
             let inventario = inventarioInicial - ventas;
             let pedido = Math.max(0, 30 - inventario); // Ejemplo de compra adicional para mantener 30 artículos
             let cantidadPedido = Math.max(0, 10 - inventario); // Ejemplo de compra adicional para mantener 30 artículos
@@ -168,6 +172,37 @@
         // Construir la tabla HTML con los resultados
         construirTabla(resultados);
     }
+
+    function calcularDistribucionBinomial(){
+        // Calcular los valores para k desde 0 hasta n
+        for (let k = 0; k <= n; k++) {
+            const probabilidad = probabilidadBinomial(n, k, theta);
+            distribucionBin.push(probabilidad);
+
+            // Calcular acumulado hasta el valor actual de k
+            if (k === 0) {
+                distribucionAcumBin.push(probabilidad);
+            } else {
+                let acumuladoAnterior = distribucionAcumBin[k - 1];
+                distribucionAcumBin.push(acumuladoAnterior + probabilidad);
+            }
+        }
+    }
+
+    function calcularVentas(demanda){
+        let ventas = 0;
+        let esMenor = true;
+        let cont = 0;
+        while(esMenor){
+            if(demanda <= distribucionAcumBin[cont]){
+                ventas = cont;
+                esMenor = false;
+            }else{
+                cont++;
+            }
+        }
+        return ventas;
+    }
     function calcularDemanda(){
         // Generar un número aleatorio entre 0 y n para representar la cantidad demandada
         let cantidadDemanda = Math.floor(Math.random() * (n + 1));
@@ -175,8 +210,6 @@
         // Calcular la probabilidad binomial para este valor de cantidadDemanda
         let probabilidad = probabilidadBinomial(n, cantidadDemanda, theta);
 
-        // Devolver la cantidad de demanda para este día
-        ventas = cantidadDemanda;
         return probabilidad;
     }
     // Función para calcular la probabilidad usando la distribución binomial
