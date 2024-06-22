@@ -56,7 +56,7 @@
                     </div> 
                 </div>             
             </div>
-            <div class="marginIzqDer resolucionEjercicio1 text-white">
+            <div class="marginIzqDer resolucionEjercicio1 text-white" style="display:none;">
                 <!-- POLITICA 1 -->
                 <p>
                     <strong>Politica 1: </strong> Ordenar cada 8 dias hasta tener 30 articulos en inventario 
@@ -468,7 +468,7 @@
         document.getElementById('costoFaltante2').textContent = `$${costoTotalFaltante.toFixed(2)}`;
         document.getElementById('costoTotal2').textContent = `$${costoTotal.toFixed(2)}`;
     }
-
+    //COMPARA QUE POLITICA ES MEJOR 
     function comparar(){
         let mejor = 0;
         if(politicaUno>politicaDos){
@@ -482,6 +482,12 @@
     
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar1').addEventListener('click', function() {
+        // Mostrar el contenido al hacer clic en el botón Iniciar
+        document.querySelector('.resolucionEjercicio1').style.display = 'block';
+
+
+
+
         const numeroDias = parseFloat(document.getElementById('numdias').value);
         const inventarioInicial = parseFloat(document.getElementById('inventarioIni').value);
         const costoMantenimiento = parseFloat(document.getElementById('costoMantenimiento').value);
