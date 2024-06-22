@@ -42,7 +42,7 @@
                     </div>
                     
                     <div class="botonIniciar">
-                        <button type="submit" class="btn btn-gradientIniciar">Iniciar</button>
+                        <button type="submit" class="btn btn-gradientIniciar" onclick="columnaNroSimulacion()">Iniciar</button>
                     </div>               
                 </form>
             </div>
@@ -51,37 +51,22 @@
                     <table class="table table-bordered text-white">
                         <thead>
                             <tr>
+                                <th>Numero de <br>simulacion</th>
                                 <th>Inversion <br>inicial</th>
                                 <th>Flujo neto <br>año 1</th>
                                 <th>Flujo neto <br>año 2</th>
                                 <th>Flujo neto <br>año 3</th>
                                 <th>Flujo neto <br>año 4</th>
                                 <th>Flujo neto <br>año 5</th>
-                                <th>Flujos de caja <br>totales</th>
+                                <th>Flujos de <br>caja totales</th>
                                 <th>TIR</th>
                             </tr>
                         </thead>
                         <tbody id="cuerpoTabla4">
                             <tr>
-                                <td>1</td>
-                                <td>10</td>
-                                <td>105</td>
-                                <td>50</td>
-                                <td>15</td>
-                                <td>14</td>
-                                <td>15</td>
-                                <td>15</td>
+                                
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>10</td>
-                                <td>105</td>
-                                <td>88</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -117,10 +102,7 @@
 
  <!-- Initialize Flatpickr -->
  <script type="module">
-
-    function(){
-        
-    }
+   
 
  </script>
 @endpush
