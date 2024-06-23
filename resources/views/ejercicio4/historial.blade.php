@@ -13,10 +13,45 @@
                     <h3><span class="bg-gradient-titleejercicio">
                         CASO 4 - EVALUACION DE UN PROYECTO DE INVERSION
                     </span></h3>
-                </div>       
+                </div>
             </div>
             <div>
-                <p>HISTORIAL 4</p>
+            <div class="tablaHistorialEjercicio1">
+                    <table class="tablaejercicio4">
+                        <thead>
+                        <tr>
+                            <th>Numero de simulaciones</th>
+                            <th>TREMA (%)</th>
+                            <th>Aceptacion de proyecto</th>
+                            <th>Promedio TIR</th>
+                            <th>El proyecto es</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>150</td>
+                            <td>30 %</td>
+                            <td>90 %</td>
+                            <td>1 %</td>
+                            <td>Rechazado</td>
+                        </tr>
+                        <tr>
+                            <td>180</td>
+                            <td>200 $</td>
+                            <td>500 $</td>
+                            <td>1 $</td>
+                            <td>300 $</td>
+                        </tr>
+                        <tr>
+                            <td>300</td>
+                            <td>15</td>
+                            <td>200 $</td>
+                            <td>500 $</td>
+                            <td>1 $</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
