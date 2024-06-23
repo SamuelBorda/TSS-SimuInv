@@ -248,3 +248,32 @@ font-size: 1.3rem; /* 36px en rem */
     padding-top: 40px;
     font-size: 1.3rem;
 }
+/*ESTILOS TABLA RESPONSIVA HISTORIAL EJERCICIO 4*/
+
+	table.tablaejercicio4,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablaejercicio4 th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablaejercicio4 td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablaejercicio4 tr:last-child td, .rwd_auto tr:last-child td{border:0}
+			
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)  
+{
+	
+	table.tablarejercicio4, .tablaejercicio4 thead, .tablaejercicio4 tbody, .tablaejercicio4 th, .tablaejercicio4 td, .tablaejercicio4 tr { display: block; }
+		
+	.tablaejercicio4 thead tr { position: absolute;top: -9999px;left: -9999px; }
+		
+	.tablaejercicio4 tr { border: 1px solid #ccc; }
+		
+	.tablaejercicio4 td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+		
+	.tablaejercicio4 td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+		
+	.tablaejercicio4 td:nth-of-type(1):before { content: "Número de simulaciones"; }
+	.tablaejercicio4 td:nth-of-type(2):before { content: "TREMA (%)"; }
+	.tablaejercicio4 td:nth-of-type(3):before { content: "Aceptacion del proyecto"; }
+	.tablaejercicio4 td:nth-of-type(4):before { content: "Promedio TIR"; }
+	.tablaejercicio4 td:nth-of-type(5):before { content: "El proyecto es"; }
+		
+	.descarto {display:none;}
+	.fontsize {font-size:10px}
+}
