@@ -63,6 +63,8 @@ Route::get('/ejercicio4/ayuda', [Ejercicio4Controller::class, 'ayuda'])->name('e
 Route::get('/ejercicio2/historial', [Ejercicio2Controller::class, 'historial'])->name('ejercicio2.historial');
 Route::get('/ejercicio2/simular', [Ejercicio2Controller::class, 'simular'])->name('ejercicio2.simular');
 Route::get('/ejercicio2/ayuda', [Ejercicio2Controller::class, 'ayuda'])->name('ejercicio2.ayuda');
+Route::post('/ejercicio2/guardarSimulacion', [Ejercicio2Controller::class, 'guardarSimulacion'])->name('ejercicio2.guardarSimulacion');
+
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
