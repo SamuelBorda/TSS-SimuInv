@@ -23,6 +23,7 @@
         </div> 
 
         <div class="container-fluid py-4 bg-gray-400 text-white">
+          <div class="table-responsive">
             <table id="historyTable" class="table table-striped table-dark">
                 <thead>
                     <tr>
@@ -39,6 +40,7 @@
                     <!-- \TSS-SimuInv\storage\app\public simulacion-historial.json  AHI DEBE DE ESTAR EN .JSON donde se encuentra los datos para mostrar-->
                 </tbody>
             </table>
+          </div>
         </div>
 
     </main>
