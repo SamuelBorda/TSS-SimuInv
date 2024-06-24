@@ -4,7 +4,7 @@
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
-         
+
         <br>
         <br>
         <br>
@@ -14,7 +14,7 @@
                     <h3><span class="bg-gradient-titleejercicio">
                         CASO 1 - COMPARACIÓN DE POLITICAS DE INVENTARIO
                     </span></h3>
-                </div>             
+                </div>
             </div>
             <div class="enunciadoEjercicio marginIzqDer">
                 <h3 class="text-Ayuda">HISTORIAL DE SIMULACIONES</h3>
@@ -34,41 +34,24 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($historial as $item)
                     <tr>
-                        <td>150</td>
-                        <td>15 /unidades</td>
-                        <td>200 $</td>
-                        <td>500 $</td>
-                        <td>1 $</td>
-                        <td>300 $</td>
-                        <td>320 $</td>
-                        <td>Politica 1</td>
+                        <td>{{ $item->Numerodias }}</td>
+                        <td>{{ $item->Inventario }}</td>
+
+                        <td>{{ $item->Costomantenimiento }}</td>
+                        <td>{{ $item->Costoordenar }}</td>
+                        <td>{{ $item->Costofaltante }}</td>
+                        <td>{{ $item->Costopolitica1 }}</td>
+                        <td>{{ $item->Costopolitica2 }}</td>
+                        <td>{{ $item->Mejoropcion }}</td>
                     </tr>
-                    <tr>
-                        <td>180</td>
-                        <td>15 /unidades</td>
-                        <td>200 $</td>
-                        <td>500 $</td>
-                        <td>1 $</td>
-                        <td>300 $</td>
-                        <td>320 $</td>
-                        <td>Politica 2</td>
-                    </tr>
-                    <tr>
-                        <td>300</td>
-                        <td>15 /unidades</td>
-                        <td>200 $</td>
-                        <td>500 $</td>
-                        <td>1 $</td>
-                        <td>300 $</td>
-                        <td>320 $</td>
-                        <td>Politica 1</td>
-                    </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-        
+
      </main>
 
 @push('js')

@@ -15,13 +15,45 @@
                     </span></h3>
                 </div>
             </div>
-            <div>
-        
+
+            <div class="enunciadoEjercicio marginIzqDer">
+                <h3 class="text-Ayuda">HISTORIAL DE SIMULACIONES</h3>
+            </div>
+            <div class="tablaHistorialEjercicio1">
+                <table class="tablaresponsiva">
+                    <thead>
+                    <tr>
+                        <th>HorasSimulación</th>
+                        <th>CostoComponente</th>
+                        <th>CostoHoraDesconexión</th>
+                        <th>Costo politica 1</th>
+                        <th>Costo politica 2</th>
+                        <th>Mejor opción</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($historial as $item)
+                    <tr>
+                        <td>{{ $item->TiempoHorasSimulacion }}</td>
+                        <td>{{ $item->CostoPorComponente }}</td>
+
+                        <td>{{ $item->CostoPorHoraDesconexion }}</td>
+                        <td>{{ $item->Costopolitica1 }}</td>
+                        <td>{{ $item->Costopolitica2 }}</td>
+                        <td>{{ $item->Mejoropcion }}</td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+</div>
+
         </main>
  @push('css')
         <style>
-            
-        
+
+
     </style>
 @endpush
 @push('js')

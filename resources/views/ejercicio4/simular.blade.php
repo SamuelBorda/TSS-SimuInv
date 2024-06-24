@@ -111,6 +111,8 @@
     //almacena valires de TIR
     let tirValores = [];
 
+    var promresultado=0;
+    var resultadopolitica="RECHAZADO";
     // Función para simular con los parámetros correctos y llenado de resultados
     function simular(numeroSimulaciones,trema,aceptacionProyecto) {
         let resultados = [];
@@ -144,6 +146,7 @@
         }
         //CALCULAR PROMEDIO TIR
         let promedioTIR = calcularPromedioTIR(resultados);
+        promresultado=promedioTIR;
         //MOSTRAR PROMEDIO TIR
         mostrarPromedioTIR(promedioTIR);
         // Determinar si el proyecto es ACEPTADO o RECHAZADO
@@ -151,6 +154,7 @@
         // Construir la tabla HTML con los resultados
         construirTabla(resultados);
         graficarTIR(tirValores); // Llamar a la función para graficar los valores de TIR
+        historialAñadir();
     }
 
     //CALCULO DE GRAFICOOO---------------------------------------------------------------------------------------------------------
@@ -341,9 +345,11 @@
         if (promedioTIR > trema) {
         conclusionAceptada.style.display = 'block'; // Mostrar div de ACEPTADO
         conclusionRechazada.style.display = 'none'; // Ocultar div de RECHAZADO
+        resultadopolitica="ACEPTADO";
         } else {
         conclusionAceptada.style.display = 'none'; // Ocultar div de ACEPTADO
         conclusionRechazada.style.display = 'block'; // Mostrar div de RECHAZADO
+        resultadopolitica="RECHAZADO";
     }
     }
 
@@ -354,6 +360,53 @@
         const aceptacionProyecto= parseFloat(document.getElementById('aceptacionProyecto4').value);
         simular(numeroSimulaciones,trema,aceptacionProyecto);
     });
+
+
+
+//para actualizar en tiempo real
+function historialAñadir() {
+
+    const NumeroSimulaciones = parseFloat(document.getElementById('nrosimulaciones4').value);
+    const TREMA = parseFloat(document.getElementById('trema4').value);
+    const Aceptacionproyecto = parseFloat(document.getElementById('aceptacionProyecto4').value);
+
+
+
+    console.log("AHHHHHHH");
+    console.log(promresultado);
+    console.log(NumeroSimulaciones);
+
+    console.log(resultadopolitica);
+
+    fetch("{{ route('ejercicio4.actualizarEjercicio4') }}", { // Aquí faltaba cerrar el paréntesis de route()
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+    },
+    body: JSON.stringify({
+
+
+        NumeroSimulaciones: NumeroSimulaciones,
+        TREMA: TREMA ,
+        Aceptacionproyecto: Aceptacionproyecto,
+        PromedioTIR: promresultado,
+        Mejoropcion: resultadopolitica,
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log('Success:', data);
+    alert(data.message); // Notificar al usuario
+
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert('Error actualizando el dato : ' + error.message);
+
+});
+}
+
 
 </script>
 @endpush

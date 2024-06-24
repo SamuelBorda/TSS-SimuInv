@@ -562,7 +562,7 @@ function dibujarGraficos(costoTotal1, totalIngresos1,totalAdicional1, gananciaTo
 
         const conclusion = document.querySelector('.conclusion-text');
         if (gananciaTotal1 > gananciaTotal2) {
-
+            resultadopolitica="Politica 1";
             conclusion.textContent = "La Política 1 es la más eficiente debido a que maximiza las ganancias durante el mes, aprovechando las oportunidades de compra y devolución más favorables.";
         } else {
             resultadopolitica = "Politica 2";

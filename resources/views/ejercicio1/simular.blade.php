@@ -155,6 +155,7 @@
     let distribucionPoisson = []; //Aqui se almacenarán los valores del tiempo de entrega con distribucion poisson
     let politicaUno = 0;
     let politicaDos = 0;
+    var resultadopolitica="Politica 1";
     // Función simular con los parámetros correctos y llenado de resultados
     function simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar) {
         let resultados = [];
@@ -479,8 +480,10 @@
         let mejor = 0;
         if(politicaUno>politicaDos){
             mejor = 2;
+            resultadopolitica ="Politica 2";
             document.getElementById('mejorPolitica').textContent = `${mejor} `;
         }else{
+            resultadopolitica ="Politica 1";
             mejor = 1;
             document.getElementById('mejorPolitica').textContent = `${mejor} `;
         }
@@ -529,8 +532,69 @@
         simular2(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
         comparar();
         compararYPintarGrafico();
-
+        historialAñadir();
     });
+
+
+
+
+//para actualizar en tiempo real
+function historialAñadir() {
+    const contenido1 = document.getElementById('costoTotal1').textContent;
+    const nume1 = contenido1.match(/\d+(\.\d+)?/); // Esto obtiene cualquier secuencia de dígitos seguida opcionalmente por un punto y más dígitos
+    const costo1 = parseFloat(nume1[0]); // Convertir el número extraído a punto flotante
+
+    const contenido2 = document.getElementById('costoTotal2').textContent;
+    const nume2= contenido2.match(/\d+(\.\d+)?/); // Esto obtiene cualquier secuencia de dígitos seguida opcionalmente por un punto y más dígitos
+    const costo2 = parseFloat(nume2[0]); // Convertir el número extraído a punto flotante
+
+    const costofaltante = parseFloat(document.getElementById('costoFaltante').value);
+    const costoordenar = parseFloat(document.getElementById('costoOdernar').value);
+    const costomantenimiento = parseFloat(document.getElementById('costoMantenimiento').value);
+    const inventario = parseFloat(document.getElementById('inventarioIni').value);
+    const numerodias = parseFloat(document.getElementById('numdias').value);
+
+
+    console.log("AHHHHHHH");
+    console.log(costo1);
+    console.log(costo2);
+    console.log(costofaltante);
+    console.log(costoordenar);
+    console.log(costomantenimiento);
+    console.log(inventario);
+    console.log(numerodias);
+    console.log(resultadopolitica);
+
+    fetch("{{ route('ejercicio1.actualizarEjercicio1') }}", { // Aquí faltaba cerrar el paréntesis de route()
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+    },
+    body: JSON.stringify({
+
+        NumeroDias: numerodias,
+        Inventario: inventario,
+        Costomantenimiento: costomantenimiento,
+        Costoordenar: costoordenar,
+        Costofaltante: costofaltante,
+        costo1: costo1,
+        costo2: costo2,
+        Mejoropcion: resultadopolitica,
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log('Success:', data);
+    alert(data.message); // Notificar al usuario
+
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert('Error actualizando el dato : ' + error.message);
+
+});
+}
 </script>
 
 @endpush

@@ -51,7 +51,7 @@
         <div class="marginIzqDer resolucionEjercicio1 text-white">
             <p><strong>POLÍTICA 1 :</strong> Reemplazar los componentes solamente cuando se descomponen</p>
             <p><strong>POLÍTICA 2 :</strong> Reemplazar los cuatro componentes cuando falle cualquiera de ellos</p>
-            <br> 
+            <br>
             <h3 class="text-Ayuda">GRÁFICO DE RESULTADOS</h3>
 
             <div class="canvas-container bg-gray-400">
@@ -60,7 +60,7 @@
 
             <div id="result" class="container-fluid py-4 bg-gray-400 text-white"></div>
         </div>
-        
+
     </main>
 
     @push('css')
@@ -79,7 +79,7 @@
             outline: none;
             box-shadow: none;
         }
-        
+
         .form-control-lg {
             font-size: 1.25rem;
             padding: .5rem 1rem;
@@ -102,7 +102,7 @@
         }
         .policy-container {
             display: flex;
-            flex-wrap: wrap; 
+            flex-wrap: wrap;
             justify-content: space-around; /* Distribuir políticas uniformemente */
             margin-bottom: 10px; /* Espacio inferior entre las políticas y la conclusión */
             margin-left: 7%;
@@ -152,6 +152,9 @@
         });
 
         let cajaGrafico;  //Variable global para almacenar el gráfico
+        var resultadopolitica="Politica 1";
+        var costo1=0;
+        var costo2=0;
 
         function normalRandom() {
             let u = 0, v = 0;
@@ -266,14 +269,18 @@
 
         function displayResults(policy1Data, policy2Data) {
             const resultDiv = document.getElementById('result');
-            
+
             let conclusionMessage;
+            costo1=policy1Data.costoTotal;
+            costo2=policy2Data.costoTotal;
             if (policy1Data.costoTotal < policy2Data.costoTotal) {
+                resultadopolitica="Politica 1";
                 conclusionMessage = `<p>La Política 1 es más económica y eficiente debido a su capacidad para minimizar los costos operativos totales y aumentar la fiabilidad del equipo.</p>`;
             } else {
+                resultadopolitica ="Politica 2";
                 conclusionMessage = `<p>La Política 2 es más económica y eficiente debido a su capacidad para minimizar los costos operativos totales y aumentar la fiabilidad del equipo.</p>`;
             }
-            
+
             resultDiv.innerHTML = `
                 <div class="policy-container">
                     <div class="policy">
@@ -321,7 +328,57 @@
 
             drawBarChart(policy1Data, policy2Data);
             displayResults(policy1Data, policy2Data);
+            historialAñadir();
         }
+
+
+
+        //para actualizar en tiempo real
+        function historialAñadir() {
+
+
+            const TiempoHorasSimulacion = parseFloat(document.getElementById('simulationTime').value);
+            const CostoPorComponente = parseFloat(document.getElementById('componentCost').value);
+            const CostoPorHoraDesconexion = parseFloat(document.getElementById('disconnectionCost').value);
+
+
+            console.log("AHHHHHHH");
+
+            console.log(costo1);
+            console.log(costo2);
+            console.log(resultadopolitica);
+            console.log(TiempoHorasSimulacion);
+            console.log(CostoPorComponente);
+            console.log(CostoPorHoraDesconexion);
+            fetch("{{ route('ejercicio2.actualizarEjercicio2') }}", { // Aquí faltaba cerrar el paréntesis de route()
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+
+                TiempoHorasSimulacion: TiempoHorasSimulacion,
+                CostoPorComponente: CostoPorComponente,
+                CostoPorHoraDesconexion: CostoPorHoraDesconexion,
+                costo1: costo1,
+                costo2: costo2,
+                Mejoropcion: resultadopolitica,
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert(data.message); // Notificar al usuario
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error actualizando el dato : ' + error.message);
+
+        });
+        }
+
     </script>
     @endpush
 </x-layout>

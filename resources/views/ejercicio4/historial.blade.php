@@ -31,27 +31,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>150</td>
-                            <td>30 %</td>
-                            <td>90 %</td>
-                            <td>1 %</td>
-                            <td>Rechazado</td>
-                        </tr>
-                        <tr>
-                            <td>180</td>
-                            <td>200 $</td>
-                            <td>500 $</td>
-                            <td>1 $</td>
-                            <td>300 $</td>
-                        </tr>
-                        <tr>
-                            <td>300</td>
-                            <td>15</td>
-                            <td>200 $</td>
-                            <td>500 $</td>
-                            <td>1 $</td>
-                        </tr>
+                            @foreach($historial as $item)
+                            <tr>
+                                <td>{{ $item->NumeroSimulaciones }}</td>
+                                <td>{{ $item->TREMA }}</td>
+
+                                <td>{{ $item->Aceptacionproyecto }}</td>
+                                <td>{{ $item->PromedioTIR }}</td>
+                                <td>{{ $item->Mejoropcion }}</td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

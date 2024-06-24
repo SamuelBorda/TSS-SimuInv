@@ -24,7 +24,7 @@
             </div>
             <div class="enunciadoEjercicio marginIzqDer">
                 <div class="text-justify">
-                    <br> 
+                    <br>
                     <p>
                     Una compañía tiene un problema de mantenimiento con cierto equipo,
                         que contiene 4  componentes electrónicos idénticos que son la causa del mismo,
@@ -34,7 +34,7 @@
                         nueva proposición de hacer el reemplazo de los cuatro  componentes cuando falle
                         cualesquiera de ellos, con objeto de reducir la frecuencia de desconexión  del equipo.
                         </p>
-                    
+
                     <p>
                     El tiempo de vida de un componente esta normalmente distribuido con media de 600 horas y
                     desviación estándar de 100 horas. También se sabe que es necesario desconectar el equipo
