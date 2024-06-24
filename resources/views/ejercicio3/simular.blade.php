@@ -174,9 +174,9 @@
 
     const dem2 = [4, 5, 6, 7, 8];
     const prob2 = [0.10, 0.20, 0.30, 0.25, 0.15];
-    const resultadopolitica = "Politica 1" ;
-    const ganan1 = 0;
-    const ganan2 =  0;
+    var resultadopolitica = "Politica 1" ;
+    var ganan1 = 0;
+    var ganan2 =  0;
 // Variables para almacenar las demandas del día 11 al día 30
 let demandasRestantes = [];
 
