@@ -44,6 +44,7 @@
                         Se  ingresa el costo por realizar una orden de inventario.
                     </p>
                 </div>
+            </div>
                 
         </div>
         

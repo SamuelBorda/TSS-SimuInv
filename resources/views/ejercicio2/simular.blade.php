@@ -4,52 +4,63 @@
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
-
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <br>
         <br>
         <br>
-        <div class="container-fluid py-4 bg-gray-400"></div>
-
-        <div class="container-fluid py-4 bg-dark-400 text-white">
-            <h3 class="text-start ps-5">
-                <span class="bg-gradient-simu px-4 py-2">
-                    CASO 2 - MANTENIMIENTO DE EQUIPOS
-                </span>
-            </h3>
-        </div>
-
-        <div class="container-fluid py-4 bg-gray-400 text-white">
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="simulationTime" class="text-white">Tiempo horas de simulación</label>
-                    <input type="text" id="simulationTime" placeholder="Ingrese el tiempo en horas" class="form-control form-control-lg text-black">
+        <div class="py-4  bg-gray-400">
+            <div class="panelTitulo">
+                <div class="tituloEjercicio">
+                    <h3><span class="bg-gradient-titleejercicio">
+                        CASO 2 - MANTENIMIENTO DE EQUIPOS
+                    </span></h3>
                 </div>
-                <div class="col-md-4">
-                    <label for="componentCost" class="text-white">Costo por componente</label>
-                    <input type="text" id="componentCost" placeholder="Ingrese el costo por componente" class="form-control form-control-lg text-black">
-                </div>
-                <div class="col-md-4">
-                    <label for="disconnectionCost" class="text-white">Costo por hora desconexión</label>
-                    <input type="text" id="disconnectionCost" placeholder="Ingrese el costo por hora de desconexión" class="form-control form-control-lg text-black">
+                <div class="botonayuda">
+                    <a href="{{ route('ejercicio2.ayuda') }}" class="btn btn-gradient-outline">
+                        <span class="small-screen"style="font-size:1rem;">?</span>
+                        <span class="large-screen">¿Necesitas ayuda?</span>
+                    </a>
                 </div>
             </div>
-            <br>
-            <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-gradientIniciar" id="btnIniciar">Iniciar</button>
-            </div>
-        </div>
 
-        <div class="container-fluid py-4 bg-gray-400 text-white">
+            <div class="enunciadoEjercicio marginIzqDer">
+                <div class="formularioEjercicio1">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="simulationTime" class="text-white">Tiempo horas de simulación</label>
+                            <input type="text" id="simulationTime" placeholder="Ingrese el tiempo en horas" class="form-control form-control-lg text-black">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="componentCost" class="text-white">Costo por componente</label>
+                            <input type="text" id="componentCost" placeholder="Ingrese el costo por componente" class="form-control form-control-lg text-black">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="disconnectionCost" class="text-white">Costo por hora desconexión</label>
+                            <input type="text" id="disconnectionCost" placeholder="Ingrese el costo por hora de desconexión" class="form-control form-control-lg text-black">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-gradientIniciar" id="btnIniciar">Iniciar</button>
+                    </div>
+                </div>
+            </div>
+
+        <div class="marginIzqDer resolucionEjercicio1 text-white">
             <p><strong>POLÍTICA 1 :</strong> Reemplazar los componentes solamente cuando se descomponen</p>
             <p><strong>POLÍTICA 2 :</strong> Reemplazar los cuatro componentes cuando falle cualquiera de ellos</p>
             <br> 
-            <h3 class="texto-simu2">GRÁFICO DE RESULTADOS</h3>
-        </div>
-        <div class="canvas-container bg-gray-400">
-            <canvas id="cajaGrafico" width="400" height="240"></canvas>
-        </div>
+            <h3 class="text-Ayuda">GRÁFICO DE RESULTADOS</h3>
 
-        <div id="result" class="container-fluid py-4 bg-gray-400 text-white"></div>
+            <div class="canvas-container bg-gray-400">
+                <canvas id="cajaGrafico" width="400" height="240"></canvas>
+            </div>
+
+            <div id="result" class="container-fluid py-4 bg-gray-400 text-white"></div>
+        </div>
+        
     </main>
 
     @push('css')
