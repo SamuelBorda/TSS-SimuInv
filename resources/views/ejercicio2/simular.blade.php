@@ -23,42 +23,22 @@
                 </div>
             </div>
 
-        <div class="container-fluid py-4 bg-gray-400 text-white">
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="simulationTime" class="text-white">Tiempo horas de simulación</label>
-                    <input type="number" id="simulationTime" placeholder="Ingrese el tiempo en horas" class="form-control form-control-lg text-black">
-                </div>
-                <div class="col-md-4">
-                    <label for="componentCost" class="text-white">Costo por componente</label>
-                    <input type="number" id="componentCost" placeholder="Ingrese el costo por componente" class="form-control form-control-lg text-black">
-                </div>
-                <div class="col-md-4">
-                    <label for="disconnectionCost" class="text-white">Costo por hora desconexión</label>
-                    <input type="number" id="disconnectionCost" placeholder="Ingrese el costo por hora de desconexión" class="form-control form-control-lg text-black">
-                </div>
-            </div>
-            <br>
-            <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-gradientIniciar" id="btnIniciar">Iniciar</button>
-            </div>
-        </div>
             <div class="enunciadoEjercicio marginIzqDer">
                 <div class="formularioEjercicio1">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="simulationTime" class="text-white">Tiempo horas de simulación</label>
-                            <input type="text" id="simulationTime" placeholder="Ingrese el tiempo en horas" class="form-control form-control-lg text-black">
+                            <input type="number" id="simulationTime" placeholder="Ingrese el tiempo en horas" class="form-control form-control-lg text-black">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="componentCost" class="text-white">Costo por componente</label>
-                            <input type="text" id="componentCost" placeholder="Ingrese el costo por componente" class="form-control form-control-lg text-black">
+                            <input type="number" id="componentCost" placeholder="Ingrese el costo por componente" class="form-control form-control-lg text-black">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="disconnectionCost" class="text-white">Costo por hora desconexión</label>
-                            <input type="text" id="disconnectionCost" placeholder="Ingrese el costo por hora de desconexión" class="form-control form-control-lg text-black">
+                            <input type="number" id="disconnectionCost" placeholder="Ingrese el costo por hora de desconexión" class="form-control form-control-lg text-black">
                         </div>
                     </div>
                     <br>
@@ -466,7 +446,9 @@
             console.log('Datos generados politica 2:', policy2Data);
 
             drawBarChart(policy1Data, policy2Data);
-            displayResults(policy1Data, policy2Data);
+            drawScatterPlot(policy1Data,policy2Data);
+            mostrarResultado(policy1Data, policy2Data);
+            historialAñadir();
         }
 
 
