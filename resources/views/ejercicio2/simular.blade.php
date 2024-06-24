@@ -22,15 +22,15 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="simulationTime" class="text-white">Tiempo horas de simulación</label>
-                    <input type="text" id="simulationTime" placeholder="Ingrese el tiempo en horas" class="form-control form-control-lg text-black">
+                    <input type="number" id="simulationTime" placeholder="Ingrese el tiempo en horas" class="form-control form-control-lg text-black">
                 </div>
                 <div class="col-md-4">
                     <label for="componentCost" class="text-white">Costo por componente</label>
-                    <input type="text" id="componentCost" placeholder="Ingrese el costo por componente" class="form-control form-control-lg text-black">
+                    <input type="number" id="componentCost" placeholder="Ingrese el costo por componente" class="form-control form-control-lg text-black">
                 </div>
                 <div class="col-md-4">
                     <label for="disconnectionCost" class="text-white">Costo por hora desconexión</label>
-                    <input type="text" id="disconnectionCost" placeholder="Ingrese el costo por hora de desconexión" class="form-control form-control-lg text-black">
+                    <input type="number" id="disconnectionCost" placeholder="Ingrese el costo por hora de desconexión" class="form-control form-control-lg text-black">
                 </div>
             </div>
             <br>
@@ -45,8 +45,13 @@
             <br> 
             <h3 class="texto-simu2">GRÁFICO DE RESULTADOS</h3>
         </div>
-        <div class="canvas-container bg-gray-400">
-            <canvas id="cajaGrafico" width="400" height="240"></canvas>
+        <div class="container-fluid py-4 bg-gray-400 text-white">
+        <div class="canvas-container bg-gray-400 text-white">
+            <canvas id="cajaGrafico" width="400" height="200"></canvas>
+        </div>
+        <div class="canvas-container bg-gray-400 text-white">
+            <canvas id="scatterPlot" width="400" height="200"></canvas>
+        </div>
         </div>
 
         <div id="result" class="container-fluid py-4 bg-gray-400 text-white"></div>
@@ -92,20 +97,20 @@
         .policy-container {
             display: flex;
             flex-wrap: wrap; 
-            justify-content: space-around; /* Distribuir políticas uniformemente */
-            margin-bottom: 10px; /* Espacio inferior entre las políticas y la conclusión */
+            justify-content: space-around; /*Distribuir políticas uniformemente*/
+            margin-bottom: 10px; /*Espacio inferior entre las políticas y la conclusión*/
             margin-left: 7%;
         }
 
         .policy {
-            flex: 1 1 300px; /* Ancho mínimo de las políticas */
+            flex: 1 1 300px; /*Ancho mínimo de las políticas*/
             padding: 10px;
-            margin: 0 5px; /* Espacio entre las políticas */
-            box-sizing: border-box; /* Incluir el padding y border en el ancho */
+            margin: 0 5px; /*Espacio entre las políticas*/
+            box-sizing: border-box; /*Incluir el padding y border en el ancho*/
         }
 
         .policy h3 {
-            margin-top: 0; /* Eliminar margen superior del título */
+            margin-top: 0; /*Eliminar margen superior del título*/
         }
 
         .texto-politica, .conclusion {
@@ -117,19 +122,18 @@
         }
 
         .canvas-container {
-            display: flex;
-            justify-content: center; /* Centrar horizontalmente */
-            align-items: center;     /* Centrar verticalmente si es necesario */
-            height: auto;            /* Ajustar altura según necesidad */
-            background-color: #258FBB; /* Cambiar color de fondo del contenedor */
+            display: block; /* Mostrar cada contenedor de canvas como bloque */
+            margin: 20px auto; /* Centrar horizontalmente y agregar un margen vertical */
+            width: 80%; /*Ajustar ancho */
+            background-color: #258FBB; /*Cambiar color de fondo del contenedor */
         }
 
-        #cajaGrafico {
+        #cajaGrafico, #scatterPlot {
             display: block;
-            width: 100%;  /* Ajustar ancho al 100% */
-            height: auto;  /* Dejar que el alto se ajuste automáticamente */
+            width: 100%;  /*Ajustar ancho al 100% */
+            height: auto;  /*Dejar que el alto se ajuste automáticamente */
         }
-
+    
     </style>
     @endpush
 
@@ -140,7 +144,8 @@
             document.getElementById('btnIniciar').addEventListener('click', startSimulation);
         });
 
-        let cajaGrafico;  //Variable global para almacenar el gráfico
+        let cajaGrafico;  //Variable global para almacenar el gráfico de barras
+        let scatterPlot;  //Variable global para almacenar el gráfico de dispersión
 
         function normalRandom() {
             let u = 0, v = 0;
@@ -149,11 +154,13 @@
             return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
         }
 
-        function simulatePolicy(simulationTime, componentCost, disconnectionCost, policy) {
+        function simularPolitica(simulationTime, componentCost, disconnectionCost, policy) {
             let costoTotal = 0;
             let numReemplazos = 0;
             let componentLives = [];
             let tiempoTotalSimu = 0;
+            let lifeTimes = [];
+            let enRangoTiempoVida = []; //Tiempos de vida dentro del rango
 
             if (policy === 1) {
                 for (let i = 0; i < 4; i++) {
@@ -168,8 +175,16 @@
 
                     simulationTime -= minLife;
                     tiempoTotalSimu += minLife;
-                    costoTotal += componentCost + disconnectionCost;
-                    numReemplazos++;
+
+                    //agregar el tiempo de vida a un conjunto
+                    if (minLife <= 500 || minLife >= 700) {
+                        costoTotal += componentCost + disconnectionCost;
+                        numReemplazos++;
+                        lifeTimes.push(minLife); //Tiempos de vida fuera de rango
+                    } else {
+                        enRangoTiempoVida.push(minLife);//Tiempos de vida dentro de rango
+                    }
+                    
                     let index = componentLives.indexOf(minLife);
                     componentLives[index] = 600 + 100 * normalRandom();
                 }
@@ -183,14 +198,21 @@
 
                     simulationTime -= minLife;
                     tiempoTotalSimu += minLife;
-                    costoTotal += 4 * componentCost + 2 * disconnectionCost;
-                    numReemplazos++;
+
+                    // Agregar tiempo de vida al conjunto correspondiente
+                    if (minLife < 500 || minLife > 700) {
+                        costoTotal += 4 * componentCost + 2 * disconnectionCost;
+                        numReemplazos++;
+                        lifeTimes.push(minLife); //Tiempos de vida fuera de rango
+                    } else {
+                        enRangoTiempoVida.push(minLife); // iempos de vida dentro de rango
+                    }
                 }
             }
 
-            return { costoTotal, numReemplazos, tiempoTotalSimu };
+            return { costoTotal, numReemplazos, tiempoTotalSimu, lifeTimes, enRangoTiempoVida };
         }
-
+//grafico de barras
         function drawBarChart(policy1Data, policy2Data) {
             const ctx = document.getElementById('cajaGrafico').getContext('2d');
 
@@ -220,20 +242,19 @@
                 options: {
                     scales: {
                         y: {
-                            beginAtZero: true,
                             grid: {
-                                color: '#3A5C6B' // Color de la cuadrícula del eje Y
+                                color: '#3A5C6B' //Color de la cuadrícula del eje Y
                             },
                             ticks: {
-                                color: '#FFFFFF' // Color de los números del eje Y
+                                color: '#FFFFFF' //Color de los números del eje Y
                             }
                         },
                         x: {
                             grid: {
-                                color: '#3A5C6B' // Color de la cuadrícula del eje X
+                                color: '#3A5C6B' //Color de la cuadrícula del eje X
                             },
                             ticks: {
-                                color: '#FFFFFF' // Color de los números del eje X
+                                color: '#FFFFFF' //Color de los números del eje X
                             }
                         }
                     },
@@ -252,8 +273,103 @@
                 }
             });
         }
+//grafico de dispersion
+        function drawScatterPlot(policy1Data, policy2Data) {
+            const ctx = document.getElementById('scatterPlot').getContext('2d');
 
-        function displayResults(policy1Data, policy2Data) {
+            //Convertir datos a puntos para el gráfico de dispersión
+            const policy1Points = [
+                ...policy1Data.lifeTimes.map((time, index) => ({ x: index, y: time, inRange: false })),
+                ...policy1Data.enRangoTiempoVida.map((time, index) => ({ x: policy1Data.lifeTimes.length + index, y: time, inRange: true }))
+            ];
+            const policy2Points = [
+                ...policy2Data.lifeTimes.map((time, index) => ({ x: index, y: time, inRange: false })),
+                ...policy2Data.enRangoTiempoVida.map((time, index) => ({ x: policy2Data.lifeTimes.length + index, y: time, inRange: true }))
+            ];
+
+            //Destruir el gráfico anterior si existe
+            if (scatterPlot) {
+                scatterPlot.destroy();
+            }
+
+            scatterPlot = new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [
+                        {
+                            label: 'Tiempo de vida P1 - Fuera de Rango',
+                            data: policy1Points.filter(point => !point.inRange),
+                            backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                            borderColor: 'rgba(255, 99, 132, 1)'
+                        },
+                        {
+                            label: 'Tiempo de vida P1 - Dentro de Rango',
+                            data: policy1Points.filter(point => point.inRange),
+                            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                            borderColor: 'rgba(75, 192, 192, 1)'
+                        },
+                        {
+                            label: 'Tiempo de vida P2 - Fuera de Rango',
+                            data: policy2Points.filter(point => !point.inRange),
+                            backgroundColor: 'rgba(255, 159, 64, 0.6)',
+                            borderColor: 'rgba(255, 159, 64, 1)'
+                        },
+                        {
+                            label: 'Tiempo de vida P2 - Dentro de Rango',
+                            data: policy2Points.filter(point => point.inRange),
+                            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                            borderColor: 'rgba(54, 162, 235, 1)'
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            grid: {
+                                color: '#3A5C6B' //Color de la cuadrícula del eje X
+                            },
+                            ticks: {
+                                color: '#FFFFFF' //Color de los números del eje X
+                            },
+                            title: {
+                                display: true,
+                                text: 'Reemplazos',
+                                color: '#FFFFFF'
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: '#3A5C6B' //Color de la cuadrícula del eje Y
+                            },
+                            ticks: {
+                                color: '#FFFFFF' //Color de los números del eje Y
+                            },
+                            title: {
+                                display: true,
+                                text: 'Tiempo de vida (horas)',
+                                color: '#FFFFFF'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#FFFFFF' //Color de las etiquetas
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Tiempo de vida: ${context.raw.y.toFixed(2)} horas`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function mostrarResultado(policy1Data, policy2Data) {
             const resultDiv = document.getElementById('result');
             
             let conclusionMessage;
@@ -290,26 +406,27 @@
             const componentCost = parseInt(document.getElementById('componentCost').value);
             const disconnectionCost = parseInt(document.getElementById('disconnectionCost').value);
 
-            // Depurar: Valores de entrada
+            //Depurar: Valores de entrada
             console.log(`Tiempo de simulacion: ${simulationTime}`);
             console.log(`Costo por componente: ${componentCost}`);
             console.log(`Costo de desconexión: ${disconnectionCost}`);
 
-            // Verificar si las entradas son válidas
+            //Verificar si las entradas son válidas
             if (isNaN(simulationTime) || isNaN(componentCost) || isNaN(disconnectionCost)) {
                 alert('Por favor, ingrese valores numéricos válidos.');
                 return;
             }
 
-            const policy1Data = simulatePolicy(simulationTime, componentCost, disconnectionCost, 1);
-            const policy2Data = simulatePolicy(simulationTime, componentCost, disconnectionCost, 2);
+            const policy1Data = simularPolitica(simulationTime, componentCost, disconnectionCost, 1);
+            const policy2Data = simularPolitica(simulationTime, componentCost, disconnectionCost, 2);
 
-            // Depuración: imprimir resultados de simulación
+            //Depuración: imprimir resultados de simulación
             console.log('Datos generados politica 1:', policy1Data);
             console.log('Datos generados politica 2:', policy2Data);
 
-            drawBarChart(policy1Data, policy2Data);
-            displayResults(policy1Data, policy2Data);
+            drawBarChart(policy1Data, policy2Data);//grafico de barras
+            drawScatterPlot(policy1Data, policy2Data);//para el grafico de dispersion
+            mostrarResultado(policy1Data, policy2Data);//para mostrar el resultado
         }
     </script>
     @endpush
