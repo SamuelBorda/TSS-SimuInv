@@ -11,7 +11,7 @@
             <div class="panelTitulo">
                     <div class="tituloEjercicio">
                         <h3><span class="bg-gradient-titleejercicio">
-                            CASO 1 - COMPARACIÓN DE POLITICAS DE INVENTARIO
+                            CASO 2 - COMPARACIÓN DE POLITICAS DE INVENTARIO
                         </span></h3>
                     </div>             
                 </div>
