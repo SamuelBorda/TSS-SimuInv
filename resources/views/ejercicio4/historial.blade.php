@@ -15,12 +15,12 @@
                     </span></h3>
                 </div>
             </div>
-            <div>
+
             <div class="enunciadoEjercicio marginIzqDer">
                 <h3 class="text-Ayuda">HISTORIAL DE SIMULACIONES</h3>
             </div>
             <div class="tablaHistorialEjercicio1">
-                    <table class="tablaejercicio4">
+                    <table class="tablaresponsiva">
                         <thead>
                         <tr>
                             <th>Numero de simulaciones</th>
