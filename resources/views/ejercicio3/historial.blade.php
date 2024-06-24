@@ -21,7 +21,7 @@
                 <h3 class="text-Ayuda">HISTORIAL DE SIMULACIONES</h3>
             </div>
             <div class="tablaHistorialEjercicio1">
-                <table class="tablaresponsiva">
+                <table class="tablaresponsivaTres">
                     <thead>
                     <tr>
                         <th>Cantidad de compra inicial</th>

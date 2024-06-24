@@ -20,7 +20,7 @@
                 <h3 class="text-Ayuda">HISTORIAL DE SIMULACIONES</h3>
             </div>
             <div class="tablaHistorialEjercicio1">
-                <table class="tablaresponsiva">
+                <table class="tablaresponsivaCinco">
                     <thead>
                     <tr>
                         <th>Inventario</th>
