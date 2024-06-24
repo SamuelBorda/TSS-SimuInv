@@ -78,7 +78,7 @@
             </div>
 
             <div class="container">
-    <div class="tablaSimulacion mt-5" style="display:none;">
+    <div class="tablaSimulacion mt-5" style="display:none; width:100%; overflow:auto">
         <h2 class="text-white text-center">POLITICA 1</h2>
         <table class="table table-bordered mt-3 text-white mx-auto" id="tablaResultados">
             <thead>
@@ -98,7 +98,7 @@
         </table>
     </div>
 
-    <div class="tablaSimulacion2 mt-5"  style="display:none;">
+    <div class="tablaSimulacion2 mt-5"  style="display:none; width:100%; overflow:auto;">
         <h2 class="text-white text-center" >POLITICA 2</h2>
         <table class="table table-bordered mt-3 text-white mx-auto" id="tablaResultados2">
             <thead>
