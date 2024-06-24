@@ -11,17 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('historial_ejercicio4', function (Blueprint $table) {
+        Schema::create('historialEjercicio4', function (Blueprint $table) {
             $table->id();
+            $table->integer('NumeroSimulaciones');
+            $table->integer('TREMA');
+            $table->integer('Aceptacionproyecto');
+            $table->integer('PromedioTIR');
+            $table->string('Mejoropcion');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('historial_ejercicio4');
+        Schema::dropIfExists('historialEjercicio4');
     }
 };

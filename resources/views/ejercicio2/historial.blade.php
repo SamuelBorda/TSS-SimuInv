@@ -4,25 +4,56 @@
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
+        <br>
+        <br>
+        <br>
+        <div class="py-4 bg-gray-400 text-white">
+            <div class="panelTitulo">
+                <div class="tituloEjercicio">
+                    <h3><span class="bg-gradient-titleejercicio">
+                        CASO 2 - MANTENIMIENTO DE EQUIPOS
+                    </span></h3>
+                </div>
+            </div>
 
-        <br>
-        <br>
-        <br>
-        <div class="container-fluid py-4 bg-gray-400"> <!-- solo para el espacio -->     </div>  
+            <div class="enunciadoEjercicio marginIzqDer">
+                <h3 class="text-Ayuda">HISTORIAL DE SIMULACIONES</h3>
+            </div>
+            <div class="tablaHistorialEjercicio1">
+                <table class="tablaresponsiva">
+                    <thead>
+                    <tr>
+                        <th>HorasSimulación</th>
+                        <th>CostoComponente</th>
+                        <th>CostoHoraDesconexión</th>
+                        <th>Costo politica 1</th>
+                        <th>Costo politica 2</th>
+                        <th>Mejor opción</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($historial as $item)
+                    <tr>
+                        <td>{{ $item->TiempoHorasSimulacion }}</td>
+                        <td>{{ $item->CostoPorComponente }}</td>
 
-        <div class="container-fluid py-4 bg-dark-400 text-white">
-            <h3 class="text-start ps-5">
-                <span class="bg-gradient-simu px-4 py-2">
-                    CASO 2 - MANTENIMIENTO DE EQUIPOS
-                </span>
-            </h3>
-        </div> 
-        
+                        <td>{{ $item->CostoPorHoraDesconexion }}</td>
+                        <td>{{ $item->Costopolitica1 }}</td>
+                        <td>{{ $item->Costopolitica2 }}</td>
+                        <td>{{ $item->Mejoropcion }}</td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+</div>
+
         </main>
  @push('css')
         <style>
-            
-        
+
+
     </style>
 @endpush
 @push('js')

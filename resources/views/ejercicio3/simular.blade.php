@@ -30,36 +30,36 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tituloNumDias" class="text-white fw-bold">Cantidad de compra inicial</label>
-                            <input type="text" class="form-control" id="numdias"
+                            <input  type="number" class="form-control form-control-lg" id="numdias"
                                 placeholder="Ingrese numero de compra inicial">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tituloInvIni" class="text-white fw-bold">Costo de compra inicial</label>
-                            <input type="text" class="form-control" id="inventarioIni"
+                            <input  type="number" class="form-control form-control-lg" id="inventarioIni"
                                 placeholder="Ingrese el costo de compra inicial">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tituloCostoMante" class="text-white fw-bold">Costo de venta al público</label>
-                            <input type="text" class="form-control" id="costoMantenimiento"
+                            <input type="number" class="form-control form-control-lg" id="costoMantenimiento"
                                 placeholder="Ingrese costo de mantenimiento">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tituloCostoFalta" class="text-white fw-bold">Costo de compra adicional</label>
-                            <input type="text" class="form-control" id="costoFaltante"
+                            <input  type="number" class="form-control form-control-lg" id="costoFaltante"
                                 placeholder="Ingrese costo de compra adicional">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tituloCostoOrdenar" class="text-white fw-bold">Costo de devolución inicial</label>
-                            <input type="text" class="form-control" id="costoOrdenarInicial"
+                            <input  type="number" class="form-control form-control-lg" id="costoOrdenarInicial"
                                 placeholder="Ingrese costo de devolucion inicial">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tituloCostoOrdenar" class="text-white fw-bold">Costo de devolución final</label>
-                            <input type="text" class="form-control" id="costoOrdenarFinal"
+                            <input  type="number" class="form-control form-control-lg" id="costoOrdenarFinal"
                                 placeholder="Ingrese costo de devolucion final">
                         </div>
                     </div>
@@ -78,7 +78,7 @@
             </div>
 
             <div class="container">
-    <div class="tablaSimulacion mt-5" style="display:none;">
+    <div class="tablaSimulacion mt-5" style="display:none; width:100%; overflow:auto">
         <h2 class="text-white text-center">POLITICA 1</h2>
         <table class="table table-bordered mt-3 text-white mx-auto" id="tablaResultados">
             <thead>
@@ -98,7 +98,7 @@
         </table>
     </div>
 
-    <div class="tablaSimulacion2 mt-5"  style="display:none;">
+    <div class="tablaSimulacion2 mt-5"  style="display:none; width:100%; overflow:auto;">
         <h2 class="text-white text-center" >POLITICA 2</h2>
         <table class="table table-bordered mt-3 text-white mx-auto" id="tablaResultados2">
             <thead>
@@ -174,9 +174,9 @@
 
     const dem2 = [4, 5, 6, 7, 8];
     const prob2 = [0.10, 0.20, 0.30, 0.25, 0.15];
-    const resultadopolitica = "Politica 1" ;
-    const ganan1 = 0;
-    const ganan2 =  0;
+    var resultadopolitica = "Politica 1" ;
+    var ganan1 = 0;
+    var ganan2 =  0;
 // Variables para almacenar las demandas del día 11 al día 30
 let demandasRestantes = [];
 
@@ -562,7 +562,7 @@ function dibujarGraficos(costoTotal1, totalIngresos1,totalAdicional1, gananciaTo
 
         const conclusion = document.querySelector('.conclusion-text');
         if (gananciaTotal1 > gananciaTotal2) {
-
+            resultadopolitica="Politica 1";
             conclusion.textContent = "La Política 1 es la más eficiente debido a que maximiza las ganancias durante el mes, aprovechando las oportunidades de compra y devolución más favorables.";
         } else {
             resultadopolitica = "Politica 2";

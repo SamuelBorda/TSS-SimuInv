@@ -45,6 +45,18 @@ Route::get('/ejercicio5', [Ejercicio5Controller::class, 'index'])->name('ejercic
 Route::get('/ejercicio1/historial', [Ejercicio1Controller::class, 'historial'])->name('ejercicio1.historial');
 Route::get('/ejercicio1/simular', [Ejercicio1Controller::class, 'simular'])->name('ejercicio1.simular');
 Route::get('/ejercicio1/ayuda', [Ejercicio1Controller::class, 'ayuda'])->name('ejercicio1.ayuda');
+Route::post('/ejercicio1/ActualizarHistorial1', [Ejercicio1Controller::class, 'actualizarhistorial'])->name('ejercicio1.actualizarEjercicio1');
+
+//RUTA PARA LAS VISTAS DE ACCIONES EJERCICIO1
+Route::get('/ejercicio5/historial', [Ejercicio5Controller::class, 'historial'])->name('ejercicio5.historial');
+Route::get('/ejercicio5/simular', [Ejercicio5Controller::class, 'simular'])->name('ejercicio5.simular');
+Route::get('/ejercicio5/ayuda', [Ejercicio5Controller::class, 'ayuda'])->name('ejercicio5.ayuda');
+Route::post('/ejercicio5/ActualizarHistorial5', [Ejercicio5Controller::class, 'actualizarhistorial'])->name('ejercicio5.actualizarEjercicio5');
+
+
+
+
+
 
 //RUTA PARA LAS VISTAS DE EJERCICIO3
 Route::get('/ejercicio3/historial', [Ejercicio3Controller::class, 'historial'])->name('ejercicio3.historial');
@@ -59,11 +71,16 @@ Route::post('/ejercicio3/ActualizarHistorial3', [Ejercicio3Controller::class, 'a
 Route::get('/ejercicio4/historial', [Ejercicio4Controller::class, 'historial'])->name('ejercicio4.historial');
 Route::get('/ejercicio4/simular', [Ejercicio4Controller::class, 'simular'])->name('ejercicio4.simular');
 Route::get('/ejercicio4/ayuda', [Ejercicio4Controller::class, 'ayuda'])->name('ejercicio4.ayuda');
+Route::post('/ejercicio4/ActualizarHistorial4', [Ejercicio4Controller::class, 'actualizarhistorial'])->name('ejercicio4.actualizarEjercicio4');
+
 
 //RUTA PARA LAS VISTAS DE ACCIONES EJERCICIO2
 Route::get('/ejercicio2/historial', [Ejercicio2Controller::class, 'historial'])->name('ejercicio2.historial');
 Route::get('/ejercicio2/simular', [Ejercicio2Controller::class, 'simular'])->name('ejercicio2.simular');
 Route::get('/ejercicio2/ayuda', [Ejercicio2Controller::class, 'ayuda'])->name('ejercicio2.ayuda');
+Route::post('/ejercicio2/ActualizarHistorial2', [Ejercicio2Controller::class, 'actualizarhistorial'])->name('ejercicio2.actualizarEjercicio2');
+
+
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 

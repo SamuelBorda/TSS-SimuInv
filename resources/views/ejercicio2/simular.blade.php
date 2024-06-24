@@ -4,19 +4,24 @@
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
-
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <br>
         <br>
         <br>
-        <div class="container-fluid py-4 bg-gray-400"></div>
-
-        <div class="container-fluid py-4 bg-dark-400 text-white">
-            <h3 class="text-start ps-5">
-                <span class="bg-gradient-simu px-4 py-2">
-                    CASO 2 - MANTENIMIENTO DE EQUIPOS
-                </span>
-            </h3>
-        </div>
+        <div class="py-4  bg-gray-400">
+            <div class="panelTitulo">
+                <div class="tituloEjercicio">
+                    <h3><span class="bg-gradient-titleejercicio">
+                        CASO 2 - MANTENIMIENTO DE EQUIPOS
+                    </span></h3>
+                </div>
+                <div class="botonayuda">
+                    <a href="{{ route('ejercicio2.ayuda') }}" class="btn btn-gradient-outline">
+                        <span class="small-screen"style="font-size:1rem;">?</span>
+                        <span class="large-screen">¿Necesitas ayuda?</span>
+                    </a>
+                </div>
+            </div>
 
         <div class="container-fluid py-4 bg-gray-400 text-white">
             <div class="row">
@@ -38,23 +43,49 @@
                 <button type="button" class="btn btn-gradientIniciar" id="btnIniciar">Iniciar</button>
             </div>
         </div>
+            <div class="enunciadoEjercicio marginIzqDer">
+                <div class="formularioEjercicio1">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="simulationTime" class="text-white">Tiempo horas de simulación</label>
+                            <input type="text" id="simulationTime" placeholder="Ingrese el tiempo en horas" class="form-control form-control-lg text-black">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="componentCost" class="text-white">Costo por componente</label>
+                            <input type="text" id="componentCost" placeholder="Ingrese el costo por componente" class="form-control form-control-lg text-black">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="disconnectionCost" class="text-white">Costo por hora desconexión</label>
+                            <input type="text" id="disconnectionCost" placeholder="Ingrese el costo por hora de desconexión" class="form-control form-control-lg text-black">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-gradientIniciar" id="btnIniciar">Iniciar</button>
+                    </div>
+                </div>
+            </div>
 
-        <div class="container-fluid py-4 bg-gray-400 text-white">
+        <div class="marginIzqDer resolucionEjercicio1 text-white">
             <p><strong>POLÍTICA 1 :</strong> Reemplazar los componentes solamente cuando se descomponen</p>
             <p><strong>POLÍTICA 2 :</strong> Reemplazar los cuatro componentes cuando falle cualquiera de ellos</p>
-            <br> 
-            <h3 class="texto-simu2">GRÁFICO DE RESULTADOS</h3>
-        </div>
+            <br>
+            <h3 class="text-Ayuda">GRÁFICO DE RESULTADOS</h3>
+
         <div class="container-fluid py-4 bg-gray-400 text-white">
-        <div class="canvas-container bg-gray-400 text-white">
-            <canvas id="cajaGrafico" width="400" height="200"></canvas>
+            <div class="canvas-container bg-gray-400 text-white">
+                <canvas id="cajaGrafico" width="400" height="200"></canvas>
         </div>
         <div class="canvas-container bg-gray-400 text-white">
             <canvas id="scatterPlot" width="400" height="200"></canvas>
         </div>
+            </div>
+
+            <div id="result" class="container-fluid py-4 bg-gray-400 text-white"></div>
         </div>
 
-        <div id="result" class="container-fluid py-4 bg-gray-400 text-white"></div>
     </main>
 
     @push('css')
@@ -73,7 +104,7 @@
             outline: none;
             box-shadow: none;
         }
-        
+
         .form-control-lg {
             font-size: 1.25rem;
             padding: .5rem 1rem;
@@ -99,6 +130,9 @@
             flex-wrap: wrap; 
             justify-content: space-around; /*Distribuir políticas uniformemente*/
             margin-bottom: 10px; /*Espacio inferior entre las políticas y la conclusión*/
+            flex-wrap: wrap;
+            justify-content: space-around; /* Distribuir políticas uniformemente */
+            margin-bottom: 10px; /* Espacio inferior entre las políticas y la conclusión */
             margin-left: 7%;
         }
 
@@ -146,6 +180,9 @@
 
         let cajaGrafico;  //Variable global para almacenar el gráfico de barras
         let scatterPlot;  //Variable global para almacenar el gráfico de dispersión
+        var resultadopolitica="Politica 1";
+        var costo1=0;
+        var costo2=0;
 
         function normalRandom() {
             let u = 0, v = 0;
@@ -371,14 +408,18 @@
 
         function mostrarResultado(policy1Data, policy2Data) {
             const resultDiv = document.getElementById('result');
-            
+
             let conclusionMessage;
+            costo1=policy1Data.costoTotal;
+            costo2=policy2Data.costoTotal;
             if (policy1Data.costoTotal < policy2Data.costoTotal) {
+                resultadopolitica="Politica 1";
                 conclusionMessage = `<p>La Política 1 es más económica y eficiente debido a su capacidad para minimizar los costos operativos totales y aumentar la fiabilidad del equipo.</p>`;
             } else {
+                resultadopolitica ="Politica 2";
                 conclusionMessage = `<p>La Política 2 es más económica y eficiente debido a su capacidad para minimizar los costos operativos totales y aumentar la fiabilidad del equipo.</p>`;
             }
-            
+
             resultDiv.innerHTML = `
                 <div class="policy-container">
                     <div class="policy">
@@ -424,10 +465,58 @@
             console.log('Datos generados politica 1:', policy1Data);
             console.log('Datos generados politica 2:', policy2Data);
 
-            drawBarChart(policy1Data, policy2Data);//grafico de barras
-            drawScatterPlot(policy1Data, policy2Data);//para el grafico de dispersion
-            mostrarResultado(policy1Data, policy2Data);//para mostrar el resultado
+            drawBarChart(policy1Data, policy2Data);
+            displayResults(policy1Data, policy2Data);
         }
+
+
+
+        //para actualizar en tiempo real
+        function historialAñadir() {
+
+
+            const TiempoHorasSimulacion = parseFloat(document.getElementById('simulationTime').value);
+            const CostoPorComponente = parseFloat(document.getElementById('componentCost').value);
+            const CostoPorHoraDesconexion = parseFloat(document.getElementById('disconnectionCost').value);
+
+
+            console.log("AHHHHHHH");
+
+            console.log(costo1);
+            console.log(costo2);
+            console.log(resultadopolitica);
+            console.log(TiempoHorasSimulacion);
+            console.log(CostoPorComponente);
+            console.log(CostoPorHoraDesconexion);
+            fetch("{{ route('ejercicio2.actualizarEjercicio2') }}", { // Aquí faltaba cerrar el paréntesis de route()
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+
+                TiempoHorasSimulacion: TiempoHorasSimulacion,
+                CostoPorComponente: CostoPorComponente,
+                CostoPorHoraDesconexion: CostoPorHoraDesconexion,
+                costo1: costo1,
+                costo2: costo2,
+                Mejoropcion: resultadopolitica,
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert(data.message); // Notificar al usuario
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error actualizando el dato : ' + error.message);
+
+        });
+        }
+
     </script>
     @endpush
 </x-layout>

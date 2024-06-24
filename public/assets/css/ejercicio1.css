@@ -10,7 +10,7 @@
 }
 .enunciadoEjercicio{
     padding: 3rem;
-    
+
 }
 .marginIzqDer{
     padding-left: 5rem;
@@ -153,25 +153,25 @@ font-size: 1.3rem; /* 36px en rem */
     padding-left: 3rem;
     padding-right: 3rem;
 }
-	
+
 	table.tablaresponsiva,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
 		.tablaresponsiva th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
 		.tablaresponsiva td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
 		.tablaresponsiva tr:last-child td, .rwd_auto tr:last-child td{border:0}
-			
-@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)  
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
 {
-	
+
 	table.tablaresponsiva, .tablaresponsiva thead, .tablaresponsiva tbody, .tablaresponsiva th, .tablaresponsiva td, .tablaresponsiva tr { display: block; }
-		
+
 	.tablaresponsiva thead tr { position: absolute;top: -9999px;left: -9999px; }
-		
+
 	.tablaresponsiva tr { border: 1px solid #ccc; }
-		
+
 	.tablaresponsiva td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
-		
+
 	.tablaresponsiva td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
-		
+
 	.tablaresponsiva td:nth-of-type(1):before { content: "Número días"; }
 	.tablaresponsiva td:nth-of-type(2):before { content: "Inventario"; }
 	.tablaresponsiva td:nth-of-type(3):before { content: "Costo mantenimiento"; }
@@ -180,7 +180,7 @@ font-size: 1.3rem; /* 36px en rem */
     .tablaresponsiva td:nth-of-type(6):before { content: "Costo politica 1"; }
     .tablaresponsiva td:nth-of-type(7):before { content: "Costo politica 2"; }
     .tablaresponsiva td:nth-of-type(8):before { content: "Mejor opción"; }
-		
+
 	.descarto {display:none;}
 	.fontsize {font-size:10px}
 }
@@ -218,7 +218,7 @@ font-size: 1.3rem; /* 36px en rem */
     .botonIniciar {
         text-align: center; /* Centrar el contenido del contenedor */
     }
-    
+
     .btn {
         width: 100%; /* Botón ocupa todo el ancho del contenedor */
     }
@@ -247,4 +247,66 @@ font-size: 1.3rem; /* 36px en rem */
     padding-left: 75px;
     padding-top: 40px;
     font-size: 1.3rem;
+}
+/*ESTILOS TABLA RESPONSIVA HISTORIAL EJERCICIO 4*/
+
+	table.tablaejercicio4,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablaejercicio4 th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablaejercicio4 td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablaejercicio4 tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	table.tablarejercicio4, .tablaejercicio4 thead, .tablaejercicio4 tbody, .tablaejercicio4 th, .tablaejercicio4 td, .tablaejercicio4 tr { display: block; }
+
+	.tablaejercicio4 thead tr { position: absolute;top: -9999px;left: -9999px; }
+
+	.tablaejercicio4 tr { border: 1px solid #ccc; }
+
+	.tablaejercicio4 td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablaejercicio4 td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+
+	.tablaejercicio4 td:nth-of-type(1):before { content: "Número de simulaciones"; }
+	.tablaejercicio4 td:nth-of-type(2):before { content: "TREMA (%)"; }
+	.tablaejercicio4 td:nth-of-type(3):before { content: "Aceptacion del proyecto"; }
+	.tablaejercicio4 td:nth-of-type(4):before { content: "Promedio TIR"; }
+	.tablaejercicio4 td:nth-of-type(5):before { content: "El proyecto es"; }
+
+	.descarto {display:none;}
+	.fontsize {font-size:10px}
+}
+
+/* RESPONSIVO TABLA HISTORIAL 3 */
+table.tablaresponsiva3,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablaresponsiva3 th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablaresponsiva3 td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablaresponsiva3 tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	table.tablaresponsiva3, .tablaresponsiva3 thead, .tablaresponsiva3 tbody, .tablaresponsiva3 th, .tablaresponsiva3 td, .tablaresponsiva3 tr { display: block; }
+
+	.tablaresponsiva3 thead tr { position: absolute;top: -9999px;left: -9999px; }
+
+	.tablaresponsiva3 tr { border: 1px solid #ccc; }
+
+	.tablaresponsiva3 td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablaresponsiva3 td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+
+	.tablaresponsiva3 td:nth-of-type(1):before { content: "Cantidad compra inicial"; }
+	.tablaresponsiva3 td:nth-of-type(2):before { content: "Costo compra inicial"; }
+	.tablaresponsiva3 td:nth-of-type(3):before { content: "Costo de venta al publico"; }
+	.tablaresponsiva3 td:nth-of-type(4):before { content: "Costo de compra adicional"; }
+	.tablaresponsiva3 td:nth-of-type(5):before { content: "Costo devolución inicial"; }
+    .tablaresponsiva3 td:nth-of-type(6):before { content: "Costo devolución final"; }
+    .tablaresponsiva3 td:nth-of-type(7):before { content: "Costo politica 1"; }
+    .tablaresponsiva3 td:nth-of-type(8):before { content: "Costo politica 2"; }
+    .tablaresponsiva3 td:nth-of-type(9):before { content: "Mejor opción"; }
+
+	.descarto {display:none;}
+	.fontsize {font-size:10px}
 }

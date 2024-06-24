@@ -19,12 +19,12 @@
                 En esta plataforma, tendrás la oportunidad de ejecutar y analizar cinco ejercicios de simulación enfocados en sistemas de inventarios e inversiones. Cada ejercicio cuenta con una resolución específica, y aquí te guiaremos detalladamente a través de los resultados obtenidos y su significado.
             </p>
 
-            <h2> <span class="bg-gradient-simu">
+            <h2> <span class="bg-gradient-titleejercicio">
             CASOS DISPONIBLES
             </span></h2>
             <div >
                 <div>
-                    <h3 class="text-simu2">1. Comparación de Políticas de Inventario</h3>
+                    <h3 class="text-Ayuda">1. Comparación de Políticas de Inventario</h3>
                     <p>
                         <strong>Descripción:</strong> Determina la política de inventario más económica entre dos opciones basadas en demanda diaria y tiempo de entrega.
                         <br>
@@ -32,7 +32,7 @@
                     </p>
                 </div>
                 <div >
-                    <h3 class="text-simu2">2. Mantenimiento de equipos</h3>
+                    <h3 class="text-Ayuda">2. Mantenimiento de equipos</h3>
                     <p>
                         <strong>Descripción:</strong> Evalúa dos estrategias de reemplazo para componentes electrónicos de un equipo, considerando la reducción de desconexiones.
                         <br>
@@ -42,7 +42,7 @@
             </div>
             <div >
                 <div >
-                    <h3 class="text-simu2">3. Política de Compra para un Vendedor de Revistas</h3>
+                    <h3 class="text-Ayuda">3. Política de Compra para un Vendedor de Revistas</h3>
                     <p>
                         <strong>Descripción:</strong> Optimiza la política de compra y devolución de revistas mensuales con base en la demanda y costos asociados.
                         <br>
@@ -50,11 +50,19 @@
                     </p>
                 </div>
                 <div >
-                    <h3 class="text-simu2">4. Evaluación de un Proyecto de Inversión</h3>
+                    <h3 class="text-Ayuda">4. Evaluación de un Proyecto de Inversión</h3>
                     <p>
                         <strong>Descripción:</strong> Decide si emprender un nuevo proyecto de inversión analizando la probabilidad de superar una tasa mínima de retorno.
                         <br>
                         <strong>Parámetros:</strong> Distribución normal de la inversión inicial y flujo neto anual, horizonte de planeación de 5 años.
+                    </p>
+                </div>
+                <div >
+                    <h3 class="text-Ayuda">5. Optimización de inventario y reorden</h3>
+                    <p>
+                        <strong>Descripción:</strong> Determina la cantidad óptima a ordenar y el nivel óptimo de reorden para un producto con demanda diaria variable y tiempo de entrega.
+                        <br>
+                        <strong>Parámetros:</strong> Distribuciones de demanda diaria y tiempo de entrega, costos de orden, inventario y faltantes.
                     </p>
                 </div>
             </div>

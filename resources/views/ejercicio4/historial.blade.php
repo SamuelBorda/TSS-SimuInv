@@ -13,10 +13,37 @@
                     <h3><span class="bg-gradient-titleejercicio">
                         CASO 4 - EVALUACION DE UN PROYECTO DE INVERSION
                     </span></h3>
-                </div>       
+                </div>
             </div>
-            <div>
-                <p>HISTORIAL 4</p>
+
+            <div class="enunciadoEjercicio marginIzqDer">
+                <h3 class="text-Ayuda">HISTORIAL DE SIMULACIONES</h3>
+            </div>
+            <div class="tablaHistorialEjercicio1">
+                    <table class="tablaresponsiva">
+                        <thead>
+                        <tr>
+                            <th>Numero de simulaciones</th>
+                            <th>TREMA (%)</th>
+                            <th>Aceptacion de proyecto</th>
+                            <th>Promedio TIR</th>
+                            <th>El proyecto es</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($historial as $item)
+                            <tr>
+                                <td>{{ $item->NumeroSimulaciones }}</td>
+                                <td>{{ $item->TREMA }}</td>
+
+                                <td>{{ $item->Aceptacionproyecto }}</td>
+                                <td>{{ $item->PromedioTIR }}</td>
+                                <td>{{ $item->Mejoropcion }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
