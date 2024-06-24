@@ -58,11 +58,6 @@
 @endpush
 @push('js')
 
-
-
-
-
-
 <!-- Initialize Flatpickr -->
 <script type="module">
 
