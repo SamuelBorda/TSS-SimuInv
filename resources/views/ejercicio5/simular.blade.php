@@ -55,7 +55,7 @@
                     <div class="botonGrafico col-md-6 text-end" style="display:none;">
                         <button type="button" class="btn  btn-gradientIniciar fw-bold" id="tablasbtn">Mostrar Tablas</button>
                     </div>
-                    <div class="botonIniciar">
+                    <div class="botonIniciar col-md-6 text-end">
                         <button type="button" class="btn btn-gradientIniciar" id="btnIniciar1">Iniciar</button>
                     </div>
                     </div>

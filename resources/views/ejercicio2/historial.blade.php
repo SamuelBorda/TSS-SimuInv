@@ -23,9 +23,9 @@
                 <table class="tablaresponsiva">
                     <thead>
                     <tr>
-                        <th>HorasSimulación</th>
-                        <th>CostoComponente</th>
-                        <th>CostoHoraDesconexión</th>
+                        <th>Horas Simulación</th>
+                        <th>Costo Componente</th>
+                        <th>Costo Hora Desconexión</th>
                         <th>Costo politica 1</th>
                         <th>Costo politica 2</th>
                         <th>Mejor opción</th>
@@ -34,12 +34,12 @@
                     <tbody>
                     @foreach($historial as $item)
                     <tr>
-                        <td>{{ $item->TiempoHorasSimulacion }}</td>
-                        <td>{{ $item->CostoPorComponente }}</td>
+                        <td>{{ $item->TiempoHorasSimulacion }} <span>hrs</span></td>
+                        <td>{{ $item->CostoPorComponente }} <span>$/componente</span></td>
 
-                        <td>{{ $item->CostoPorHoraDesconexion }}</td>
-                        <td>{{ $item->Costopolitica1 }}</td>
-                        <td>{{ $item->Costopolitica2 }}</td>
+                        <td>{{ $item->CostoPorHoraDesconexion }} <span>$/desconexion</span></td>
+                        <td>{{ $item->Costopolitica1 }} <span>$</span></td>
+                        <td>{{ $item->Costopolitica2 }} <span>$</span></td>
                         <td>{{ $item->Mejoropcion }}</td>
                     </tr>
                     @endforeach

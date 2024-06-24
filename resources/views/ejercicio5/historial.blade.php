@@ -27,21 +27,21 @@
                         <th>Costo Ordenar</th>
                         <th>Costo Inventario</th>
                         <th>Costo Faltante</th>
-                        <th>Valor De Orden</th>
-                        <th>Valor De Reorden</th>
+                        <th>Valor De Orden(Q)</th>
+                        <th>Valor De Reorden(R)</th>
                         <th>Costo Total</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($historial as $item)
                     <tr>
-                        <td>{{ $item->InventarioInicial }}</td>
-                        <td>{{ $item->CostoDeOrdenar }}</td>
-                        <td>{{ $item->CostoDeInventario }}</td>
-                        <td>{{ $item->CostoDeFaltante }}</td>
-                        <td>{{ $item->PoliticaQ }}</td>
-                        <td>{{ $item->PoliticaR }}</td>
-                        <td>{{ $item->CostoTotal }}</td>
+                        <td>{{ $item->InventarioInicial }} <span>unidades</span></td>
+                        <td>{{ $item->CostoDeOrdenar }} <span>$/orden</span></td>
+                        <td>{{ $item->CostoDeInventario }} <span>$/ud/año</span></td>
+                        <td>{{ $item->CostoDeFaltante }} $/ud</td>
+                        <td>{{ $item->PoliticaQ }} <span>unidades</span></td>
+                        <td>{{ $item->PoliticaR }} <span>unidades</span></td>
+                        <td>{{ $item->CostoTotal }} <span>$</span></td>
                     </tr>
                     @endforeach
                     </tbody>

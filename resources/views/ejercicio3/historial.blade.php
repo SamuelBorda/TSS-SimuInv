@@ -38,14 +38,14 @@
                     <tbody>
                     @foreach($historial as $item)
                     <tr>
-                        <td>{{ $item->Cantidadcomprainicial }}</td>
-                        <td>{{ $item->Costocomprainicial }}</td>
-                        <td>{{ $item->Costoventa }}</td>
-                        <td>{{ $item->Costocompraadicional }}</td>
-                        <td>{{ $item->Costodevolucioninicial }}</td>
-                        <td>{{ $item->Costodevolucionfinal }}</td>
-                        <td>{{ $item->Costopolitica1 }}</td>
-                        <td>{{ $item->Costopolitica2 }}</td>
+                        <td>{{ $item->Cantidadcomprainicial }} <span>unidades</span></td>
+                        <td>{{ $item->Costocomprainicial }} <span>$/ud</span></td>
+                        <td>{{ $item->Costoventa }} <span>$/ud</span></td>
+                        <td>{{ $item->Costocompraadicional }} <span>$/ud</span></td>
+                        <td>{{ $item->Costodevolucioninicial }} <span>$/ud</span></td>
+                        <td>{{ $item->Costodevolucionfinal }} <span>$/ud</span></td>
+                        <td>{{ $item->Costopolitica1 }} <span>$</span></td>
+                        <td>{{ $item->Costopolitica2 }} <span>$</span></td>
                         <td>{{ $item->Mejoropcion }}</td>
                     </tr>
                     @endforeach

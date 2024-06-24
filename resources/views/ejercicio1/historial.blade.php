@@ -36,14 +36,13 @@
                     <tbody>
                     @foreach($historial as $item)
                     <tr>
-                        <td>{{ $item->Numerodias }}</td>
-                        <td>{{ $item->Inventario }}</td>
-
-                        <td>{{ $item->Costomantenimiento }}</td>
-                        <td>{{ $item->Costoordenar }}</td>
-                        <td>{{ $item->Costofaltante }}</td>
-                        <td>{{ $item->Costopolitica1 }}</td>
-                        <td>{{ $item->Costopolitica2 }}</td>
+                        <td>{{ $item->Numerodias }} <span>dias</span></td>
+                        <td>{{ $item->Inventario }} <span>unidades</span></td>
+                        <td>{{ $item->Costomantenimiento }} <span>$/ud/dia</span></td>
+                        <td>{{ $item->Costoordenar }} <span>$/orden</span></td>
+                        <td>{{ $item->Costofaltante }} <span>$/ud</span></td>
+                        <td>{{ $item->Costopolitica1 }} <span>$</span></td>
+                        <td>{{ $item->Costopolitica2 }} <span>$</span></td>
                         <td>{{ $item->Mejoropcion }}</td>
                     </tr>
                     @endforeach

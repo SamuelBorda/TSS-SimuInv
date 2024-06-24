@@ -39,6 +39,11 @@
                         Se ingresa el costo faltante por unidad, hace referencia a no tener suficientes unidades disponibles para satisfacer la demanda.
                     </p>
                     <p>
+                        <strong>COSTO FALTANTE</strong> 
+                        <br>
+                        Se ingresa el costo faltante por unidad, hace referencia a no tener suficientes unidades disponibles para satisfacer la demanda.
+                    </p>
+                    <p>
                         <strong>COSTO DE ORDENAR</strong> 
                         <br>
                         Se  ingresa el costo por realizar una orden de inventario.

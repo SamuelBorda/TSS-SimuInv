@@ -34,10 +34,10 @@
                             @foreach($historial as $item)
                             <tr>
                                 <td>{{ $item->NumeroSimulaciones }}</td>
-                                <td>{{ $item->TREMA }}</td>
+                                <td>{{ $item->TREMA }} <span>%</span></td>
 
-                                <td>{{ $item->Aceptacionproyecto }}</td>
-                                <td>{{ $item->PromedioTIR }}</td>
+                                <td>{{ $item->Aceptacionproyecto }} <span>%</span></td>
+                                <td>{{ $item->PromedioTIR }} <span>%</span></td>
                                 <td>{{ $item->Mejoropcion }}</td>
                             </tr>
                             @endforeach

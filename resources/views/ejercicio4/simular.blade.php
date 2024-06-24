@@ -72,7 +72,7 @@
                 <div class="grafico4" style="margin-top:20px;">
                     <h4 class="text-Ayuda">GRAFICO DE RESULTADOS</h4>
                 </div>
-                <div class="grafica col-md-6 mx-auto" id="graficaContainer">
+                <div class="grafica col-md-4 mx-auto" id="graficaContainer">
                     <div id="graficoTIR" style="width:100%;height:400px;"></div> <!-- Contenedor para el gráfico de TIR -->
                 </div>
 
