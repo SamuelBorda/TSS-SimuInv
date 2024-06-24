@@ -26,7 +26,7 @@
                 Un vendedor de revistas compra mensualmente una revista el día primero de cada mes. El costo  de cada ejemplar es de $ 1.50. La demanda de esta revista en los primeros 10 días del mes sigue la  siguiente distribución de probabilidad:
                 </p>
                 <div class="tablaHistorialEjercicio1">
-                    <table class="tablaresponsiva" >
+                    <table class="tablatresdemanda" >
                         <thead class="thead-light">
                             <tr>
                                 <th>Demanda</th>
@@ -59,7 +59,7 @@
                 Al final del décimo día, el vendedor puede regresar cualquier cantidad al proveedor, quien se las  pagan a $0.90 el ejemplar, o comprar más a $1.20 el ejemplar. La demanda en los siguientes 20 días  está dada por la siguiente distribución de probabilidad:
                 </p>
                 <div class="tablaHistorialEjercicio1">
-                    <table class="tablaresponsiva">
+                    <table class="tablatresdem">
                         <thead class="thead-light">
                             <tr>
                                 <th>Demanda</th>

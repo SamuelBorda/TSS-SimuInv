@@ -26,7 +26,7 @@
                 La demanda diaria y el tiempo de entrega de un cierto producto, siguen las siguientes  distribuciones de probabilidad:
                 </p>
                 <div class="tablaHistorialEjercicio1">
-                    <table class="tablaresponsiva" >
+                    <table class="tablacincodem" >
                         <thead class="thead-light">
                             <tr>
                                 <th>Demanda Diaria</th>
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="tablaHistorialEjercicio1">
-                    <table class="tablaresponsiva" >
+                    <table class="tablacincotiem" >
                         <thead class="thead-light">
                             <tr>
                                 <th>Tiempo de <br>entrega (Dias)</th>
@@ -110,7 +110,7 @@
                 La informacion con respecto a los costos relevantes es la siguiente:
                 </p>
                 <div class="tablaHistorialEjercicio1">
-                    <table class="tablaresponsiva">
+                    <table class="tablacincocosto">
                         <thead class="thead-light">
                             <tr>
                                 <th>Costo de ordenar</th>

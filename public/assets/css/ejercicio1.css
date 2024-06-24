@@ -373,3 +373,115 @@ table.tablaresponsivaCinco,table.rwd_auto {border:1px solid #cccccc;width:100%;m
 	.descarto {display:none;}
 	.fontsize {font-size:10px}
 }
+
+/* RESPONSIVO TABLA EJERCICIO 3*/
+table.tablatresdemanda,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablatresdemanda th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablatresdemanda td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablatresdemanda tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	table.tablatresdemanda, .tablatresdemanda thead, .tablatresdemanda tbody, .tablatresdemanda th, .tablatresdemanda td, .tablatresdemanda tr { display: block; }
+
+	.tablatresdemanda thead tr { position: absolute;top: -9999px;left: -9999px; }
+
+	.tablatresdemanda tr { border: 1px solid #ccc; }
+
+	.tablatresdemanda td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablatresdemanda td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+
+	.tablatresdemanda td:nth-of-type(1):before { content: "Demanda"; }
+	.tablatresdemanda td:nth-of-type(2):before { content: "5"; }
+	.tablatresdemanda td:nth-of-type(3):before { content: "6"; }
+    .tablatresdemanda td:nth-of-type(4):before { content: "7"; }
+    .tablatresdemanda td:nth-of-type(5):before { content: "8"; }
+    .tablatresdemanda td:nth-of-type(6):before { content: "9"; }
+    .tablatresdemanda td:nth-of-type(7):before { content: "10"; }
+    .tablatresdemanda td:nth-of-type(8):before { content: "11"; }
+
+	.descarto {display:none;}
+	.fontsize {font-size:10px}
+}
+
+/* RESPONSIVO TABLA EJERCICIO 3 demanda final*/
+table.tablatresdem,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablatresdem th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablatresdem td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablatresdem tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	table.tablatresdem, .tablatresdem thead, .tablatresdem tbody, .tablatresdem th, .tablatresdem td, .tablatresdem tr { display: block; }
+
+	.tablatresdem thead tr { position: absolute;top: -9999px;left: -9999px; }
+
+	.tablatresdem tr { border: 1px solid #ccc; }
+
+	.tablatresdem td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablatresdem td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+
+	.tablatresdem td:nth-of-type(1):before { content: "Demanda"; }
+	.tablatresdem td:nth-of-type(2):before { content: "4"; }
+	.tablatresdem td:nth-of-type(3):before { content: "5"; }
+    .tablatresdem td:nth-of-type(4):before { content: "6"; }
+    .tablatresdem td:nth-of-type(5):before { content: "7"; }
+    .tablatresdem td:nth-of-type(6):before { content: "8"; }
+
+	.descarto {display:none;}
+	.fontsize {font-size:10px}
+}
+
+/* RESPONSIVO TABLA EJERCICIO 5 demanda final*/
+table.tablacincodem,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablacincodem th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablacincodem td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablacincodem tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	.tablacincodem tr { border: 1px solid #ccc; }
+
+	.tablacincodemtd { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablacincodem td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+
+}
+
+/* RESPONSIVO TABLA EJERCICIO 5 tiempo entrega*/
+table.tablacincotiem,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablacincotiem th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablacincotiem td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablacincotiem tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	.tablacincotiem tr { border: 1px solid #ccc; }
+
+	.tablacincotiem { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablacincotiem td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+}
+
+/* RESPONSIVO TABLA EJERCICIO  5 COSTO*/
+table.tablacincocosto,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablacincocosto th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablacincocosto td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablacincocosto tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	.tablacincocosto tr { border: 1px solid #ccc; }
+
+	.tablacincocosto { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablacincocosto td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+    
+}
