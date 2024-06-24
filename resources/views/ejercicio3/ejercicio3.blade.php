@@ -15,7 +15,7 @@
                     </span></h3>
                 </div>
                 <div class="botonayuda">
-                    <a href="{{ route('ejercicio1.ayuda') }}" class="btn btn-gradient-outline">
+                    <a href="{{ route('ejercicio3.ayuda') }}" class="btn btn-gradient-outline">
                         <span class="small-screen"style="font-size:1rem;">?</span>
                         <span class="large-screen">¿Necesitas ayuda?</span>
                     </a>

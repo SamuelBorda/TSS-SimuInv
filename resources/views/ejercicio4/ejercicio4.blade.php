@@ -31,7 +31,7 @@
                     <strong>Flujo neto del periodo => N (u = 30000, desv = 3000)</strong>
                 </p>
                 <p>
-                    Si la administracion ha establecido que un proyecto de inversión sera emprendido si Prob{TIR>TREMA} >= 0.90 y la TREMA es de 30%, 
+                    Si la administracion ha establecido que un proyecto de inversioiin sera emprendido si Prob{TIR>TREMA} >= 0.90 y la TREMA es de 30%, 
                     deberia la compañia X aceptar este nuevo proyecto de inversion? (Asuma un horizonte de planeacion de 5 años y un valor de rescate al termino de este tiempo cero).
                 </p>
             </div>
