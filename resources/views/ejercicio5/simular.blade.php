@@ -527,14 +527,23 @@ function construirTabla(resultados, costoOdernar) {
        //     document.querySelector('.botonGrafico').style.display = 'block';
 
 
-          console.log("AHHHHHHH");
+        // Validar que los campos número de días e inventario inicial sean enteros
+        if (!Number.isInteger(parseFloat(inventarioIni)) ) {
+            alert('Por favor, ingrese un valor entero en  el campo de Inventario Inicial.');
+            return;
+        }
 
-        console.log(inventarioIni);
-        console.log(costoOdernar);
+        // Validar que los campos no estén vacíos y sean números válidos
+        if (isNaN(inventarioIni) || isNaN(costoOdernar) || isNaN(costoFaltante) || isNaN(costoInventario) ) {
+            alert('Por favor, rellene los campos faltantes.');
+            return;
+        }
+            // Validar que todos los valores sean positivos
+        if (inventarioIni <= 0 || costoOdernar < 0 || costoFaltante < 0 || costoInventario < 0 ) {
+            alert('Por favor, ingrese valores positivos.');
+            return;
+        }
 
-        console.log(costoFaltante);
-        console.log(costoInventario);
-        console.log(cantidadDias);
 
        //document.querySelector('.graficossimu').style.display = 'block';
             // Realizar la simulación y construir dinámicamente la tabla

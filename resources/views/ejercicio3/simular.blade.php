@@ -190,6 +190,27 @@ let demandasRestantes = [];
             const costoDevolucionInicial = parseFloat(document.getElementById('costoOrdenarInicial').value);
             const costoDevolucionFinal = parseFloat(document.getElementById('costoOrdenarFinal').value);
 
+
+
+
+                // Validar que los campos número de días e inventario inicial sean enteros
+                if (!Number.isInteger(parseFloat(cantidadCompraInicial))) {
+                    alert('Por favor, ingrese valores enteros para  el campo de Cantidad de compra Inicial.');
+                    return;
+                }
+
+                // Validar que los campos no estén vacíos y sean números válidos
+                if (isNaN(cantidadCompraInicial) || isNaN(costoCompraInicial) || isNaN(costoVentaPublico) || isNaN(costoCompraAdicional) || isNaN(costoDevolucionInicial)|| isNaN(costoDevolucionFinal)) {
+                    alert('Por favor, rellene los campos faltantes.');
+                    return;
+                }
+                    // Validar que todos los valores sean positivos
+                if (cantidadCompraInicial <= 0 || costoCompraInicial < 0 || costoVentaPublico < 0 || costoCompraAdicional < 0 || costoDevolucionInicial < 0|| costoDevolucionFinal < 0) {
+                    alert('Por favor, ingrese valores positivos.');
+                    return;
+                }
+
+
             document.querySelector('.botonGrafico').style.display = 'block';
 
             document.querySelector('.graficossimu').style.display = 'block';

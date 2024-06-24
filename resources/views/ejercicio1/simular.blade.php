@@ -515,8 +515,6 @@
 
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar1').addEventListener('click', function() {
-        // Mostrar el contenido al hacer clic en el botón Iniciar
-        document.querySelector('.resolucionEjercicio1').style.display = 'block';
 
 
 
@@ -526,6 +524,43 @@
         const costoMantenimiento = parseFloat(document.getElementById('costoMantenimiento').value);
         const costoFaltante = parseFloat(document.getElementById('costoFaltante').value);
         const costoOrdenar = parseFloat(document.getElementById('costoOdernar').value);
+
+
+
+        // Convertir los valores a enteros
+        const numeroDiasInt = parseInt(numeroDias);
+                const inventarioInicialInt = parseInt(inventarioInicial);
+
+                // Validar que número de días no sea mayor a 30
+                if (numeroDiasInt > 30) {
+                    alert('El número de días no debe ser mayor a 30.');
+                    return;
+                }
+
+
+        // Validar que los campos número de días e inventario inicial sean enteros
+        if (!Number.isInteger(parseFloat(numeroDias)) || !Number.isInteger(parseFloat(inventarioInicial))) {
+            alert('Por favor, ingrese valores enteros para Número de días e Inventario inicial.');
+            return;
+        }
+
+
+
+
+        // Validar que los campos no estén vacíos y sean números válidos
+        if (isNaN(numeroDiasInt) || isNaN(inventarioInicialInt) || isNaN(costoMantenimiento) || isNaN(costoFaltante) || isNaN(costoOrdenar)) {
+            alert('Por favor, rellene los campos faltantes.');
+            return;
+        }
+            // Validar que todos los valores sean positivos
+        if (numeroDiasInt <= 0 || inventarioInicialInt < 0 || costoMantenimiento < 0 || costoFaltante < 0 || costoOrdenar < 0) {
+            alert('Por favor, ingrese valores positivos.');
+            return;
+        }
+
+              // Mostrar el contenido al hacer clic en el botón Iniciar
+        document.querySelector('.resolucionEjercicio1').style.display = 'block';
+
         // Llamar a la función para simular y construir las tablas para la POLITICA 1
         simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
         //SIMULAR POLITICA 2

@@ -107,7 +107,7 @@
         }
         .policy-container {
             display: flex;
-            flex-wrap: wrap; 
+            flex-wrap: wrap;
             justify-content: space-around; /*Distribuir políticas uniformemente*/
             margin-bottom: 10px; /*Espacio inferior entre las políticas y la conclusión*/
             flex-wrap: wrap;
@@ -147,7 +147,7 @@
             width: 100%;  /*Ajustar ancho al 100% */
             height: auto;  /*Dejar que el alto se ajuste automáticamente */
         }
-    
+
     </style>
     @endpush
 
@@ -201,7 +201,7 @@
                     } else {
                         enRangoTiempoVida.push(minLife);//Tiempos de vida dentro de rango
                     }
-                    
+
                     let index = componentLives.indexOf(minLife);
                     componentLives[index] = 600 + 100 * normalRandom();
                 }
@@ -434,9 +434,14 @@
 
             //Verificar si las entradas son válidas
             if (isNaN(simulationTime) || isNaN(componentCost) || isNaN(disconnectionCost)) {
-                alert('Por favor, ingrese valores numéricos válidos.');
+                alert('Por favor, ingrese datos a los campos faltantes.');
                 return;
             }
+
+            if (simulationTime <= 0 || componentCost < 0 || disconnectionCost < 0 ) {
+            alert('Por favor, ingrese valores positivos.');
+            return;
+        }
 
             const policy1Data = simularPolitica(simulationTime, componentCost, disconnectionCost, 1);
             const policy2Data = simularPolitica(simulationTime, componentCost, disconnectionCost, 2);

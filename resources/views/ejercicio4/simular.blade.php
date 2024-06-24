@@ -358,6 +358,62 @@
         const numeroSimulaciones = parseFloat(document.getElementById('nrosimulaciones4').value);
         const trema = parseFloat(document.getElementById('trema4').value);
         const aceptacionProyecto= parseFloat(document.getElementById('aceptacionProyecto4').value);
+
+           // Validar que los campos número de días e inventario inicial sean enteros
+           if (!Number.isInteger(parseFloat(numeroSimulaciones))) {
+                    alert('Por favor, ingrese valores enteros en el numero de simulaciones');
+                    return;
+                }
+
+                // Convertir los valores a enteros
+             const tremaporcen = parseInt(trema);
+
+
+                // Validar que número de días no sea mayor a 30
+                if (tremaporcen > 100) {
+                    alert('El porcentaje de trema no puede ser mayor a 100%');
+                    return;
+                }
+
+                if (tremaporcen <= 0) {
+                    alert('El porcentaje de trema no puede ser menor al  1%');
+                    return;
+                }
+
+                           // Convertir los valores a enteros
+             const aceptacionPorcen = parseInt(aceptacionProyecto);
+
+
+                // Validar que número de días no sea mayor a 30
+                if (aceptacionPorcen > 100) {
+                    alert('El porcentaje de aceptacion del proyecto no puede ser mayor a 100%');
+                    return;
+                }
+
+                    // Validar que número de días no sea mayor a 30
+                    if (aceptacionPorcen <= 0) {
+                    alert('El porcentaje de aceptacion del proyecto no puede ser menor al  1%');
+                    return;
+                }
+
+
+                // Validar que los campos no estén vacíos y sean números válidos
+                if (isNaN(numeroSimulaciones) || isNaN(trema) || isNaN(aceptacionProyecto) ) {
+                    alert('Por favor, rellene los campos faltantes.');
+                    return;
+                }
+                if (numeroSimulaciones == 0 ) {
+                    alert('Por favor, ingrese un numero de simulaciones mayor a 0.');
+                    return;
+                }
+                    // Validar que todos los valores sean positivos
+                if (numeroSimulaciones <= 0 || trema < 0 || aceptacionProyecto < 0) {
+                    alert('Por favor, ingrese valores positivos.');
+                    return;
+                }
+
+
+
         simular(numeroSimulaciones,trema,aceptacionProyecto);
     });
 
