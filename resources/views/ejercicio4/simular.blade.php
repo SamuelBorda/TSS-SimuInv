@@ -20,7 +20,7 @@
                         <span class="small-screen"style="font-size:1rem;">?</span>
                         <span class="large-screen">¿Necesitas ayuda?</span>
                     </a>
-                </div>    
+                </div>
             </div>
             <div class="enunciadoEjercicio marginIzqDer">
                 <div class="formularioEjercicio1">
@@ -40,10 +40,10 @@
                             <input type="number" class="form-control" id="aceptacionProyecto4" placeholder="Ingrese el % de aceptacion del proyecto">
                         </div>
                     </div>
-                    
+
                     <div class="botonIniciar">
                         <button type="button" class="btn btn-gradientIniciar" id="btnIniciar4">Iniciar</button>
-                    </div>               
+                    </div>
                 </div>
             </div>
             <div class="marginIzqDer resolucionEjercicio1 text-white">
@@ -63,9 +63,9 @@
                         </thead>
                         <tbody id="cuerpoTabla">
                             <tr>
-                                
+
                             </tr>
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -74,15 +74,15 @@
                 </div>
                 <div class="grafica col-md-6 mx-auto" id="graficaContainer">
                     <div id="graficoTIR" style="width:100%;height:400px;"></div> <!-- Contenedor para el gráfico de TIR -->
-                </div>  
-                
+                </div>
+
 
                 <div class="resultadosejercicio4">
                     <h4 class="text-Ayuda">RESULTADOS:</h4>
                     <p id="promedioTIR">Promedio TIR:</p>
                     <div id="conclusionAceptada4" style="display: none;">
                         <h4 class="text-Ayuda">CONCLUSION:</h4>
-                        <p>El proyecto es ACEPTADO por que cumple con las espectativas deseadas por la empresa ya que 
+                        <p>El proyecto es ACEPTADO por que cumple con las espectativas deseadas por la empresa ya que
                             supera la probabilidad de aceptacion establecida del % establecido</p>
                     </div>
                     <div id="conclusionRechazada4" style="display: none;">
@@ -90,9 +90,9 @@
                         <p>El proyecto es RECHAZADO por que no cumple con las espectativas deseadas por la empresa ya que
                             no supera la probabilidad de aceptacion establecida del % establecido</p>
                     </div>
-                   
+
                 </div>
-            </div> 
+            </div>
         </div>
     </main>
 
@@ -111,13 +111,15 @@
     //almacena valires de TIR
     let tirValores = [];
 
+    var promresultado=0;
+    var resultadopolitica="RECHAZADO";
     // Función para simular con los parámetros correctos y llenado de resultados
     function simular(numeroSimulaciones,trema,aceptacionProyecto) {
         let resultados = [];
         tirValores = []; // Reiniciar los valores de TIR para cada simulación
         // Generar resultados para cada simulacion
         for (let simulacion= 1; simulacion <= numeroSimulaciones; simulacion++) {
-            
+
             let inversionInicial = calcularInvIni();
             let fnanio1 = calcularFnAnual();
             let fnanio2 = calcularFnAnual();
@@ -144,6 +146,7 @@
         }
         //CALCULAR PROMEDIO TIR
         let promedioTIR = calcularPromedioTIR(resultados);
+        promresultado=promedioTIR;
         //MOSTRAR PROMEDIO TIR
         mostrarPromedioTIR(promedioTIR);
         // Determinar si el proyecto es ACEPTADO o RECHAZADO
@@ -151,6 +154,7 @@
         // Construir la tabla HTML con los resultados
         construirTabla(resultados);
         graficarTIR(tirValores); // Llamar a la función para graficar los valores de TIR
+        historialAñadir();
     }
 
     //CALCULO DE GRAFICOOO---------------------------------------------------------------------------------------------------------
@@ -215,7 +219,7 @@
             }
 
             let vpDer = 0; // Valor presente derivado con la TIR previa
-            
+
             for (let i = 0; i < flujos.length; i++) {
                 vpDer += -i * flujos[i] / Math.pow(1 + tirPrev, i + 1);
             }
@@ -234,7 +238,7 @@
         return tir * 100; // Devolver la TIR como porcentaje
     }
     //HASTA AQUIIIIIIII
-    
+
     // Función para construir la tabla HTML con los resultados de la simulación
     function construirTabla(resultados) {
         let cuerpoTabla = document.getElementById('cuerpoTabla');
@@ -341,11 +345,13 @@
         if (promedioTIR > trema) {
         conclusionAceptada.style.display = 'block'; // Mostrar div de ACEPTADO
         conclusionRechazada.style.display = 'none'; // Ocultar div de RECHAZADO
+        resultadopolitica="ACEPTADO";
         } else {
         conclusionAceptada.style.display = 'none'; // Ocultar div de ACEPTADO
         conclusionRechazada.style.display = 'block'; // Mostrar div de RECHAZADO
+        resultadopolitica="RECHAZADO";
     }
-    }  
+    }
 
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar4').addEventListener('click', function() {
@@ -354,6 +360,53 @@
         const aceptacionProyecto= parseFloat(document.getElementById('aceptacionProyecto4').value);
         simular(numeroSimulaciones,trema,aceptacionProyecto);
     });
+
+
+
+//para actualizar en tiempo real
+function historialAñadir() {
+
+    const NumeroSimulaciones = parseFloat(document.getElementById('nrosimulaciones4').value);
+    const TREMA = parseFloat(document.getElementById('trema4').value);
+    const Aceptacionproyecto = parseFloat(document.getElementById('aceptacionProyecto4').value);
+
+
+
+    console.log("AHHHHHHH");
+    console.log(promresultado);
+    console.log(NumeroSimulaciones);
+
+    console.log(resultadopolitica);
+
+    fetch("{{ route('ejercicio4.actualizarEjercicio4') }}", { // Aquí faltaba cerrar el paréntesis de route()
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+    },
+    body: JSON.stringify({
+
+
+        NumeroSimulaciones: NumeroSimulaciones,
+        TREMA: TREMA ,
+        Aceptacionproyecto: Aceptacionproyecto,
+        PromedioTIR: promresultado,
+        Mejoropcion: resultadopolitica,
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log('Success:', data);
+    alert(data.message); // Notificar al usuario
+
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert('Error actualizando el dato : ' + error.message);
+
+});
+}
+
 
 </script>
 @endpush

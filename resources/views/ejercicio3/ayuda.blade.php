@@ -4,7 +4,7 @@
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
-         
+
         <br>
         <br>
         <br>
@@ -12,42 +12,51 @@
             <div class="panelTitulo">
                     <div class="tituloEjercicio">
                         <h3><span class="bg-gradient-titleejercicio">
-                            CASO 1 - COMPARACIÓN DE POLITICAS DE INVENTARIO
+                            CASO 3 - POLITICAS DE COMPRA PARA VENDEDOR DE REVISTAS
                         </span></h3>
-                    </div>             
+                    </div>
                 </div>
                 <div class="enunciadoEjercicio marginIzqDer">
-                    <h3 class="text-Ayuda">¿Como funciona la aplicación?</h3>
+                    <h3 class="text-simu2">¿Como funciona la aplicación?</h3>
                     <p>
                         La aplicacion permite ingresar los siguientes datos:
                     </p>
                     <p>
-                        <strong>NÚMERO DE DÍAS</strong> 
+                        <strong>CANTIDAD DE COMPRA INICIAL</strong>
                         <br>
-                        Se ingresa la cantidad de dias que se quiere simular
+                        Se ingresa la cantidad de revistas a comprar por el vendedor al inicio del mes
                     </p>
                     <p>
-                        <strong>INVENTARIO INICIAL</strong> 
+                        <strong>COSTO DE COMPRA INICIAL</strong>
                         <br>
-                        Se ingresa la cantidad de inventario con la que desea empezar la simulacion
+                        Se ingresa el costo de compra por unidad al inicio del mes
                         <br>
                         <strong>OJO: </strong> No se permite ingresar una cantidad de inventario inicial mayor a 30
                     </p>
                     <p>
-                        <strong>COSTO DE MANTENIMIENTO</strong> 
+                        <strong>COSTO DE VENTA AL PUBLICO</strong>
                         <br>
-                        Se ingresa el costo faltante por unidad, hace referencia a no tener suficientes unidades disponibles para satisfacer la demanda.
+                        Se ingresa el costo por unidad con el cual se venden las revistas al publico
                     </p>
                     <p>
-                        <strong>COSTO DE ORDENAR</strong> 
+                        <strong>COSTO DE COMPRA ADICIONAL</strong>
                         <br>
-                        Se  ingresa el costo por realizar una orden de inventario.
+                        Se ingresa el costo de compra de revistas por unidad que se realiza en el dia 10
+                    </p>
+                    <p>
+                        <strong>COSTO DEVOLUCION INICIAL</strong>
+                        <br>
+                        Se ingresa el costo por unidad de las revistas que se devuelven en el dia 10
+                    </p>
+                    <p>
+                        <strong>COSTO DEVOLUCION FINAL</strong>
+                        <br>
+                        Se ingresa el costo por unidad de las revistas que se devuelven al finalizar el mes
                     </p>
                 </div>
-            </div>
-                
+
         </div>
-        
+
         </main>
 
 @push('js')

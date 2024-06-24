@@ -15,7 +15,7 @@
                     </span></h3>
                 </div>
                 <div class="botonayuda">
-                    <a href="{{ route('ejercicio1.ayuda') }}" class="btn btn-gradient-outline">
+                    <a href="{{ route('ejercicio3.ayuda') }}" class="btn btn-gradient-outline">
                         <span class="small-screen"style="font-size:1rem;">?</span>
                         <span class="large-screen">¿Necesitas ayuda?</span>
                     </a>
@@ -25,8 +25,8 @@
                 <p>
                 Un vendedor de revistas compra mensualmente una revista el día primero de cada mes. El costo  de cada ejemplar es de $ 1.50. La demanda de esta revista en los primeros 10 días del mes sigue la  siguiente distribución de probabilidad:
                 </p>
-                <div class="table-responsive d-flex justify-content-center">
-                    <table class="table table-bordered table-hover text-white" style="max-width: 60%;">
+                <div class="tablaHistorialEjercicio1">
+                    <table class="tablaresponsiva" >
                         <thead class="thead-light">
                             <tr>
                                 <th>Demanda</th>
@@ -58,8 +58,8 @@
                 <p>
                 Al final del décimo día, el vendedor puede regresar cualquier cantidad al proveedor, quien se las  pagan a $0.90 el ejemplar, o comprar más a $1.20 el ejemplar. La demanda en los siguientes 20 días  está dada por la siguiente distribución de probabilidad:
                 </p>
-                <div class="table-responsive d-flex justify-content-center">
-                    <table class="table table-bordered table-hover text-white" style="max-width: 60%;">
+                <div class="tablaHistorialEjercicio1">
+                    <table class="tablaresponsiva">
                         <thead class="thead-light">
                             <tr>
                                 <th>Demanda</th>

@@ -53,12 +53,6 @@ And Laravel: https://laravel.com/docs/10.x
 6. Run `php artisan migrate --seed` to create the database tables and seed the roles and users tables
 7. Run `php artisan storage:link` to create the storage symlink (if you are using **Vagrant** with **Homestead** for development, remember to ssh into your virtual machine and run the command from there).
 
-## Run proyect
-1. Ubicarse en la carpeta del proyecto: `TSS-SimuInv`
-3. Ejecutar el servidor: `php artisan serve`
-## Notas
-   - Asegúrate de tener PHP y Composer instalados en tu máquina.
-   - Antes de ejecutar php artisan serve, asegúrate de haber ejecutado composer install para instalar todas las dependencias necesarias.
 
 ## Usage
 Register a user or login with default user **admin@material.com** and password **secret** from your database and start testing (make sure to run the migrations and seeders for these credentials to be available).
