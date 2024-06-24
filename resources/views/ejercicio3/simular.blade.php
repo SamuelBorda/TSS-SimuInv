@@ -30,36 +30,36 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tituloNumDias" class="text-white fw-bold">Cantidad de compra inicial</label>
-                            <input type="text" class="form-control" id="numdias"
+                            <input  type="number" class="form-control form-control-lg" id="numdias"
                                 placeholder="Ingrese numero de compra inicial">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tituloInvIni" class="text-white fw-bold">Costo de compra inicial</label>
-                            <input type="text" class="form-control" id="inventarioIni"
+                            <input  type="number" class="form-control form-control-lg" id="inventarioIni"
                                 placeholder="Ingrese el costo de compra inicial">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tituloCostoMante" class="text-white fw-bold">Costo de venta al público</label>
-                            <input type="text" class="form-control" id="costoMantenimiento"
+                            <input type="number" class="form-control form-control-lg" id="costoMantenimiento"
                                 placeholder="Ingrese costo de mantenimiento">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tituloCostoFalta" class="text-white fw-bold">Costo de compra adicional</label>
-                            <input type="text" class="form-control" id="costoFaltante"
+                            <input  type="number" class="form-control form-control-lg" id="costoFaltante"
                                 placeholder="Ingrese costo de compra adicional">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tituloCostoOrdenar" class="text-white fw-bold">Costo de devolución inicial</label>
-                            <input type="text" class="form-control" id="costoOrdenarInicial"
+                            <input  type="number" class="form-control form-control-lg" id="costoOrdenarInicial"
                                 placeholder="Ingrese costo de devolucion inicial">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tituloCostoOrdenar" class="text-white fw-bold">Costo de devolución final</label>
-                            <input type="text" class="form-control" id="costoOrdenarFinal"
+                            <input  type="number" class="form-control form-control-lg" id="costoOrdenarFinal"
                                 placeholder="Ingrese costo de devolucion final">
                         </div>
                     </div>

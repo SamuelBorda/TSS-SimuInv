@@ -17,9 +17,9 @@ return new class extends Migration
             $table->integer('CostoDeOrdenar');
             $table->integer('CostoDeInventario');
             $table->integer('CostoDeFaltante');
-            $table->integer('Costopolitica1');
-            $table->integer('Costopolitica2');
-            $table->string('Mejoropcion');
+            $table->integer('PoliticaQ');
+            $table->integer('PoliticaR');
+            $table->integer('CostoTotal');
             $table->timestamps();
         });
     }

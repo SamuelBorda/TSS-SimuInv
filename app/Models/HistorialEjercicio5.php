@@ -16,8 +16,8 @@ class HistorialEjercicio5 extends Model
         'CostoDeOrdenar',
         'CostoDeInventario',
         'CostoDeFaltante',
-        'Costopolitica1',
-        'Costopolitica2',
-        'Mejoropcion',
+        'PoliticaQ',
+        'PoliticaR',
+        'CostoTotal',
     ];
 }
