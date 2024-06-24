@@ -50,6 +50,7 @@ Route::get('/ejercicio1/ayuda', [Ejercicio1Controller::class, 'ayuda'])->name('e
 Route::get('/ejercicio3/historial', [Ejercicio3Controller::class, 'historial'])->name('ejercicio3.historial');
 Route::get('/ejercicio3/simular', [Ejercicio3Controller::class, 'simular'])->name('ejercicio3.simular');
 Route::get('/ejercicio3/ayuda', [Ejercicio3Controller::class, 'ayuda'])->name('ejercicio3.ayuda');
+Route::post('/ejercicio3/ActualizarHistorial3', [Ejercicio3Controller::class, 'actualizarhistorial'])->name('ejercicio3.actualizarEjercicio3');
 
 
 
