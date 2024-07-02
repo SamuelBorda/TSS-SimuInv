@@ -12,7 +12,7 @@
             <div class="panelTitulo">
                 <div class="tituloEjercicio">
                     <h3><span class="bg-gradient-titleejercicio">
-                        CASO 1 - COMPARACIÓN DE POLITICAS DE INVENTARIO
+                        CASO 5 - OPTIMIZACIÓN DE INVENTARIO Y REORDEN
                     </span></h3>
                 </div>
             </div>
@@ -20,30 +20,28 @@
                 <h3 class="text-Ayuda">HISTORIAL DE SIMULACIONES</h3>
             </div>
             <div class="tablaHistorialEjercicio1">
-                <table class="tablaresponsiva">
+                <table class="tablaresponsivaCinco">
                     <thead>
                     <tr>
-                        <th>Numero dias</th>
                         <th>Inventario</th>
-                        <th>Costo mantenimiento</th>
-                        <th>Costo ordenar</th>
-                        <th>Costo faltante</th>
-                        <th>Costo politica 1</th>
-                        <th>Costo politica 2</th>
-                        <th>Mejor opción</th>
+                        <th>Costo Ordenar</th>
+                        <th>Costo Inventario</th>
+                        <th>Costo Faltante</th>
+                        <th>Valor De Orden(Q)</th>
+                        <th>Valor De Reorden(R)</th>
+                        <th>Costo Total</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($historial as $item)
                     <tr>
-                        <td>{{ $item->Numerodias }} <span>dias</span></td>
-                        <td>{{ $item->Inventario }} <span>unidades</span></td>
-                        <td>{{ $item->Costomantenimiento }} <span>$/ud/dia</span></td>
-                        <td>{{ $item->Costoordenar }} <span>$/orden</span></td>
-                        <td>{{ $item->Costofaltante }} <span>$/ud</span></td>
-                        <td>{{ $item->Costopolitica1 }} <span>$</span></td>
-                        <td>{{ $item->Costopolitica2 }} <span>$</span></td>
-                        <td>{{ $item->Mejoropcion }}</td>
+                        <td>{{ $item->InventarioInicial }} <span>unidades</span></td>
+                        <td>{{ $item->CostoDeOrdenar }} <span>$/orden</span></td>
+                        <td>{{ $item->CostoDeInventario }} <span>$/ud/año</span></td>
+                        <td>{{ $item->CostoDeFaltante }} $/ud</td>
+                        <td>{{ $item->PoliticaQ }} <span>unidades</span></td>
+                        <td>{{ $item->PoliticaR }} <span>unidades</span></td>
+                        <td>{{ $item->CostoTotal }} <span>$</span></td>
                     </tr>
                     @endforeach
                     </tbody>

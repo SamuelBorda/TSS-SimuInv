@@ -19,7 +19,7 @@
                         </span></h3>
                 </div>
                 <div class="botonayuda">
-                    <a href="{{ route('ejercicio1.ayuda') }}" class="btn btn-gradient-outline">
+                    <a href="{{ route('ejercicio3.ayuda') }}" class="btn btn-gradient-outline">
                         <span class="small-screen"style="font-size:1rem;">?</span>
                         <span class="large-screen">¿Necesitas ayuda?</span>
                     </a>
@@ -30,36 +30,36 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tituloNumDias" class="text-white fw-bold">Cantidad de compra inicial</label>
-                            <input type="text" class="form-control" id="numdias"
+                            <input  type="number" class="form-control form-control-lg" id="numdias"
                                 placeholder="Ingrese numero de compra inicial">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tituloInvIni" class="text-white fw-bold">Costo de compra inicial</label>
-                            <input type="text" class="form-control" id="inventarioIni"
+                            <input  type="number" class="form-control form-control-lg" id="inventarioIni"
                                 placeholder="Ingrese el costo de compra inicial">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tituloCostoMante" class="text-white fw-bold">Costo de venta al público</label>
-                            <input type="text" class="form-control" id="costoMantenimiento"
+                            <input type="number" class="form-control form-control-lg" id="costoMantenimiento"
                                 placeholder="Ingrese costo de mantenimiento">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tituloCostoFalta" class="text-white fw-bold">Costo de compra adicional</label>
-                            <input type="text" class="form-control" id="costoFaltante"
+                            <input  type="number" class="form-control form-control-lg" id="costoFaltante"
                                 placeholder="Ingrese costo de compra adicional">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tituloCostoOrdenar" class="text-white fw-bold">Costo de devolución inicial</label>
-                            <input type="text" class="form-control" id="costoOrdenarInicial"
+                            <input  type="number" class="form-control form-control-lg" id="costoOrdenarInicial"
                                 placeholder="Ingrese costo de devolucion inicial">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tituloCostoOrdenar" class="text-white fw-bold">Costo de devolución final</label>
-                            <input type="text" class="form-control" id="costoOrdenarFinal"
+                            <input  type="number" class="form-control form-control-lg" id="costoOrdenarFinal"
                                 placeholder="Ingrese costo de devolucion final">
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                         <button type="button" class="btn  btn-gradientIniciar fw-bold" id="tablasbtn">Mostrar Tablas</button>
                     </div>
                     <div class="botonIniciar col-md-6 text-end">
-                        <button type="button" class="btn btn-gradientIniciar fw-bold" id="btnIniciar">Iniciar</button>
+                        <button type="button" class="btn btn-gradientIniciar fw-bold" id="btnIniciar"  >Iniciar</button>
                     </div>
 
 
@@ -78,7 +78,7 @@
             </div>
 
             <div class="container">
-    <div class="tablaSimulacion mt-5" style="display:none;">
+    <div class="tablaSimulacion mt-5" style="display:none; width:100%; overflow:auto">
         <h2 class="text-white text-center">POLITICA 1</h2>
         <table class="table table-bordered mt-3 text-white mx-auto" id="tablaResultados">
             <thead>
@@ -98,8 +98,8 @@
         </table>
     </div>
 
-    <div class="tablaSimulacion2 mt-5" style="display:none;">
-        <h2 class="text-white text-center">POLITICA 2</h2>
+    <div class="tablaSimulacion2 mt-5"  style="display:none; width:100%; overflow:auto;">
+        <h2 class="text-white text-center" >POLITICA 2</h2>
         <table class="table table-bordered mt-3 text-white mx-auto" id="tablaResultados2">
             <thead>
                 <tr>
@@ -119,14 +119,14 @@
     </div>
 </div>
 
-<div class="graficossimu container py-4 text-white text-center">
-    <h2 class="text-simu2">GRAFICOS RESULTADOS</h2>
+<div class="graficossimu container py-4 text-white text-center" style="display:none;">
+    <h2 class="text-simu2" >GRAFICOS RESULTADOS</h2>
 
     <div class="row">
-        <div class="col-md-6 mx-auto">
+        <div class="col-md-4 mx-auto">
             <div id="grafico-politica1"></div>
         </div>
-        <div class="col-md-6 mx-auto">
+        <div class="col-md-4 mx-auto">
             <div id="grafico-politica2"></div>
         </div>
     </div>
@@ -174,7 +174,9 @@
 
     const dem2 = [4, 5, 6, 7, 8];
     const prob2 = [0.10, 0.20, 0.30, 0.25, 0.15];
-
+    var resultadopolitica = "Politica 1" ;
+    var ganan1 = 0;
+    var ganan2 =  0;
 // Variables para almacenar las demandas del día 11 al día 30
 let demandasRestantes = [];
 
@@ -188,12 +190,34 @@ let demandasRestantes = [];
             const costoDevolucionInicial = parseFloat(document.getElementById('costoOrdenarInicial').value);
             const costoDevolucionFinal = parseFloat(document.getElementById('costoOrdenarFinal').value);
 
+
+
+
+                // Validar que los campos número de días e inventario inicial sean enteros
+                if (!Number.isInteger(parseFloat(cantidadCompraInicial))) {
+                    alert('Por favor, ingrese valores enteros para  el campo de Cantidad de compra Inicial.');
+                    return;
+                }
+
+                // Validar que los campos no estén vacíos y sean números válidos
+                if (isNaN(cantidadCompraInicial) || isNaN(costoCompraInicial) || isNaN(costoVentaPublico) || isNaN(costoCompraAdicional) || isNaN(costoDevolucionInicial)|| isNaN(costoDevolucionFinal)) {
+                    alert('Por favor, rellene los campos faltantes.');
+                    return;
+                }
+                    // Validar que todos los valores sean positivos
+                if (cantidadCompraInicial <= 0 || costoCompraInicial < 0 || costoVentaPublico < 0 || costoCompraAdicional < 0 || costoDevolucionInicial < 0|| costoDevolucionFinal < 0) {
+                    alert('Por favor, ingrese valores positivos.');
+                    return;
+                }
+
+
             document.querySelector('.botonGrafico').style.display = 'block';
 
             document.querySelector('.graficossimu').style.display = 'block';
             // Realizar la simulación y construir dinámicamente la tabla
             simularYConstruirTabla(cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal);
 
+            historialAñadir();
 
         });
 
@@ -214,7 +238,7 @@ let demandasRestantes = [];
             document.querySelector('.tablaSimulacion2').style.display = 'none';
                 tablasestate=0;
             }
-            console.log(tablasestate);
+          //  console.log(tablasestate);
 
         });
 
@@ -267,9 +291,9 @@ function simularYConstruirTabla(cantidadCompraInicial, costoCompraInicial, costo
         // Realizar compra adicional o devolución en el día 10
         if (dia === 10) {
             const demandaRestante = calcularDemandaRestante(demandasRestantes);
-            console.log("demandasRestantes");
-            console.log(demandasRestantes);
-            console.log(demandaRestante);
+            //console.log("demandasRestantes");
+            //console.log(demandasRestantes);
+            //console.log(demandaRestante);
             if (inventario < demandaRestante) {
                 compraAdicional = demandaRestante - inventario;
                 inventario += compraAdicional;
@@ -304,9 +328,9 @@ function simularYConstruirTabla(cantidadCompraInicial, costoCompraInicial, costo
 
             if (dia === 10) {
                 const demandaRestante = calcularDemandaRestante(demandasRestantes,cantidadCompraInicial);
-            console.log("demandasRestantes");
-            console.log(demandasRestantes);
-            console.log(demandaRestante);
+           // console.log("demandasRestantes");
+            //console.log(demandasRestantes);
+            //console.log(demandaRestante);
 
                 if (inventario2 < demandaRestante) {
                 compraAdicional = demandaRestante - inventario2;
@@ -321,9 +345,9 @@ function simularYConstruirTabla(cantidadCompraInicial, costoCompraInicial, costo
         // Realizar compra adicional o devolución en el día 10
         if (dia === 30 && sicompra==false) {
             const demandaRestante = calcularDemandaRestante2(demandasRestantes,cantidadCompraInicial);
-            console.log("demandasRestantes");
-            console.log(demandasRestantes);
-            console.log(demandaRestante);
+           // console.log("demandasRestantes");
+            //console.log(demandasRestantes);
+            //console.log(demandaRestante);
 
 
 
@@ -365,8 +389,8 @@ function simularYConstruirTabla(cantidadCompraInicial, costoCompraInicial, costo
     // Construir la tabla HTML final con los resultados completos
     construirTabla(resultados,cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal);
     construirTabla2(resultados2,cantidadCompraInicial, costoCompraInicial, costoVentaPublico, costoCompraAdicional, costoDevolucionInicial, costoDevolucionFinal);
-    console.log(resultados);
-    console.log(resultados2);
+    //console.log(resultados);
+    //console.log(resultados2);
      // Dibujar los gráficos
      dibujarGraficos(costoTotal1, totalIngresos1,totalAdicional1, gananciaTotal1,totalDevolucion1,totalInventario1, costoTotal2, totalIngresos2, gananciaTotal2 ,totalDevolucion2,totalInventario2,totalAdicional2 );
 }
@@ -559,11 +583,70 @@ function dibujarGraficos(costoTotal1, totalIngresos1,totalAdicional1, gananciaTo
 
         const conclusion = document.querySelector('.conclusion-text');
         if (gananciaTotal1 > gananciaTotal2) {
+            resultadopolitica="Politica 1";
             conclusion.textContent = "La Política 1 es la más eficiente debido a que maximiza las ganancias durante el mes, aprovechando las oportunidades de compra y devolución más favorables.";
         } else {
+            resultadopolitica = "Politica 2";
             conclusion.textContent = "La Política 2 es la más eficiente debido a que maximiza las ganancias durante el mes, aprovechando las oportunidades de compra y devolución más favorables.";
         }
+
+
     }
+
+
+
+
+//para actualizar en tiempo real
+function historialAñadir() {
+    const ganancia2 =parseFloat( document.getElementById('ganancia-total2').textContent);
+    const ganancia1 =parseFloat(document.getElementById('ganancia-total1').textContent);
+    const cantidadCompraInicial = parseFloat(document.getElementById('numdias').value);
+    const costoCompraInicial = parseFloat(document.getElementById('inventarioIni').value);
+    const costoVentaPublico = parseFloat(document.getElementById('costoMantenimiento').value);
+    const costoCompraAdicional = parseFloat(document.getElementById('costoFaltante').value);
+    const costoDevolucionInicial = parseFloat(document.getElementById('costoOrdenarInicial').value);
+    const costoDevolucionFinal = parseFloat(document.getElementById('costoOrdenarFinal').value);
+
+
+
+    console.log("AHHHHHHH");
+    console.log(ganancia2);
+    console.log(resultadopolitica);
+    console.log(costoDevolucionFinal);
+    fetch("{{ route('ejercicio3.actualizarEjercicio3') }}", { // Aquí faltaba cerrar el paréntesis de route()
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+    },
+    body: JSON.stringify({
+        Cantidadcomprainicial: cantidadCompraInicial,
+        Costocomprainicial: costoCompraInicial,
+        Costoventa: costoVentaPublico,
+        Costocompraadicional: costoCompraAdicional,
+        Costodevolucioninicial: costoDevolucionInicial,
+        Costodevolucionfinal: costoDevolucionFinal,
+        Costopolitica1: ganancia1,
+        Costopolitica2: ganancia2,
+        Mejoropcion: resultadopolitica,
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log('Success:', data);
+    alert(data.message); // Notificar al usuario
+
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert('Error actualizando el dato : ' + error.message);
+
+});
+}
+
+
+
+
     </script>
 
 @endpush

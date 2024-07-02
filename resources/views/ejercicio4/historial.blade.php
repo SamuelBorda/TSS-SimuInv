@@ -15,9 +15,12 @@
                     </span></h3>
                 </div>
             </div>
-            <div>
+
+            <div class="enunciadoEjercicio marginIzqDer">
+                <h3 class="text-Ayuda">HISTORIAL DE SIMULACIONES</h3>
+            </div>
             <div class="tablaHistorialEjercicio1">
-                    <table class="tablaejercicio4">
+                    <table class="tablaresponsivaCuatro">
                         <thead>
                         <tr>
                             <th>Numero de simulaciones</th>
@@ -28,27 +31,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>150</td>
-                            <td>30 %</td>
-                            <td>90 %</td>
-                            <td>1 %</td>
-                            <td>Rechazado</td>
-                        </tr>
-                        <tr>
-                            <td>180</td>
-                            <td>200 $</td>
-                            <td>500 $</td>
-                            <td>1 $</td>
-                            <td>300 $</td>
-                        </tr>
-                        <tr>
-                            <td>300</td>
-                            <td>15</td>
-                            <td>200 $</td>
-                            <td>500 $</td>
-                            <td>1 $</td>
-                        </tr>
+                            @foreach($historial as $item)
+                            <tr>
+                                <td>{{ $item->NumeroSimulaciones }}</td>
+                                <td>{{ $item->TREMA }} <span>%</span></td>
+
+                                <td>{{ $item->Aceptacionproyecto }} <span>%</span></td>
+                                <td>{{ $item->PromedioTIR }} <span>%</span></td>
+                                <td>{{ $item->Mejoropcion }}</td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

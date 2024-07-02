@@ -33,7 +33,7 @@
                 <a class="nav-link text-white {{ $activePage == ' activar' ? ' active bg-gradient-primary' : '' }} "
                 href="{{ route('ejercicio1') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">upload_file</i>
+                    <img src="{{ asset('assets/img/Uno.png') }}" alt="Upload File" >
                     </div>
                     <span class="nav-link-text ms-1">CASO 1</span>
                 </a>
@@ -43,7 +43,7 @@
                 <a class="nav-link text-white {{ $activePage == 'Grupos' ? ' active bg-gradient-primary' : '' }} "
                 href="{{ route('ejercicio2') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">upload_file</i>
+                    <img src="{{ asset('assets/img/dos.png') }}" alt="Upload File" >
                     </div>
                     <span class="nav-link-text ms-1">CASO 2</span>
                 </a>
@@ -55,7 +55,7 @@
                 <a class="nav-link text-white {{ $activePage == 'ImportarDatos' ? ' active bg-gradient-primary' : '' }} "
                   href="{{ route('ejercicio3') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">upload_file</i>
+                    <img src="{{ asset('assets/img/tres.png') }}" alt="Upload File" >
                     </div>
                     <span class="nav-link-text ms-1">CASO 3</span>
                 </a>
@@ -64,7 +64,7 @@
                 <a class="nav-link text-white {{ $activePage == '' ? ' active bg-gradient-primary' : '' }}  "
                 href="{{ route('ejercicio4') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">upload_file</i>
+                    <img src="{{ asset('assets/img/cuatro.png') }}" alt="Upload File" >
                     </div>
                     <span class="nav-link-text ms-1">CASO 4</span>
                 </a>
@@ -74,7 +74,7 @@
                 <a class="nav-link text-white {{ $activePage == '' ? ' active bg-gradient-primary' : '' }}  "
                 href="{{ route('ejercicio5') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">upload_file</i>
+                    <img src="{{ asset('assets/img/cinco.png') }}" alt="Upload File" >
                     </div>
                     <span class="nav-link-text ms-1">CASO 5</span>
                 </a>

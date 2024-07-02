@@ -8,57 +8,56 @@
         <br>
         <br>
         <br>
-        <div class="container-fluid py-4 bg-gray-400"> <!-- solo para el espacio -->    </div>  
-
-        <div class="container-fluid py-4 bg-dark-400 text-white">
-            <h3 class="text-start ps-5">
-                <span class="bg-gradient-simu px-4 py-2">
-                    CASO 2 - MANTENIMIENTO DE EQUIPOS
-                </span>
-                <button type="button" class="gradient-button ms-10" onclick="window.location.href='{{ route('ejercicio2.ayuda') }}'">
-                    <span class="d-none d-md-inline">¿Necesitas ayuda?</span>
-                    <span class="d-inline d-md-none">
-                        <i class="fas fa-question-circle"></i>
-                    </span>
-                </button>
-            </h3>
-        </div>
-
-        <div class="container-fluid py-4 bg-gray-400 text-white d-flex " style="min-height: 500px;">
-            <div class="text-justify">
-                   <br> 
-                   <p>
-                   Una compañía tiene un problema de mantenimiento con cierto equipo,
-                    que contiene 4  componentes electrónicos idénticos que son la causa del mismo,
-                    el cual consiste en que los  componentes fallan frecuentemente forzando a que el
-                    equipo se desconecte mientras se hace la  reposición. Lo que se ha venido haciendo es
-                    reemplazar los componentes solamente cuando se  descomponen. Sin embargo, existe una
-                     nueva proposición de hacer el reemplazo de los cuatro  componentes cuando falle
-                     cualesquiera de ellos, con objeto de reducir la frecuencia de desconexión  del equipo.
-                    </p>
-                  
-                <p>
-                El tiempo de vida de un componente esta normalmente distribuido con media de 600 horas y
-                  desviación estándar de 100 horas. También se sabe que es necesario desconectar el equipo
-                  1 hora  si se reemplaza un componente y 2 horas si se reemplazan los 4. Un componente
-                   nuevo cuesta $  200 y se incurren un costo de$100 por hora cada vez que se desconecta el equipo.
-                <br>
-                  </p>
-                <p>
-                   Determine cuál de las dos políticas anteriores es más económica
-                   (Simule la operación del equipo  durante 20.000 horas).
-                </p>
-                    <div class="button-group">
-                    <button type="button" class="gradient-button3" onclick="window.location.href='{{ route('ejercicio2.historial') }}'">Ver historial</button>
-                    <button type="button" class="gradient-button2" onclick="window.location.href='{{ route('ejercicio2.simular') }}'">Simular</button>
-
-                    </div>
+        <div class="py-4  bg-gray-400 text-white">
+            <div class="panelTitulo">
+                <div class="tituloEjercicio">
+                    <h3><span class="bg-gradient-titleejercicio">
+                        CASO 2 - MANTENIMIENTO DE EQUIPOS
+                    </span></h3>
+                </div>
+                <div class="botonayuda">
+                    <a href="{{ route('ejercicio2.ayuda') }}" class="btn btn-gradient-outline">
+                        <span class="small-screen"style="font-size:1rem;">?</span>
+                        <span class="large-screen">¿Necesitas ayuda?</span>
+                    </a>
+                </div>
             </div>
+            <div class="enunciadoEjercicio marginIzqDer">
+                <div class="text-justify">
+                    <br>
+                    <p>
+                    Una compañía tiene un problema de mantenimiento con cierto equipo,
+                        que contiene 4  componentes electrónicos idénticos que son la causa del mismo,
+                        el cual consiste en que los  componentes fallan frecuentemente forzando a que el
+                        equipo se desconecte mientras se hace la  reposición. Lo que se ha venido haciendo es
+                        reemplazar los componentes solamente cuando se  descomponen. Sin embargo, existe una
+                        nueva proposición de hacer el reemplazo de los cuatro  componentes cuando falle
+                        cualesquiera de ellos, con objeto de reducir la frecuencia de desconexión  del equipo.
+                        </p>
 
+                    <p>
+                    El tiempo de vida de un componente esta normalmente distribuido con media de 600 horas y
+                    desviación estándar de 100 horas. También se sabe que es necesario desconectar el equipo
+                    1 hora  si se reemplaza un componente y 2 horas si se reemplazan los 4. Un componente
+                    nuevo cuesta $  200 y se incurren un costo de$100 por hora cada vez que se desconecta el equipo.
+                    <br>
+                    </p>
+                    <p>
+                    Determine cuál de las dos políticas anteriores es más económica
+                    (Simule la operación del equipo  durante 20.000 horas).
+                    </p>
+                </div>
+            </div>
+            <div class="botonesEjercicio1 marginIzqDer">
+                <div class="botonverhistorial">
+                    <a href=" {{ route('ejercicio2.historial') }} " class="btn btn-gradienthistorial">Ver historial</a>
+                </div>
+                <div class="botonSimular">
+                    <a href="{{ route('ejercicio2.simular') }}" class="btn btn-gradientsimular">Simular</a>
+                </div>
+            </div>
         </div>
-
     </main>
-
     @push('css')
         <style>
              .gradient-button {

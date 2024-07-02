@@ -5,7 +5,7 @@
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-         
+
         <br>
         <br>
         <br>
@@ -21,7 +21,7 @@
                         <span class="small-screen"style="font-size:1rem;">?</span>
                         <span class="large-screen">¿Necesitas ayuda?</span>
                     </a>
-                </div>             
+                </div>
             </div>
             <div class="enunciadoEjercicio marginIzqDer">
                 <div class="formularioEjercicio1">
@@ -53,13 +53,13 @@
                     </div>
                     <div class="botonIniciar">
                         <button type="button" class="btn btn-gradientIniciar" id="btnIniciar1">Iniciar</button>
-                    </div> 
-                </div>             
+                    </div>
+                </div>
             </div>
             <div class="marginIzqDer resolucionEjercicio1 text-white" style="display:none;">
                 <!-- POLITICA 1 -->
                 <p>
-                    <strong>Politica 1: </strong> Ordenar cada 8 dias hasta tener 30 articulos en inventario 
+                    <strong>Politica 1: </strong> Ordenar cada 8 dias hasta tener 30 articulos en inventario
                 </p>
                 <!-- esto seria como la tabla simulacion -->
                 <div class="tablaPolitica1" style="width:100%; overflow:auto;">
@@ -109,7 +109,7 @@
                 </div>
                 <div class="grafica col-md-4 mx-auto">
                     <div id="graficoBarras" class="grafico" style="margin-top:20px; margin-bottom: 20px; height: 400px;"></div>
-                </div>   
+                </div>
 
                 <!-- CODIGO PARA MOSTRAR LOS RESULTADOS -->
                 <div class="resultados" style="margin-top:2rem;">
@@ -132,14 +132,14 @@
                     <div class="row">
                         <h3 class="text-Ayuda">CONCLUSIÓN</h3>
                         <p id="conclusion">
-                            La Politica <span id="mejorPolitica"></span>es mas económica y eficiente debido a su capacidad para reducir costos de mantenimiento, 
-                            faltantes y mejorar la flexibilidad en la gestión del inventario. 
+                            La Politica <span id="mejorPolitica"></span>es mas económica y eficiente debido a su capacidad para reducir costos de mantenimiento,
+                            faltantes y mejorar la flexibilidad en la gestión del inventario.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         </main>
 
 @push('js')
@@ -155,6 +155,7 @@
     let distribucionPoisson = []; //Aqui se almacenarán los valores del tiempo de entrega con distribucion poisson
     let politicaUno = 0;
     let politicaDos = 0;
+    var resultadopolitica="Politica 1";
     // Función simular con los parámetros correctos y llenado de resultados
     function simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar) {
         let resultados = [];
@@ -474,13 +475,15 @@
         document.getElementById('costoFaltante2').textContent = `$${costoTotalFaltante.toFixed(2)}`;
         document.getElementById('costoTotal2').textContent = `$${costoTotal.toFixed(2)}`;
     }
-    //COMPARA QUE POLITICA ES MEJOR 
+    //COMPARA QUE POLITICA ES MEJOR
     function comparar(){
         let mejor = 0;
         if(politicaUno>politicaDos){
             mejor = 2;
+            resultadopolitica ="Politica 2";
             document.getElementById('mejorPolitica').textContent = `${mejor} `;
         }else{
+            resultadopolitica ="Politica 1";
             mejor = 1;
             document.getElementById('mejorPolitica').textContent = `${mejor} `;
         }
@@ -509,11 +512,9 @@
             // Crear el gráfico con Plotly
             Plotly.newPlot('graficoBarras', [datos], layout);
     }
-    
+
     // Evento al hacer clic en el botón Iniciar
     document.getElementById('btnIniciar1').addEventListener('click', function() {
-        // Mostrar el contenido al hacer clic en el botón Iniciar
-        document.querySelector('.resolucionEjercicio1').style.display = 'block';
 
 
 
@@ -523,14 +524,112 @@
         const costoMantenimiento = parseFloat(document.getElementById('costoMantenimiento').value);
         const costoFaltante = parseFloat(document.getElementById('costoFaltante').value);
         const costoOrdenar = parseFloat(document.getElementById('costoOdernar').value);
+
+
+
+        // Convertir los valores a enteros
+        const numeroDiasInt = parseInt(numeroDias);
+                const inventarioInicialInt = parseInt(inventarioInicial);
+
+                // Validar que número de días no sea mayor a 30
+                if (numeroDiasInt > 30) {
+                    alert('El número de días no debe ser mayor a 30.');
+                    return;
+                }
+
+
+        // Validar que los campos número de días e inventario inicial sean enteros
+        if (!Number.isInteger(parseFloat(numeroDias)) || !Number.isInteger(parseFloat(inventarioInicial))) {
+            alert('Por favor, ingrese valores enteros para Número de días e Inventario inicial.');
+            return;
+        }
+
+
+
+
+        // Validar que los campos no estén vacíos y sean números válidos
+        if (isNaN(numeroDiasInt) || isNaN(inventarioInicialInt) || isNaN(costoMantenimiento) || isNaN(costoFaltante) || isNaN(costoOrdenar)) {
+            alert('Por favor, rellene los campos faltantes.');
+            return;
+        }
+            // Validar que todos los valores sean positivos
+        if (numeroDiasInt <= 0 || inventarioInicialInt < 0 || costoMantenimiento < 0 || costoFaltante < 0 || costoOrdenar < 0) {
+            alert('Por favor, ingrese valores positivos.');
+            return;
+        }
+
+              // Mostrar el contenido al hacer clic en el botón Iniciar
+        document.querySelector('.resolucionEjercicio1').style.display = 'block';
+
         // Llamar a la función para simular y construir las tablas para la POLITICA 1
         simular(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
         //SIMULAR POLITICA 2
         simular2(numeroDias, inventarioInicial, costoMantenimiento, costoFaltante, costoOrdenar);
         comparar();
         compararYPintarGrafico();
-
+        historialAñadir();
     });
+
+
+
+
+//para actualizar en tiempo real
+function historialAñadir() {
+    const contenido1 = document.getElementById('costoTotal1').textContent;
+    const nume1 = contenido1.match(/\d+(\.\d+)?/); // Esto obtiene cualquier secuencia de dígitos seguida opcionalmente por un punto y más dígitos
+    const costo1 = parseFloat(nume1[0]); // Convertir el número extraído a punto flotante
+
+    const contenido2 = document.getElementById('costoTotal2').textContent;
+    const nume2= contenido2.match(/\d+(\.\d+)?/); // Esto obtiene cualquier secuencia de dígitos seguida opcionalmente por un punto y más dígitos
+    const costo2 = parseFloat(nume2[0]); // Convertir el número extraído a punto flotante
+
+    const costofaltante = parseFloat(document.getElementById('costoFaltante').value);
+    const costoordenar = parseFloat(document.getElementById('costoOdernar').value);
+    const costomantenimiento = parseFloat(document.getElementById('costoMantenimiento').value);
+    const inventario = parseFloat(document.getElementById('inventarioIni').value);
+    const numerodias = parseFloat(document.getElementById('numdias').value);
+
+
+    console.log("AHHHHHHH");
+    console.log(costo1);
+    console.log(costo2);
+    console.log(costofaltante);
+    console.log(costoordenar);
+    console.log(costomantenimiento);
+    console.log(inventario);
+    console.log(numerodias);
+    console.log(resultadopolitica);
+
+    fetch("{{ route('ejercicio1.actualizarEjercicio1') }}", { // Aquí faltaba cerrar el paréntesis de route()
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+    },
+    body: JSON.stringify({
+
+        NumeroDias: numerodias,
+        Inventario: inventario,
+        Costomantenimiento: costomantenimiento,
+        Costoordenar: costoordenar,
+        Costofaltante: costofaltante,
+        costo1: costo1,
+        costo2: costo2,
+        Mejoropcion: resultadopolitica,
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log('Success:', data);
+    alert(data.message); // Notificar al usuario
+
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert('Error actualizando el dato : ' + error.message);
+
+});
+}
 </script>
 
 @endpush

@@ -10,7 +10,7 @@
 }
 .enunciadoEjercicio{
     padding: 3rem;
-    
+
 }
 .marginIzqDer{
     padding-left: 5rem;
@@ -153,25 +153,25 @@ font-size: 1.3rem; /* 36px en rem */
     padding-left: 3rem;
     padding-right: 3rem;
 }
-	
+
 	table.tablaresponsiva,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
 		.tablaresponsiva th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
 		.tablaresponsiva td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
 		.tablaresponsiva tr:last-child td, .rwd_auto tr:last-child td{border:0}
-			
-@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)  
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
 {
-	
+
 	table.tablaresponsiva, .tablaresponsiva thead, .tablaresponsiva tbody, .tablaresponsiva th, .tablaresponsiva td, .tablaresponsiva tr { display: block; }
-		
+
 	.tablaresponsiva thead tr { position: absolute;top: -9999px;left: -9999px; }
-		
+
 	.tablaresponsiva tr { border: 1px solid #ccc; }
-		
+
 	.tablaresponsiva td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
-		
+
 	.tablaresponsiva td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
-		
+
 	.tablaresponsiva td:nth-of-type(1):before { content: "Número días"; }
 	.tablaresponsiva td:nth-of-type(2):before { content: "Inventario"; }
 	.tablaresponsiva td:nth-of-type(3):before { content: "Costo mantenimiento"; }
@@ -180,7 +180,7 @@ font-size: 1.3rem; /* 36px en rem */
     .tablaresponsiva td:nth-of-type(6):before { content: "Costo politica 1"; }
     .tablaresponsiva td:nth-of-type(7):before { content: "Costo politica 2"; }
     .tablaresponsiva td:nth-of-type(8):before { content: "Mejor opción"; }
-		
+
 	.descarto {display:none;}
 	.fontsize {font-size:10px}
 }
@@ -218,7 +218,7 @@ font-size: 1.3rem; /* 36px en rem */
     .botonIniciar {
         text-align: center; /* Centrar el contenido del contenedor */
     }
-    
+
     .btn {
         width: 100%; /* Botón ocupa todo el ancho del contenedor */
     }
@@ -248,32 +248,240 @@ font-size: 1.3rem; /* 36px en rem */
     padding-top: 40px;
     font-size: 1.3rem;
 }
-/*ESTILOS TABLA RESPONSIVA HISTORIAL EJERCICIO 4*/
 
-	table.tablaejercicio4,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
-		.tablaejercicio4 th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
-		.tablaejercicio4 td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
-		.tablaejercicio4 tr:last-child td, .rwd_auto tr:last-child td{border:0}
-			
-@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)  
+
+/* RESPONSIVO TABLA HISTORIAL 2*/
+table.tablaresponsivaDos,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablaresponsivaDos th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablaresponsivaDos td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablaresponsivaDos tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
 {
-	
-	table.tablarejercicio4, .tablaejercicio4 thead, .tablaejercicio4 tbody, .tablaejercicio4 th, .tablaejercicio4 td, .tablaejercicio4 tr { display: block; }
-		
-	.tablaejercicio4 thead tr { position: absolute;top: -9999px;left: -9999px; }
-		
-	.tablaejercicio4 tr { border: 1px solid #ccc; }
-		
-	.tablaejercicio4 td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
-		
-	.tablaejercicio4 td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
-		
-	.tablaejercicio4 td:nth-of-type(1):before { content: "Número de simulaciones"; }
-	.tablaejercicio4 td:nth-of-type(2):before { content: "TREMA (%)"; }
-	.tablaejercicio4 td:nth-of-type(3):before { content: "Aceptacion del proyecto"; }
-	.tablaejercicio4 td:nth-of-type(4):before { content: "Promedio TIR"; }
-	.tablaejercicio4 td:nth-of-type(5):before { content: "El proyecto es"; }
-		
+
+	table.tablaresponsivaDos, .tablaresponsivaDos thead, .tablaresponsivaDos tbody, .tablaresponsivaDos th, .tablaresponsivaDos td, .tablaresponsivaDos tr { display: block; }
+
+	.tablaresponsivaDos thead tr { position: absolute;top: -9999px;left: -9999px; }
+
+	.tablaresponsivaDos tr { border: 1px solid #ccc; }
+
+	.tablaresponsivaDos td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablaresponsivaDos td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+
+	.tablaresponsivaDos td:nth-of-type(1):before { content: "Horas simulación"; }
+	.tablaresponsivaDos td:nth-of-type(2):before { content: "Costo componente"; }
+	.tablaresponsivaDos td:nth-of-type(3):before { content: "Costo hora desconexión"; }
+    .tablaresponsivaDos td:nth-of-type(4):before { content: "Costo politica 1"; }
+    .tablaresponsivaDos td:nth-of-type(5):before { content: "Costo politica 2"; }
+    .tablaresponsivaDos td:nth-of-type(6):before { content: "Mejor opción"; }
+
 	.descarto {display:none;}
 	.fontsize {font-size:10px}
+}
+
+
+/* RESPONSIVO TABLA HISTORIAL 3 */
+table.tablaresponsivaTres,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablaresponsivaTres th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablaresponsivaTres td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablaresponsivaTres tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	table.tablaresponsivaTres, .tablaresponsivaTres thead, .tablaresponsivaTres tbody, .tablaresponsivaTres th, .tablaresponsivaTres td, .tablaresponsivaTres tr { display: block; }
+
+	.tablaresponsivaTres thead tr { position: absolute;top: -9999px;left: -9999px; }
+
+	.tablaresponsivaTres tr { border: 1px solid #ccc; }
+
+	.tablaresponsivaTres td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablaresponsivaTres td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+
+	.tablaresponsivaTres td:nth-of-type(1):before { content: "Cantidad compra inicial"; }
+	.tablaresponsivaTres td:nth-of-type(2):before { content: "Costo compra inicial"; }
+	.tablaresponsivaTres td:nth-of-type(3):before { content: "Costo venta al publico"; }
+	.tablaresponsivaTres td:nth-of-type(4):before { content: "Costo compra adicional"; }
+	.tablaresponsivaTres td:nth-of-type(5):before { content: "Costo devolución inicial"; }
+    .tablaresponsivaTres td:nth-of-type(6):before { content: "Costo devolución final"; }
+    .tablaresponsivaTres td:nth-of-type(7):before { content: "Costo politica 1"; }
+    .tablaresponsivaTres td:nth-of-type(8):before { content: "Costo politica 2"; }
+    .tablaresponsivaTres td:nth-of-type(9):before { content: "Mejor opción"; }
+
+	.descarto {display:none;}
+	.fontsize {font-size:10px}
+}
+
+/* RESPONSIVO TABLA HISTORIAL 4*/
+table.tablaresponsivaCuatro,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablaresponsivaCuatro th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablaresponsivaCuatro td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablaresponsivaCuatro tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	table.tablaresponsivaCuatro, .tablaresponsivaCuatro thead, .tablaresponsivaCuatro tbody, .tablaresponsivaCuatro th, .tablaresponsivaCuatro td, .tablaresponsivaCuatro tr { display: block; }
+
+	.tablaresponsivaCuatro thead tr { position: absolute;top: -9999px;left: -9999px; }
+
+	.tablaresponsivaCuatro tr { border: 1px solid #ccc; }
+
+	.tablaresponsivaCuatro td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablaresponsivaCuatro td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+
+	.tablaresponsivaCuatro td:nth-of-type(1):before { content: "Numero simulaciones"; }
+	.tablaresponsivaCuatro td:nth-of-type(2):before { content: "TREMA (%)"; }
+	.tablaresponsivaCuatro td:nth-of-type(3):before { content: "Aceptacion de proyecto"; }
+    .tablaresponsivaCuatro td:nth-of-type(4):before { content: "Promedio TIR"; }
+    .tablaresponsivaCuatro td:nth-of-type(5):before { content: "El proyecto es"; }
+
+	.descarto {display:none;}
+	.fontsize {font-size:10px}
+}
+
+/* RESPONSIVO TABLA HISTORIAL 5*/
+table.tablaresponsivaCinco,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablaresponsivaCinco th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablaresponsivaCinco td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablaresponsivaCinco tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	table.tablaresponsivaCinco, .tablaresponsivaCinco thead, .tablaresponsivaCinco tbody, .tablaresponsivaCinco th, .tablaresponsivaCinco td, .tablaresponsivaCinco tr { display: block; }
+
+	.tablaresponsivaCinco thead tr { position: absolute;top: -9999px;left: -9999px; }
+
+	.tablaresponsivaCinco tr { border: 1px solid #ccc; }
+
+	.tablaresponsivaCinco td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablaresponsivaCinco td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+
+	.tablaresponsivaCinco td:nth-of-type(1):before { content: "Inventario"; }
+	.tablaresponsivaCinco td:nth-of-type(2):before { content: "Costo ordenar"; }
+	.tablaresponsivaCinco td:nth-of-type(3):before { content: "Costo inventario"; }
+    .tablaresponsivaCinco td:nth-of-type(4):before { content: "Costo faltante"; }
+    .tablaresponsivaCinco td:nth-of-type(5):before { content: "Valor de orden(Q)"; }
+    .tablaresponsivaCinco td:nth-of-type(6):before { content: "Valor de reorden(R)"; }
+    .tablaresponsivaCinco td:nth-of-type(7):before { content: "Costo total"; }
+
+	.descarto {display:none;}
+	.fontsize {font-size:10px}
+}
+
+/* RESPONSIVO TABLA EJERCICIO 3*/
+table.tablatresdemanda,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablatresdemanda th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablatresdemanda td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablatresdemanda tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	table.tablatresdemanda, .tablatresdemanda thead, .tablatresdemanda tbody, .tablatresdemanda th, .tablatresdemanda td, .tablatresdemanda tr { display: block; }
+
+	.tablatresdemanda thead tr { position: absolute;top: -9999px;left: -9999px; }
+
+	.tablatresdemanda tr { border: 1px solid #ccc; }
+
+	.tablatresdemanda td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablatresdemanda td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+
+	.tablatresdemanda td:nth-of-type(1):before { content: "Demanda"; }
+	.tablatresdemanda td:nth-of-type(2):before { content: "5"; }
+	.tablatresdemanda td:nth-of-type(3):before { content: "6"; }
+    .tablatresdemanda td:nth-of-type(4):before { content: "7"; }
+    .tablatresdemanda td:nth-of-type(5):before { content: "8"; }
+    .tablatresdemanda td:nth-of-type(6):before { content: "9"; }
+    .tablatresdemanda td:nth-of-type(7):before { content: "10"; }
+    .tablatresdemanda td:nth-of-type(8):before { content: "11"; }
+
+	.descarto {display:none;}
+	.fontsize {font-size:10px}
+}
+
+/* RESPONSIVO TABLA EJERCICIO 3 demanda final*/
+table.tablatresdem,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablatresdem th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablatresdem td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablatresdem tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	table.tablatresdem, .tablatresdem thead, .tablatresdem tbody, .tablatresdem th, .tablatresdem td, .tablatresdem tr { display: block; }
+
+	.tablatresdem thead tr { position: absolute;top: -9999px;left: -9999px; }
+
+	.tablatresdem tr { border: 1px solid #ccc; }
+
+	.tablatresdem td { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablatresdem td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+
+	.tablatresdem td:nth-of-type(1):before { content: "Demanda"; }
+	.tablatresdem td:nth-of-type(2):before { content: "4"; }
+	.tablatresdem td:nth-of-type(3):before { content: "5"; }
+    .tablatresdem td:nth-of-type(4):before { content: "6"; }
+    .tablatresdem td:nth-of-type(5):before { content: "7"; }
+    .tablatresdem td:nth-of-type(6):before { content: "8"; }
+
+	.descarto {display:none;}
+	.fontsize {font-size:10px}
+}
+
+/* RESPONSIVO TABLA EJERCICIO 5 demanda final*/
+table.tablacincodem,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablacincodem th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablacincodem td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablacincodem tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	.tablacincodem tr { border: 1px solid #ccc; }
+
+	.tablacincodemtd { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablacincodem td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+
+}
+
+/* RESPONSIVO TABLA EJERCICIO 5 tiempo entrega*/
+table.tablacincotiem,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablacincotiem th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablacincotiem td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablacincotiem tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	.tablacincotiem tr { border: 1px solid #ccc; }
+
+	.tablacincotiem { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablacincotiem td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+}
+
+/* RESPONSIVO TABLA EJERCICIO  5 COSTO*/
+table.tablacincocosto,table.rwd_auto {border:1px solid #cccccc;width:100%;margin:0 0 50px 0}
+		.tablacincocosto th,.rwd_auto th {background:#626262;padding:5px;text-align:center;}
+		.tablacincocosto td,.rwd_auto td {border-bottom:1px solid #ccc;padding:5px;text-align:center}
+		.tablacincocosto tr:last-child td, .rwd_auto tr:last-child td{border:0}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)
+{
+
+	.tablacincocosto tr { border: 1px solid #ccc; }
+
+	.tablacincocosto { border: none;border-bottom: 1px solid #ccc; position: relative;padding-left: 50%;text-align:left }
+
+	.tablacincocosto td:before {  position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+    
 }
